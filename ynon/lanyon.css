@@ -1,0 +1,71 @@
+/* Lanyon CSS file */
+body {
+  font-family: Georgia, serif;
+  color: #333;
+  background-color: #fff;
+  direction: rtl;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Other CSS rules from the original Lanyon file */
+.header {
+  text-align: center;
+  padding: 2em;
+}
+
+.posts {
+  margin: 0 auto;
+  max-width: 40em;
+}
+
+.post-title {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.post-date {
+  font-size: 0.875em;
+  color: #666;
+  margin-bottom: 1em;
+}
+
+.pagination {
+  text-align: center;
+  padding: 2em 0;
+}
+
+.pagination-item {
+  padding: 0.5em;
+}
+
+/* New styling for Markdown */
+h1, h2, h3, h4, h5, h6 {
+  direction: rtl;
+  text-align: right;
+  margin-top: 1em;
+}
+
+p, li {
+  direction: rtl;
+  text-align: right;
+}
+
+.message {
+  background-color: #f5f5f5;
+  padding: 1em;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  direction: rtl;
+  text-align: right;
+}
