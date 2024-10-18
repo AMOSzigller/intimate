@@ -4,20 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אינטימיים</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #1f2937;
+            color: #f9fafb;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1f2937;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #3b82f6;
+            color: #fff;
+        }
+
+        main {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #1f2937;
+            color: #f9fafb;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 15px 0;
+            }
+
+            nav ul li a {
+                font-size: 1.5em;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
+
+<header>
     <h1>ברוכים הבאים לאתר האינטימיים</h1>
-    <p>בחרו נושא:</p>
+</header>
 
-    <ul>
-        <!-- קישור לדף החדשות הנוכחי ב-intimiim.com -->
-        <li><a href="news/index.html">חדשות</a></li>
+<main>
+    <nav>
+        <ul>
+            <li><a href="news/index.html">חדשות</a></li>
+            <li><a href="https://nadavstocks.com" target="_blank">כלכלה</a></li>
+            <li><a href="https://www.amosrank.com" target="_blank">HS Standard Leaderboards</a></li>
+        </ul>
+    </nav>
+</main>
 
-        <!-- קישור לאתר nadavstocks.com -->
-        <li><a href="https://nadavstocks.com" target="_blank">כלכלה</a></li>
+<footer>
+    <p>&copy; 2024 אינטימיים. כל הזכויות שמורות.</p>
+</footer>
 
-        <!-- קישור לאתר amosrank.com -->
-        <li><a href="https://www.amosrank.com" target="_blank">HS Standard Leaderboards</a></li>
-    </ul>
 </body>
 </html>
