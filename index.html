@@ -5,24 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אינטימיים</title>
     <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --highlight-color: #1a73e8; /* כחול כהה וזוהר */
+            --button-bg-color: #333333;
+            --button-hover-color: #474747;
+            --disabled-color: #555555;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f4f8;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
         }
 
         header {
-            background-color: #1f2937;
-            color: #f9fafb;
+            background-color: var(--card-bg-color);
+            color: var(--text-color);
             padding: 20px 0;
             text-align: center;
+            border-bottom: 2px solid var(--highlight-color);
         }
 
         h1 {
+            font-size: 2.2em;
             margin: 0;
-            font-size: 2.5em;
         }
 
         nav {
@@ -36,71 +47,70 @@
         }
 
         nav ul li {
-            display: block;
-            margin: 30px 0;
+            margin: 20px 0;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: #1f2937;
+            color: var(--text-color);
             font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #e5e7eb;
-            transition: all 0.3s ease;
+            padding: 12px 15px;
+            border-radius: 8px;
+            background-color: var(--button-bg-color);
+            transition: background-color 0.3s ease, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            width: 80%; /* להדגשה טובה יותר בתצוגה צרה */
         }
 
         nav ul li a:hover {
-            background-color: #3b82f6;
-            color: #fff;
+            background-color: var(--button-hover-color);
+            color: var(--highlight-color);
+            transform: translateY(-2px);
         }
 
-        /* סגנון כפתור החידון המבוטל */
         .survey-button.disabled {
-            background-color: #d3d3d3; /* צבע אפור בהיר */
+            background-color: var(--disabled-color);
             color: #a9a9a9;
             cursor: not-allowed;
             font-weight: bold;
-            padding: 15px 25px;
+            padding: 12px 15px;
             border-radius: 8px;
-            text-decoration: line-through; /* קו חוצה */
-            pointer-events: none; /* מונע לחיצה */
+            text-decoration: line-through;
+            pointer-events: none;
+            width: 80%;
+            display: inline-block;
         }
 
-        /* טקסט סטטי מתחת לכפתור */
-        .disabled-text {
-            font-size: 0.9em;
-            color: #888888;
-            margin-top: 5px;
-        }
-
-        /* סגנון כפתור לחידון האינטימיים */
         .quiz-button {
-            background-color: #ff9800; /* צבע כתום */
+            background-color: var(--highlight-color);
             color: #ffffff;
             font-weight: bold;
-            padding: 15px 25px;
+            padding: 12px 15px;
             border-radius: 8px;
             transition: background-color 0.3s ease;
+            width: 80%;
+            display: inline-block;
         }
 
         .quiz-button:hover {
-            background-color: #e67e22; /* צבע כהה יותר במעבר עכבר */
+            background-color: #155bb5;
         }
 
         main {
             padding: 40px 20px;
-            text-align: center;
         }
 
         footer {
-            background-color: #1f2937;
-            color: #f9fafb;
+            background-color: var(--card-bg-color);
+            color: var(--text-color);
             text-align: center;
             padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            border-top: 2px solid var(--highlight-color);
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
@@ -117,12 +127,10 @@
             <li><a href="https://nadavstocks.com" target="_blank">כלכלה</a></li>
             <li><a href="/ynon">הגיגים של ינון</a></li>
             <li><a href="/hsrank">HS Standard Leaderboards</a></li>
-            <!-- כפתור החידון בעיצוב מושבת עם הודעת סיום -->
             <li>
                 <a class="survey-button disabled">חידון לכבוד 10 שנים לקבוצה</a>
                 <p class="disabled-text">* הסקר הסתיים</p>
             </li>
-            <!-- כפתור לחידון האינטימיים -->
             <li><a href="/quiz" class="quiz-button">תשובות לחידון האינטימיים הגדול</a></li>
             <li><a href="about.html">אודות</a></li>
             <li><a href="career.html">קריירה</a></li>
