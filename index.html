@@ -37,7 +37,7 @@
 
         nav ul li {
             display: block;
-            margin: 30px 0; /* רווח גדול יותר בין הפריטים */
+            margin: 30px 0;
         }
 
         nav ul li a {
@@ -55,18 +55,37 @@
             color: #fff;
         }
 
-        /* סגנון ייחודי לכפתור הסקר */
-        .survey-button {
-            background-color: #ff5733; /* צבע כתום בולט */
+        /* סגנון כפתור החידון המבוטל */
+        .survey-button.disabled {
+            background-color: #d3d3d3; /* צבע אפור בהיר */
+            color: #a9a9a9;
+            cursor: not-allowed;
+            font-weight: bold;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: line-through; /* קו חוצה */
+            pointer-events: none; /* מונע לחיצה */
+        }
+
+        /* טקסט סטטי מתחת לכפתור */
+        .disabled-text {
+            font-size: 0.9em;
+            color: #888888;
+            margin-top: 5px;
+        }
+
+        /* סגנון כפתור לחידון האינטימיים */
+        .quiz-button {
+            background-color: #ff9800; /* צבע כתום */
             color: #ffffff;
             font-weight: bold;
-            padding: 15px 25px; /* ריווח פנימי גדול יותר */
+            padding: 15px 25px;
             border-radius: 8px;
             transition: background-color 0.3s ease;
         }
 
-        .survey-button:hover {
-            background-color: #cc4626; /* צבע כהה יותר במעבר עכבר */
+        .quiz-button:hover {
+            background-color: #e67e22; /* צבע כהה יותר במעבר עכבר */
         }
 
         main {
@@ -98,8 +117,13 @@
             <li><a href="https://nadavstocks.com" target="_blank">כלכלה</a></li>
             <li><a href="/ynon">הגיגים של ינון</a></li>
             <li><a href="/hsrank">HS Standard Leaderboards</a></li>
-            <!-- כפתור הסקר בעיצוב מותאם אישית -->
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeq13GdJqrNM9mpRcYDOGkKm3r2u6fWlAjPEUtuY9VEdItFsQ/viewform?usp=sf_link" target="_blank" class="survey-button">סקר לכבוד 10 שנים לקבוצה</a></li>
+            <!-- כפתור החידון בעיצוב מושבת עם הודעת סיום -->
+            <li>
+                <a class="survey-button disabled">חידון לכבוד 10 שנים לקבוצה</a>
+                <p class="disabled-text">* הסקר הסתיים</p>
+            </li>
+            <!-- כפתור לחידון האינטימיים -->
+            <li><a href="quiz-results.html" class="quiz-button">תשובות לחידון האינטימיים הגדול</a></li>
             <li><a href="about.html">אודות</a></li>
             <li><a href="career.html">קריירה</a></li>
         </ul>
