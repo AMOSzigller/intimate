@@ -9,10 +9,11 @@
             --bg-color: #121212;
             --card-bg-color: #1e1e1e;
             --text-color: #e0e0e0;
-            --highlight-color: #1a73e8; /* כחול כהה וזוהר */
+            --highlight-color: #1a73e8; /* צבע כחול לכפתור התשובות לחידון */
             --button-bg-color: #333333;
             --button-hover-color: #474747;
             --disabled-color: #555555;
+            --new-button-color: #4CAF50; /* צבע ירוק לכפתור החדש */
         }
 
         body {
@@ -60,13 +61,50 @@
             transition: background-color 0.3s ease, transform 0.2s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: inline-block;
-            width: 80%; /* להדגשה טובה יותר בתצוגה צרה */
+            width: 80%;
         }
 
         nav ul li a:hover {
             background-color: var(--button-hover-color);
             color: var(--highlight-color);
             transform: translateY(-2px);
+        }
+
+        /* עיצוב לכפתור "קריפטו" החדש */
+        .new-button {
+            background-color: var(--new-button-color);
+            border: 2px solid var(--highlight-color);
+            position: relative;
+        }
+
+        .new-button::after {
+            content: "חדש!";
+            position: absolute;
+            top: -10px;
+            right: -25px;
+            background-color: var(--highlight-color);
+            color: #fff;
+            font-size: 0.8em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            transform: rotate(-10deg);
+        }
+
+        /* עיצוב לכפתור "תשובות לחידון" בכחול */
+        .quiz-button {
+            background-color: var(--highlight-color);
+            color: #ffffff;
+            font-weight: bold;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            width: 80%;
+            display: inline-block;
+        }
+
+        .quiz-button:hover {
+            background-color: #155bb5; /* גוון כהה יותר של כחול */
         }
 
         .survey-button.disabled {
@@ -80,21 +118,6 @@
             pointer-events: none;
             width: 80%;
             display: inline-block;
-        }
-
-        .quiz-button {
-            background-color: var(--highlight-color);
-            color: #ffffff;
-            font-weight: bold;
-            padding: 12px 15px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-            width: 80%;
-            display: inline-block;
-        }
-
-        .quiz-button:hover {
-            background-color: #155bb5;
         }
 
         main {
@@ -127,6 +150,7 @@
             <li><a href="https://nadavstocks.com" target="_blank">כלכלה</a></li>
             <li><a href="/ynon">הגיגים של ינון</a></li>
             <li><a href="/hsrank">HS Standard Leaderboards</a></li>
+            <li><a href="intimiim.com/crypto" class="new-button">קריפטו</a></li>
             <li>
                 <a class="survey-button disabled">חידון לכבוד 10 שנים לקבוצה</a>
                 <p class="disabled-text">* הסקר הסתיים</p>
