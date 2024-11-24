@@ -54,6 +54,12 @@
             background-color: #f1f1f1;
         }
 
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
         button {
             padding: 12px 20px;
             font-size: 16px;
@@ -95,53 +101,88 @@
 <body>
     <h1>HS Rank</h1>
 
+    <h2>Time Left Until Season Ends</h2>
+    <div id="countdown" style="font-size: 1.5em; color: #333; margin-bottom: 20px;"></div>
+
+    <script>
+        function updateCountdown() {
+            const endTime = new Date("2024-12-01T01:00:00+02:00"); // 1 בדצמבר 2024 בשעה 1 בלילה שעון ישראל
+            const now = new Date();
+            const timeLeft = endTime - now;
+
+            if (timeLeft < 0) {
+                document.getElementById("countdown").innerHTML = "Season has ended!";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML =
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // להריץ מיד כדי להציג את התוצאה הראשונית
+    </script>
+
     <h2>November 2024 Season Rankings</h2>
     <table>
         <tr>
+            <th>Photo</th>
             <th>Name</th>
             <th>Rank</th>
         </tr>
         <tr>
-            <td>gouchieeeee</td>
-            <td>1589</td>
-        </tr>
-        <tr>
-            <td>AMOSzigller</td>
-            <td>1968</td>
-        </tr>
-        <tr>
+            <td><img src="images/megamadov.jpg" alt="megamadov"></td>
             <td>megamadov</td>
             <td>2119</td>
         </tr>
         <tr>
+            <td><img src="images/gouchieeeee.jpg" alt="gouchieeeee"></td>
+            <td>gouchieeeee</td>
+            <td>2161</td>
+        </tr>
+        <tr>
+            <td><img src="images/AMOSzigller.jpg" alt="AMOSzigller"></td>
+            <td>AMOSzigller</td>
+            <td>2277</td>
+        </tr>
+        <tr>
+            <td><img src="images/Astrix.jpg" alt="Astrix"></td>
             <td>Astrix</td>
             <td>8617</td>
         </tr>
     </table>
 
-    <div class="update-time">Last updated: Today at 15:44</div>
+    <div class="update-time">Last updated: Today at 19:00</div>
 
     <h2>October 2024 Season Rankings</h2>
     <table>
         <tr>
+            <th>Photo</th>
             <th>Name</th>
             <th>Rank</th>
         </tr>
         <tr>
+            <td><img src="images/AMOSzigller.jpg" alt="AMOSzigller"></td>
             <td>AMOSzigller</td>
             <td>404</td>
         </tr>
         <tr>
+            <td><img src="images/gouchieeeee.jpg" alt="gouchieeeee"></td>
             <td>gouchieeeee</td>
             <td>5329</td>
         </tr>
         <tr>
+            <td><img src="images/Astrix.jpg" alt="Astrix"></td>
             <td>Astrix</td>
             <td>9463</td>
         </tr>
     </table>
 
-    <!-- Button to return to the main site -->
     <button onclick="window.location.href='https://intimiim.com'">Back to Main Site</button>
 </body>
 </html>
