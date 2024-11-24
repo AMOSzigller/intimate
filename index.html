@@ -9,11 +9,10 @@
             --bg-color: #121212;
             --card-bg-color: #1e1e1e;
             --text-color: #e0e0e0;
-            --highlight-color: #1a73e8; /* צבע כחול לכפתור התשובות לחידון */
+            --highlight-color: #1a73e8;
             --button-bg-color: #333333;
             --button-hover-color: #474747;
-            --disabled-color: #555555;
-            --new-button-color: #4CAF50; /* צבע ירוק לכפתור החדש */
+            --new-button-color: #4CAF50;
         }
 
         body {
@@ -26,19 +25,17 @@
 
         header {
             background-color: var(--card-bg-color);
-            color: var(--text-color);
-            padding: 20px 0;
+            padding: 20px;
             text-align: center;
             border-bottom: 2px solid var(--highlight-color);
         }
 
         h1 {
-            font-size: 2.2em;
+            font-size: 2em;
             margin: 0;
         }
 
         nav {
-            margin: 30px 0;
             text-align: center;
         }
 
@@ -48,92 +45,58 @@
         }
 
         nav ul li {
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         nav ul li a {
             text-decoration: none;
             color: var(--text-color);
             font-size: 1.2em;
-            padding: 12px 15px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 5px;
             background-color: var(--button-bg-color);
-            transition: background-color 0.3s ease, transform 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: inline-block;
-            width: 80%;
+            width: 90%;
         }
 
         nav ul li a:hover {
             background-color: var(--button-hover-color);
+        }
+
+        .new-feature {
+            padding: 20px;
+            background-color: #222;
             color: var(--highlight-color);
-            transform: translateY(-2px);
-        }
-
-        /* עיצוב לכפתור "קריפטו" החדש */
-        .new-button {
-            background-color: var(--new-button-color);
-            border: 2px solid var(--highlight-color);
-            position: relative;
-        }
-
-        .new-button::after {
-            content: "חדש!";
-            position: absolute;
-            top: -10px;
-            right: -25px;
-            background-color: var(--highlight-color);
-            color: #fff;
-            font-size: 0.8em;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            transform: rotate(-10deg);
-        }
-
-        /* עיצוב לכפתור "תשובות לחידון" בכחול */
-        .quiz-button {
-            background-color: var(--highlight-color);
-            color: #ffffff;
-            font-weight: bold;
-            padding: 12px 15px;
+            text-align: center;
+            margin: 20px 0;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
-            width: 80%;
-            display: inline-block;
+            font-size: 1.2em;
+            animation: pulse 2s infinite;
         }
 
-        .quiz-button:hover {
-            background-color: #155bb5; /* גוון כהה יותר של כחול */
-        }
-
-        .survey-button.disabled {
-            background-color: var(--disabled-color);
-            color: #a9a9a9;
-            cursor: not-allowed;
-            font-weight: bold;
-            padding: 12px 15px;
-            border-radius: 8px;
-            text-decoration: line-through;
-            pointer-events: none;
-            width: 80%;
-            display: inline-block;
-        }
-
-        main {
-            padding: 40px 20px;
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
         }
 
         footer {
             background-color: var(--card-bg-color);
             color: var(--text-color);
             text-align: center;
-            padding: 20px 0;
+            padding: 20px;
             border-top: 2px solid var(--highlight-color);
         }
 
-        footer p {
-            margin: 0;
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            nav ul li a {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>
@@ -147,19 +110,15 @@
     <nav>
         <ul>
             <li><a href="news/index.html">חדשות</a></li>
-            <li><a href="https://nadavstocks.com" target="_blank">כלכלה</a></li>
+            <li><a href="https://nadavstocks.com" target="_blank">תשאל את נדב מה מחיר הביטקוין</a></li>
             <li><a href="/ynon">הגיגים של ינון</a></li>
             <li><a href="/hsrank">HS Standard Leaderboards</a></li>
-            <li><a href="https://intimiim.com/crypto" class="new-button">קריפטו</a></li>
-            <li>
-                <a class="survey-button disabled">חידון לכבוד 10 שנים לקבוצה</a>
-                <p class="disabled-text">* הסקר הסתיים</p>
-            </li>
             <li><a href="/quiz" class="quiz-button">תשובות לחידון האינטימיים הגדול</a></li>
-            <li><a href="about.html">אודות</a></li>
-            <li><a href="career.html">קריירה</a></li>
         </ul>
     </nav>
+    <div class="new-feature">
+        🎉 בקרוב: IntimiBets 🎲
+    </div>
 </main>
 
 <footer>
