@@ -1,158 +1,59 @@
-<html dir="rtl"> 
-<head>
-	<meta charset="utf-8" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<title>ערבי, מזרחי או אינטימי?</title>
-
-	<meta property="og:title" content="ערבי, מזרחי או אינטימי?" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://mizrahiolo.github.io/0.jpg" />
-    <meta property="og:url" content="https://mizrahiolo.github.io/index.html" />
-    <meta property="og:site_name" content="?ערבי, מזרחי או אינטימי" />
-    <meta property="og:description" content="החידון שמשגע את האינטימיים" />
-    <meta property="fb:admins" content="johndoe" />
-
-<style>
-a:link {color: black; }
-
-	body {
-		font-family: Arial;
-	}
-
-	.peace {
-		padding-top: 12px;
-		font-size: 12;
-	}
-	.checkButton {
-		margin: 0 auto;
-		color: white;
-		width: 200px;
-		padding: 10px;	
-		background-color: #89E897;
-		font-size: 30;
-		text-decoration: underline;
-	}
-
-	.checkButton a:link {
-		color: black;
-	}
-
-	.option {
-		padding: 5px;
-	}
-
-	.checkButton a:visited {
-		color: black;
-	}
-
-	.answersTd {
-		text-align: center;
-		border-bottom-color: #BDDEDD;
-		margin-bottom: 10px;
-		border-bottom: 10px;
-		padding-bottom: 25px;
-		font-size: 24;
-	}
-
-	.logoTd {
-		text-align: center;
-		padding-bottom: 10px;
-		font-size: 52;
-	}
-
-	.imgTd {
-		text-align: center;
-		font-size: 62;
-	}
-	
-	.img {
-		background-color: #BDDEDD;
-		padding: 20px;
-	}
-
-	.tbl {
-		margin: 0 auto;
-	}
-</style>
-
 <script type="text/javascript">
-	// וקטור התשובות החדש: תמונה 0 היא אינטימי (2), כל השאר ערבי (0).
-	var answersVector = 0b000000000000000000000000000000010; // עדכון מדויק
+    // וקטור התשובות החדש
+    // תשובה 0 = אינטימי (10 בביטים), כל השאר ערבי (00 בביטים)
+    var answersVector = 0b000000000000000000000000000000000010; 
 
-	var arrOptions = ["ערבי", "מזרחי", "אינטימי"]; // 3 אפשרויות בחירה
-	var NUM_OF_OPTIONS = arrOptions.length;
-	var NUM_OF_QUESTIONS = 18;
-	var correctColor = "#89E897";
-	var wrongColor = "#E88989";
+    var arrOptions = ["ערבי", "מזרחי", "אינטימי"]; // 3 אפשרויות בחירה
+    var NUM_OF_OPTIONS = arrOptions.length;
+    var NUM_OF_QUESTIONS = 18;
+    var correctColor = "#89E897";
+    var wrongColor = "#E88989";
 
-	var wrongUnic = "&#10008;";
-	var correctUnic = "&#10003;";
+    var wrongUnic = "&#10008;";
+    var correctUnic = "&#10003;";
 
-	function checkAnswers() {
-		var curAns;
-		var totalCorrect = 0;
+    function checkAnswers() {
+        var curAns;
+        var totalCorrect = 0;
 
-		for (var i = 0; i < NUM_OF_QUESTIONS; i++) {
-			curAns = $("input:radio[name='" + i + "']:checked").val();
-			var correctAns = (parseInt(answersVector, 10) >> (i * 2)) & 0b11; // בודקים את 2 הביטים של כל תשובה
+        for (var i = 0; i < NUM_OF_QUESTIONS; i++) {
+            curAns = $("input:radio[name='" + i + "']:checked").val();
+            var correctAns = (parseInt(answersVector, 10) >> (i * 2)) & 0b11; // בודקים את 2 הביטים של כל תשובה
 
-			if (curAns == undefined) 
-				curAns = -1;
+            if (curAns == undefined) 
+                curAns = -1;
 
-			if (curAns == correctAns) {
-				$("#img" + i).css('background-color', correctColor);
-				$("#imgTd" + i).append(correctUnic);
-				$("#option" + i + "_" + curAns).css('background-color', correctColor);
-				totalCorrect++;
-			} else {
-				$("#img" + i).css('background-color', wrongColor);
-				$("#option" + i + "_" + correctAns).css('background-color', correctColor);
-				$("#imgTd" + i).append(wrongUnic);
-			}
-		}
+            if (curAns == correctAns) {
+                $("#img" + i).css('background-color', correctColor);
+                $("#imgTd" + i).append(correctUnic);
+                $("#option" + i + "_" + curAns).css('background-color', correctColor);
+                totalCorrect++;
+            } else {
+                $("#img" + i).css('background-color', wrongColor);
+                $("#option" + i + "_" + correctAns).css('background-color', correctColor);
+                $("#imgTd" + i).append(wrongUnic);
+            }
+        }
 
-		$("#logo").fadeOut();
-		window.scrollTo(0, 0);
-		$("#logo").append("<span style='background-color: #89E897;'> פגעת ב-" + totalCorrect + " מתוך " + NUM_OF_QUESTIONS + "</span>");
-		$("#logo").fadeIn();
-	}
+        $("#logo").fadeOut();
+        window.scrollTo(0, 0);
+        $("#logo").append("<span style='background-color: #89E897;'> פגעת ב-" + totalCorrect + " מתוך " + NUM_OF_QUESTIONS + "</span>");
+        $("#logo").fadeIn();
+    }
 
-	function putRow(num) {
-		var rowStr = "<tr><td id='imgTd" + num + "' class='imgTd' colspan='" + NUM_OF_OPTIONS + "'><img class='img' src='" + num + ".jpg' id='img" + num + "'></td></tr><tr class='answersTr'><td class='answersTd'>";
-		for (var i = 0; i < NUM_OF_OPTIONS; i++) {
-			rowStr += "<input type='radio' name='" + num + "' value='" + i + "'><span id ='option" + num + "_" + i + "' class='option'>" + arrOptions[i] + "</span>&nbsp;";
-		}
-		rowStr += "</td></tr>";
+    function putRow(num) {
+        var rowStr = "<tr><td id='imgTd" + num + "' class='imgTd' colspan='" + NUM_OF_OPTIONS + "'><img class='img' src='" + num + ".jpg' id='img" + num + "'></td></tr><tr class='answersTr'><td class='answersTd'>";
+        for (var i = 0; i < NUM_OF_OPTIONS; i++) {
+            rowStr += "<input type='radio' name='" + num + "' value='" + i + "'><span id ='option" + num + "_" + i + "' class='option'>" + arrOptions[i] + "</span>&nbsp;";
+        }
+        rowStr += "</td></tr>";
 
-		$("#mainTable").append(rowStr);
-	}
+        $("#mainTable").append(rowStr);
+    }
 
-	function initTable() {
-		for (var i = 0; i < NUM_OF_QUESTIONS; i++) {
-			putRow(i);
-		}
-	}
+    function initTable() {
+        for (var i = 0; i < NUM_OF_QUESTIONS; i++) {
+            putRow(i);
+        }
+    }
 </script>
-</head>
-
-<body onLoad="initTable()">
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-
-	<form name="answers" id="answersRadios">
-		<table class="tbl" border="0" id="mainTable">
-			<tr><td id ="logo" class="logoTd" colspan="3"><div class="title">?ערבי, מזרחי או אינטימי</div></td></tr>
-		</table>
-		<p>
-		<div align="center">
-			<div class="checkButton" onClick="checkAnswers()"><a href="#">גלגל</a></div>
-		</div>
-	</form>
-</body>
-</html>
