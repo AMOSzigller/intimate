@@ -2,14 +2,14 @@
 <head>
 	<meta charset="utf-8" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<title>ערבי או אינטימי?</title>
+	<title>ערבי, מזרחי או אינטימי?</title>
 
-	<meta property="og:title" content="ערבי או אינטימי?" />
+	<meta property="og:title" content="ערבי, מזרחי או אינטימי?" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://mizrahiolo.github.io/0.jpg" />
     <meta property="og:url" content="https://mizrahiolo.github.io/index.html" />
-    <meta property="og:site_name" content="ערבי או אינטימי?" />
-    <meta property="og:description" content="החידון שמשגע את האינטימיים" />
+    <meta property="og:site_name" content="ערבי, מזרחי או אינטימי?" />
+    <meta property="og:description" content="החידון שמשגע את המדינה" />
     <meta property="fb:admins" content="johndoe" />
 
 <style>
@@ -76,10 +76,10 @@ a:link {color: black; }
 </style>
 
 <script type="text/javascript">
-	// וקטור התשובות החדש
-	var answersVector = 0b000000000000000001; // תשובה ראשונה נכונה בלבד (אינטימי)
+	// וקטור התשובות החדש: תשובה ראשונה (0) היא אינטימי (2), כל השאר ערבי (0).
+	var answersVector = 0b000000000000000010; // 0 = ערבי, 2 = אינטימי.
 
-	var arrOptions = ["אינטימי", "ערבי"]; // אופציות תשובות
+	var arrOptions = ["ערבי", "מזרחי", "אינטימי"]; // 3 אפשרויות בחירה
 	var NUM_OF_OPTIONS = arrOptions.length;
 	var NUM_OF_QUESTIONS = 18;
 	var correctColor = "#89E897";
@@ -94,7 +94,7 @@ a:link {color: black; }
 
 		for (var i = 0; i < NUM_OF_QUESTIONS; i++) {
 			curAns = $("input:radio[name='" + i + "']:checked").val();
-			var correctAns = (parseInt(answersVector, 10) >> i & 0x1);
+			var correctAns = (parseInt(answersVector, 10) >> (i * 2)) & 0b11; // בודקים את 2 הביטים של כל תשובה
 
 			if (curAns == undefined) 
 				curAns = -1;
@@ -147,11 +147,11 @@ a:link {color: black; }
 
 	<form name="answers" id="answersRadios">
 		<table class="tbl" border="0" id="mainTable">
-			<tr><td id ="logo" class="logoTd" colspan="3"><div class="title">ערבי או אינטימי?</div></td></tr>
+			<tr><td id ="logo" class="logoTd" colspan="3"><div class="title">ערבי, מזרחי או אינטימי?</div></td></tr>
 		</table>
 		<p>
 		<div align="center">
-			<div class="checkButton" onClick="checkAnswers()"><a href="#">גלגל</a></div>
+			<div class="checkButton" onClick="checkAnswers()"><a href="#">יאללה</a></div>
 		</div>
 	</form>
 </body>
