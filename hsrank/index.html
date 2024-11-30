@@ -101,32 +101,17 @@
 <body>
     <h1>HS Rank</h1>
 
-    <h2>Time Left Until Season Ends</h2>
-    <div id="countdown" style="font-size: 1.5em; color: #333; margin-bottom: 20px;"></div>
-
-    <script>
-        function updateCountdown() {
-            const endTime = new Date("2024-12-01T01:00:00+02:00"); // 1 בדצמבר 2024 בשעה 1 בלילה שעון ישראל
-            const now = new Date();
-            const timeLeft = endTime - now;
-
-            if (timeLeft < 0) {
-                document.getElementById("countdown").innerHTML = "Season has ended!";
-                return;
-            }
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML =
-                `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // להריץ מיד כדי להציג את התוצאה הראשונית
-    </script>
+    <h2>December 2024 Season Rankings</h2>
+    <table>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Rank</th>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: center; color: #999;">No players have reached Legend yet.</td>
+        </tr>
+    </table>
 
     <h2>November 2024 Season Rankings</h2>
     <table>
@@ -136,19 +121,19 @@
             <th>Rank</th>
         </tr>
         <tr>
-            <td><img src="images/gouchieeeee.jpg" alt="gouchieeeee"></td>
-            <td>gouchieeeee</td>
-            <td>1751</td>
-        </tr>
-        <tr>
             <td><img src="images/megamadov.jpg" alt="megamadov"></td>
             <td>megamadov</td>
-            <td>2183</td>
+            <td>537</td>
         </tr>
         <tr>
             <td><img src="images/AMOSzigller.jpg" alt="AMOSzigller"></td>
             <td>AMOSzigller</td>
-            <td>2192</td>
+            <td>1697</td>
+        </tr>
+        <tr>
+            <td><img src="images/gouchieeeee.jpg" alt="gouchieeeee"></td>
+            <td>gouchieeeee</td>
+            <td>1768</td>
         </tr>
         <tr>
             <td><img src="images/Astrix.jpg" alt="Astrix"></td>
@@ -156,8 +141,6 @@
             <td>10930</td>
         </tr>
     </table>
-
-    <div class="update-time">Last updated: Today at 12:00</div>
 
     <h2>October 2024 Season Rankings</h2>
     <table>
