@@ -21,7 +21,7 @@
             font-size: 1.2em;
         }
         .countdown {
-            font-size: 2em;
+            font-size: 3em;
             color: #4CAF50;
             margin: 20px 0;
         }
@@ -46,7 +46,6 @@
     <div class="details">
         <p>עלות השתתפות: 200 ש"ח</p>
         <p>משתתפים: בר (שולם)</p>
-        <p>זמן לסיום ההרשמה:</p>
         <div id="countdown" class="countdown"></div>
         <p>תאריך הגרלה: 21 לדצמבר 2024 בשעה 23:00</p>
     </div>
@@ -62,7 +61,7 @@
             const distance = endDate - now;
 
             if (distance <= 0) {
-                countdown.textContent = 'ההרשמה הסתיימה!';
+                countdown.textContent = '00:00:00:00';
                 return;
             }
 
@@ -71,7 +70,7 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            countdown.textContent = `${days} ימים, ${hours} שעות, ${minutes} דקות, ${seconds} שניות`;
+            countdown.textContent = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         }
 
         setInterval(updateCountdown, 1000);
