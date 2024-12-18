@@ -110,8 +110,10 @@
         const selectedNumbers = new Set();
         let strongNumber = null;
 
-        // רשימת משתתפים
-        const participants = [];
+        // רשימת משתתפים, כולל בר
+        const participants = [
+            { name: "בר", numbers: [], strongNumber: null, payment: null }
+        ];
 
         // עדכון רשימת המשתתפים בעמוד
         function updateParticipantsList() {
@@ -122,6 +124,9 @@
                 participantsListElement.appendChild(listItem);
             });
         }
+
+        // הצגת המשתתפים הרשומים כברירת מחדל
+        updateParticipantsList();
 
         // פונקציית ספירה לאחור
         const countdownElement = document.getElementById('countdown-timer');
