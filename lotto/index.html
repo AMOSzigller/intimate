@@ -39,6 +39,21 @@
         button:hover {
             background-color: #45a049;
         }
+
+        .number-grid button {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            border-radius: 50%;
+            background: #eee;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .number-grid button.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -47,8 +62,12 @@
     <div class="form-container">
         <form id="lotto-form">
             <input type="text" id="name" placeholder="שם מלא" required>
-            <input type="number" id="numbers" placeholder="מספרים (מופרדים בפסיקים)" required>
-            <input type="number" id="strong-number" placeholder="מספר חזק (1-7)" required>
+            <p>בחר 6 מספרים (1-37):</p>
+            <div id="number-grid" class="number-grid"></div>
+
+            <p>בחר מספר חזק (1-7):</p>
+            <div id="strong-number-grid" class="number-grid"></div>
+
             <select id="payment-method" required>
                 <option value="">בחר אופן תשלום</option>
                 <option value="bit">ביט</option>
@@ -78,13 +97,46 @@
         const app = firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
+        const selectedNumbers = new Set();
+        let strongNumber = null;
+
+        function createNumberGrid(container, count, callback) {
+            for (let i = 1; i <= count; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.onclick = (e) => {
+                    e.preventDefault();
+                    callback(button);
+                };
+                container.appendChild(button);
+            }
+        }
+
+        const numberGrid = document.getElementById('number-grid');
+        const strongGrid = document.getElementById('strong-number-grid');
+
+        createNumberGrid(numberGrid, 37, (btn) => {
+            const num = parseInt(btn.textContent);
+            if (selectedNumbers.has(num)) {
+                selectedNumbers.delete(num);
+                btn.classList.remove('selected');
+            } else if (selectedNumbers.size < 6) {
+                selectedNumbers.add(num);
+                btn.classList.add('selected');
+            }
+        });
+
+        createNumberGrid(strongGrid, 7, (btn) => {
+            if (strongNumber) strongNumber.classList.remove('selected');
+            strongNumber = btn;
+            btn.classList.add('selected');
+        });
+
         // טיפול בשליחת הטופס
         document.getElementById('lotto-form').addEventListener('submit', (e) => {
             e.preventDefault();
 
             const name = document.getElementById('name').value;
-            const numbers = document.getElementById('numbers').value;
-            const strongNumber = document.getElementById('strong-number').value;
             const paymentMethod = document.getElementById('payment-method').value;
             const confirmPayment = document.getElementById('confirm-payment').checked;
 
@@ -93,17 +145,25 @@
                 return;
             }
 
+            if (selectedNumbers.size !== 6 || !strongNumber) {
+                alert('יש לבחור בדיוק 6 מספרים ומספר חזק אחד!');
+                return;
+            }
+
             // שליחת הנתונים ל-Firebase
             database.ref('participants').push({
                 name: name,
-                numbers: numbers,
-                strongNumber: strongNumber,
+                numbers: Array.from(selectedNumbers).join(', '),
+                strongNumber: strongNumber.textContent,
                 paymentMethod: paymentMethod,
                 confirmPayment: confirmPayment
             });
 
             document.getElementById('success-message').style.display = 'block';
             e.target.reset();
+            selectedNumbers.clear();
+            strongNumber = null;
+            document.querySelectorAll('.selected').forEach(btn => btn.classList.remove('selected'));
         });
     </script>
 </body>
