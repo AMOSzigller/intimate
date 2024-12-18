@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הגרלת הלוטו - אינטימיים</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .number-grid button {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            border-radius: 50%;
+            background: #eee;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .number-grid button.selected {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>הגרלת הלוטו - אינטימיים</h1>
+
+    <div class="form-container">
+        <form id="lotto-form">
+            <input type="text" id="name" placeholder="שם מלא" required>
+            <p>בחר 6 מספרים (1-37):</p>
+            <div id="number-grid" class="number-grid"></div>
+
+            <p>בחר מספר חזק (1-7):</p>
+            <div id="strong-number-grid" class="number-grid"></div>
+
+            <select id="payment-method" required>
+                <option value="">בחר אופן תשלום</option>
+                <option value="bit">ביט</option>
+                <option value="paybox">פייבוקס</option>
+                <option value="crypto">קריפטו</option>
+                <option value="cash">מזומן</option>
+            </select>
+
+            <label>
+                <input type="checkbox" id="confirm-payment" required>
+                אני מאשר שהעברתי 200 ש"ח
+            </label>
+
+            <button type="submit">שלח טופס</button>
+        </form>
+        <p id="success-message" style="display:none; color:green;">הטופס נשלח בהצלחה!</p>
+    </div>
+
+    <script>
+        const selectedNumbers = new Set();
+        let strongNumber = null;
+
+        function createNumberGrid(container, count, callback) {
+            for (let i = 1; i <= count; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.onclick = (e) => {
+                    e.preventDefault();
+                    callback(button);
+                };
+                container.appendChild(button);
+            }
+        }
+
+        // יצירת הרשתות
+        const numberGrid = document.getElementById('number-grid');
+        const strongGrid = document.getElementById('strong-number-grid');
+
+        createNumberGrid(numberGrid, 37, (btn) => {
+            const num = parseInt(btn.textContent);
+            if (selectedNumbers.has(num)) {
+                selectedNumbers.delete(num);
+                btn.classList.remove('selected');
+            } else if (selectedNumbers.size < 6) {
+                selectedNumbers.add(num);
+                btn.classList.add('selected');
+            }
+        });
+
+        createNumberGrid(strongGrid, 7, (btn) => {
+            if (strongNumber) strongNumber.classList.remove('selected');
+            strongNumber = btn;
+            btn.classList.add('selected');
+        });
+
+        document.getElementById('lotto-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (selectedNumbers.size !== 6 || !strongNumber) {
+                alert('בחר בדיוק 6 מספרים ומספר חזק אחד!');
+                return;
+            }
+
+            const name = document.getElementById('name').value;
+            const payment = document.getElementById('payment-method').value;
+            const confirmation = document.getElementById('confirm-payment').checked;
+
+            if (!confirmation) {
+                alert('חובה לאשר שהעברת 200 ש"ח.');
+                return;
+            }
+
+            const data = {
+                name,
+                numbers: [...selectedNumbers],
+                strongNumber: strongNumber.textContent,
+                payment,
+            };
+
+            console.log('הנתונים שנשלחו:', data);
+            document.getElementById('success-message').style.display = 'block';
+            // כאן ניתן להוסיף קוד כדי לשמור את המידע בצורה חיצונית או מקומית
+        });
+    </script>
+</body>
+</html>
