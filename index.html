@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אינטימיים</title>
+    <title>הגרלת הלוטו - אינטימיים</title>
     <style>
-        /* סגנונות קיימים */
         :root {
             --bg-color: #121212;
             --card-bg-color: #1e1e1e;
@@ -13,7 +12,7 @@
             --highlight-color: #1a73e8;
             --button-bg-color: #333333;
             --button-hover-color: #474747;
-            --new-button-color: #4CAF50;
+            --chart-base-color: #1a73e8;
         }
 
         body {
@@ -22,112 +21,144 @@
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
-        }
-
-        header {
-            background-color: var(--card-bg-color);
-            padding: 20px;
             text-align: center;
-            border-bottom: 2px solid var(--highlight-color);
         }
 
         h1 {
-            font-size: 2em;
-            margin: 0;
-        }
-
-        nav {
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 15px 0;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: var(--button-bg-color);
-            display: inline-block;
-            width: 90%;
-        }
-
-        nav ul li a:hover {
-            background-color: var(--button-hover-color);
-        }
-
-        .new-feature {
-            padding: 20px;
-            background-color: #222;
             color: var(--highlight-color);
-            text-align: center;
-            margin: 20px 0;
-            border-radius: 8px;
+            margin-top: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .details {
+            margin: 20px auto;
             font-size: 1.2em;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
-        }
-
-        footer {
             background-color: var(--card-bg-color);
-            color: var(--text-color);
-            text-align: center;
-            padding: 20px;
-            border-top: 2px solid var(--highlight-color);
+            padding: 15px;
+            border-radius: 8px;
+            width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5em;
-            }
+        .countdown-label {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
 
-            nav ul li a {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
+        .countdown {
+            font-size: 3em;
+            color: var(--highlight-color);
+            margin: 20px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .participate-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: var(--button-bg-color);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .participate-button:hover {
+            background-color: var(--button-hover-color);
+            transform: translateY(-3px);
+        }
+
+        canvas {
+            margin: 30px auto;
+            display: block;
+            background-color: var(--card-bg-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>ברוכים הבאים לאתר האינטימיים</h1>
-</header>
+<h1>אינטימיים שולחים יחד לוטו</h1>
+<div class="details">
+    <p>עלות השתתפות: 120 ש"ח</p>
+    <div class="countdown-label">:זמן לסיום ההרשמה</div>
+    <div id="countdown" class="countdown"></div>
+    <p>תאריך ההגרלה: 21 לדצמבר 2024 בשעה 23:00</p>
+</div>
 
-<main>
-    <nav>
-        <ul>
-            <li><a href="news/index.html">חדשות</a></li>
-            <li><a href="https://nadavstocks.com" target="_blank">תשאל את נדב מה מחיר הביטקוין</a></li>
-            <li><a href="/lotto/index.html" class="new-button">הגרלת הלוטו</a></li>
-            <li><a href="/ynon">הגיגים של ינון</a></li>
-            <li><a href="/hsrank">HS Standard Leaderboards</a></li>
-            <li><a href="https://intimiim.com/crypto" class="new-button">קריפטו</a></li>
-            <li><a href="/quiz" class="quiz-button">תשובות לחידון האינטימיים הגדול</a></li>
-            <li><a href="/arabi" class="new-button">?ערבי, מזרחי או אינטימי</a></li>
-        </ul>
-    </nav>
-    <div class="new-feature">
-        🎉 IntimiBets :בקרוב  🎲
-    </div>
-</main>
+<canvas id="pieChart" width="400" height="400"></canvas>
 
-<footer>
-    <p>&copy; 2024 אינטימיים. כל הזכויות שמורות</p>
-</footer>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdXOrYR92HNwBBBDEMuPXd-1DmaeYgB3uPwm-PAlFvoenT0jA/viewform?usp=sharing" 
+   target="_blank" class="participate-button">להשתתפות לחץ כאן</a>
+
+<script>
+    const canvas = document.getElementById('pieChart');
+    const ctx = canvas.getContext('2d');
+
+    const investors = [
+        { name: "בר", percentage: 20.28 },
+        { name: "שגיא", percentage: 20.00 },
+        { name: "רועי.ש", percentage: 20.00 },
+        { name: "רועי.ב", percentage: 20.00 },
+        { name: "יונגר", percentage: 19.72 },
+    ];
+
+    function drawPieChart(data) {
+        const total = 100;
+        let startAngle = 0;
+
+        data.forEach((investor, index) => {
+            const sliceAngle = (investor.percentage / total) * 2 * Math.PI;
+            ctx.beginPath();
+            ctx.moveTo(200, 200);
+            ctx.arc(200, 200, 150, startAngle, startAngle + sliceAngle);
+            ctx.closePath();
+            
+            // גוונים משתנים לפי אחוז
+            const shade = 0.8 + (index / data.length) * 0.2;
+            ctx.fillStyle = `rgba(26, 115, 232, ${shade})`;
+            ctx.fill();
+
+            const midAngle = startAngle + sliceAngle / 2;
+            const textX = 200 + Math.cos(midAngle) * 90;
+            const textY = 200 + Math.sin(midAngle) * 90;
+            ctx.fillStyle = "#FFFFFF";
+            ctx.font = "14px Arial";
+            ctx.textAlign = "center";
+            ctx.fillText(`${investor.name}`, textX, textY - 10);
+            ctx.fillText(`(${investor.percentage}%)`, textX, textY + 10);
+
+            startAngle += sliceAngle;
+        });
+    }
+
+    drawPieChart(investors);
+
+    const countdown = document.getElementById('countdown');
+    const endDate = new Date('2024-12-20T23:00:00').getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = endDate - now;
+
+        if (distance <= 0) {
+            countdown.textContent = '00:00:00:00';
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdown.textContent = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
 
 </body>
 </html>
