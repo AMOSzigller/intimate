@@ -16,13 +16,14 @@
             color: #1a73e8;
             margin-bottom: 20px;
         }
+        canvas {
+            margin-top: 20px;
+        }
         .details {
-            margin: 20px 0;
             font-size: 1.2em;
         }
         .countdown-label {
             font-size: 1.5em;
-            color: #e0e0e0;
             margin: 10px 0;
         }
         .countdown {
@@ -48,17 +49,67 @@
 </head>
 <body>
     <h1>אינטימיים שולחים יחד לוטו</h1>
+    <p class="details">עלות השתתפות: 120 ש"ח</p>
+    <div class="countdown-label">:זמן לסיום ההרשמה</div>
+    <div id="countdown" class="countdown"></div>
+    <canvas id="pieChart" width="400" height="400"></canvas>
     <div class="details">
-        <p>עלות השתתפות: 120 ש"ח</p>
-        <p>משתתפים: בר (שולם 101.38%), שגיא (שולם), רועי.ש (שולם), רועי.ב (שולם), יונגר (שולם 98.62%)</p>
-        <div class="countdown-label">:זמן לסיום ההרשמה</div>
-        <div id="countdown" class="countdown"></div>
         <p>תאריך ההגרלה: 21 לדצמבר 2024 בשעה 23:00</p>
     </div>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSdXOrYR92HNwBBBDEMuPXd-1DmaeYgB3uPwm-PAlFvoenT0jA/viewform?usp=sharing" 
        target="_blank" class="participate-button">להשתתפות לחץ כאן</a>
 
     <script>
+        const canvas = document.getElementById('pieChart');
+        const ctx = canvas.getContext('2d');
+
+        // נתונים של המשקיעים
+        const investors = [
+            { name: "בר", percentage: 20.28 },
+            { name: "שגיא", percentage: 20.00 },
+            { name: "רועי.ש", percentage: 20.00 },
+            { name: "רועי.ב", percentage: 20.00 },
+            { name: "יונגר", percentage: 19.72 },
+        ];
+
+        // פונקציה לציור גרף עוגה
+        function drawPieChart(data) {
+            const total = 100; // סה"כ אחוזים
+            let startAngle = 0;
+
+            // צבעים לעוגה
+            const colors = ["#4CAF50", "#FF5722", "#2196F3", "#FFC107", "#9C27B0", "#607D8B"];
+
+            data.forEach((investor, index) => {
+                const sliceAngle = (investor.percentage / total) * 2 * Math.PI;
+
+                // צייר פרוסת עוגה
+                ctx.beginPath();
+                ctx.moveTo(200, 200);
+                ctx.arc(200, 200, 150, startAngle, startAngle + sliceAngle);
+                ctx.closePath();
+
+                // צבע פרוסה
+                ctx.fillStyle = colors[index % colors.length];
+                ctx.fill();
+
+                // הוסף טקסט על הפרוסה
+                const midAngle = startAngle + sliceAngle / 2;
+                const textX = 200 + Math.cos(midAngle) * 100;
+                const textY = 200 + Math.sin(midAngle) * 100;
+                ctx.fillStyle = "#e0e0e0";
+                ctx.font = "16px Arial";
+                ctx.textAlign = "center";
+                ctx.fillText(`${investor.name} (${investor.percentage}%)`, textX, textY);
+
+                startAngle += sliceAngle;
+            });
+        }
+
+        // קריאה לפונקציה עם הנתונים
+        drawPieChart(investors);
+
+        // טיימר לספירה לאחור
         const countdown = document.getElementById('countdown');
         const endDate = new Date('2024-12-20T23:00:00').getTime();
 
