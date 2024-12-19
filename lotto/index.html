@@ -13,6 +13,7 @@
             --button-bg-color: #333333;
             --button-hover-color: #474747;
             --chart-base-color: #1a73e8;
+            --error-color: #e53935;
         }
 
         body {
@@ -40,16 +41,21 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .countdown-label {
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-
         .countdown {
-            font-size: 3em;
-            color: var(--highlight-color);
+            font-size: 2em;
+            color: var(--error-color);
             margin: 20px 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .summary {
+            margin: 20px auto;
+            font-size: 1.5em;
+            background-color: var(--card-bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .participate-button {
@@ -83,15 +89,16 @@
 <h1>אינטימיים שולחים יחד לוטו</h1>
 <div class="details">
     <p>עלות השתתפות: 120 ש"ח</p>
-    <div class="countdown-label">:זמן לסיום ההרשמה</div>
-    <div id="countdown" class="countdown"></div>
+    <div id="countdown" class="countdown">ההרשמה הסתיימה</div>
     <p>תאריך ההגרלה: 21 לדצמבר 2024 בשעה 23:00</p>
 </div>
 
 <canvas id="pieChart" width="400" height="400"></canvas>
 
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSdXOrYR92HNwBBBDEMuPXd-1DmaeYgB3uPwm-PAlFvoenT0jA/viewform?usp=sharing" 
-   target="_blank" class="participate-button">להשתתפות לחץ כאן</a>
+<div class="summary">
+    <p>סכום שנאסף: <strong>1560 ש"ח</strong></p>
+    <p>מספר טורים: <strong>260</strong></p>
+</div>
 
 <script>
     const canvas = document.getElementById('pieChart');
@@ -110,7 +117,8 @@
         "עדי": 120,
         "ינון": 1.7,
         "נדב": 120,
-        "אסימוש": 120
+        "אסימוש": 120,
+        "זקיס": 120
     };
 
     const total = Object.values(contributions).reduce((sum, val) => sum + val, 0);
@@ -147,29 +155,6 @@
     }
 
     drawPieChart(investors);
-
-    const countdown = document.getElementById('countdown');
-    const endDate = new Date('2024-12-20T23:00:00').getTime();
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = endDate - now;
-
-        if (distance <= 0) {
-            countdown.textContent = '00:00:00:00';
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        countdown.textContent = `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
 </script>
 
 </body>
