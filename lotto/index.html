@@ -97,26 +97,35 @@
     const canvas = document.getElementById('pieChart');
     const ctx = canvas.getContext('2d');
 
-    const investors = [
-        { name: "בר", percentage: 20.28 },
-        { name: "שגיא", percentage: 20.00 },
-        { name: "רועי.ש", percentage: 20.00 },
-        { name: "רועי.ב", percentage: 20.00 },
-        { name: "יונגר", percentage: 19.72 },
-    ];
+    const contributions = {
+        "בר": 121.7,
+        "יונגר": 118.3,
+        "שגיא": 120,
+        "רועי.ש": 120,
+        "רועי.ב": 120,
+        "עמיץ": 120,
+        "אורן": 120,
+        "שוקי": 120,
+        "גבי": 120,
+        "עדי": 120
+    };
+
+    const total = Object.values(contributions).reduce((sum, val) => sum + val, 0);
+    const investors = Object.entries(contributions).map(([name, amount]) => ({
+        name,
+        percentage: ((amount / total) * 100).toFixed(2)
+    }));
 
     function drawPieChart(data) {
-        const total = 100;
         let startAngle = 0;
 
         data.forEach((investor, index) => {
-            const sliceAngle = (investor.percentage / total) * 2 * Math.PI;
+            const sliceAngle = (investor.percentage / 100) * 2 * Math.PI;
             ctx.beginPath();
             ctx.moveTo(200, 200);
             ctx.arc(200, 200, 150, startAngle, startAngle + sliceAngle);
             ctx.closePath();
-            
-            // גוונים משתנים לפי אחוז
+
             const shade = 0.8 + (index / data.length) * 0.2;
             ctx.fillStyle = `rgba(26, 115, 232, ${shade})`;
             ctx.fill();
