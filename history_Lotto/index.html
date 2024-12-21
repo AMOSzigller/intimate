@@ -1,1 +1,399 @@
-lotto
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>הגרלת הלוטו - אינטימיים</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #e0e0e0;
+        text-align: center;
+    }
+    h1, h2 {
+        color: #1a73e8;
+    }
+    .details, .summary {
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #1e1e1e;
+        width: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .finished {
+        color: red;
+        font-size: 1.5em;
+    }
+    table {
+        border: 1px solid #333;
+        margin: 20px auto;
+        width: 80%;
+        text-align: center;
+        border-collapse: collapse;
+        font-size: 1.2em;
+        color: #e0e0e0;
+        background-color: #1e1e1e;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    th {
+        background-color: #1a73e8;
+        color: white;
+    }
+    td.highlight {
+        background-color: #28a745;
+        font-weight: bold;
+    }
+</style>
+<script>
+    const results = { numbers: [9, 21, 26, 27, 31, 34], strong: 5 };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const tableRows = document.querySelectorAll('tbody tr');
+        tableRows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            let matchCount = 0;
+            let strongMatch = false;
+
+            cells.forEach((cell, index) => {
+                const value = parseInt(cell.textContent, 10);
+                if (index < 6 && results.numbers.includes(value)) {
+                    cell.classList.add('highlight');
+                    matchCount++;
+                } else if (index === 6 && value === results.strong) {
+                    cell.classList.add('highlight');
+                    strongMatch = true;
+                }
+            });
+
+            const matchCell = document.createElement('td');
+            matchCell.textContent = matchCount;
+
+            const strongCell = document.createElement('td');
+            strongCell.textContent = strongMatch ? 'כן' : 'לא';
+
+            row.appendChild(matchCell);
+            row.appendChild(strongCell);
+        });
+    });
+</script>
+</head>
+<body>
+<h1>אינטימיים שולחים יחד לוטו</h1>
+<p class="finished" style="font-size: 2em; font-weight: bold; text-decoration: underline;">ההגרלה הסתיימה</p>
+<p style="font-size: 1.8em; color: #ffa500; font-weight: bold;">תוצאות האמת: 34, 31, 27, 26, 21, 9 | מספר חזק: 5</p>
+<div class="details">
+<p>תאריך ההגרלה: יום שבת 21 לדצמבר 2024 בשעה 23:00</p>
+<p> הטבלה נוצרה בעזרת סריקה אוטומטית של הטפסים ולכן יתכנו טעויות. המספרים והתוצאות האמיתיות יהיו בהתאם לסריקת הטפסים של מפעל הפיס לאחר ההגרלה. מתחת לטבלה ניתן לצפות בצילומי הטפסים. ט.ל.ח</p>
+</div>
+<div class="summary">
+<h2>משתתפים</h2>
+<ul style="text-align: center; margin: 0 auto; list-style-type: none; padding: 0;">
+    <li>בר - 7.69% - 12.3 ש"ח</li>
+    <li>שגיא - 7.69% - 12.3 ש"ח</li>
+    <li>רועי.ש - 7.69% - 12.3 ש"ח</li>
+    <li>רועי.ב - 7.69% - 12.3 ש"ח</li>
+    <li>עמיץ - 7.69% - 12.3 ש"ח</li>
+    <li>אורן - 7.69% - 12.3 ש"ח</li>
+    <li>שוקי - 7.69% - 12.3 ש"ח</li>
+    <li>גבי - 7.69% - 12.3 ש"ח</li>
+    <li>עדי - 7.69% - 12.3 ש"ח</li>
+    <li>נדב - 7.69% - 12.3 ש"ח</li>
+    <li>אסימוש - 7.69% - 12.3 ש"ח</li>
+    <li>זקיס - 7.69% -  12.3 ש"ח</li>
+    <li>יונגר - 7.59% -12.2 ש"ח</li>
+    <li>ינון - 0.11% - 0.2 ש"ח</li>
+</ul>
+<p>סכום שנאסף: <strong>1560 ש"ח</strong></p>
+<p>מספר טורים: <strong>260</strong></p>
+<p>סכום זכייה: <strong>160 ש"ח</strong></p>    
+</div>
+<table border="1">
+<thead>
+<tr>
+    <th>מספר 6</th>
+    <th>מספר 5</th>
+    <th>מספר 4</th>
+    <th>מספר 3</th>
+    <th>מספר 2</th>
+    <th>מספר 1</th>
+    <th>מספר חזק</th>
+    <th>כמות פגיעות</th>
+    <th>?פגענו במספר החזק</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>27</td><td>22</td><td>17</td><td>16</td><td>13</td><td>1</td><td>3</td></tr>
+<tr><td>27</td><td>26</td><td>23</td><td>19</td><td>17</td><td>7</td><td>7</td></tr>
+<tr><td>21</td><td>18</td><td>11</td><td>6</td><td>5</td><td>1</td><td>4</td></tr>
+<tr><td>32</td><td>21</td><td>18</td><td>11</td><td>9</td><td>7</td><td>6</td></tr>
+<tr><td>32</td><td>23</td><td>18</td><td>13</td><td>9</td><td>8</td><td>1</td></tr>
+<tr><td>35</td><td>26</td><td>22</td><td>19</td><td>4</td><td>2</td><td>4</td></tr>
+<tr><td>37</td><td>35</td><td>30</td><td>17</td><td>6</td><td>1</td><td>3</td></tr>
+<tr><td>34</td><td>25</td><td>20</td><td>6</td><td>5</td><td>3</td><td>7</td></tr>
+<tr><td>37</td><td>34</td><td>33</td><td>29</td><td>26</td><td>24</td><td>5</td></tr>
+<tr><td>24</td><td>21</td><td>11</td><td>10</td><td>3</td><td>1</td><td>7</td></tr>
+<tr><td>34</td><td>32</td><td>23</td><td>10</td><td>2</td><td>1</td><td>5</td></tr>
+<tr><td>34</td><td>25</td><td>24</td><td>13</td><td>10</td><td>2</td><td>7</td></tr>
+<tr><td>33</td><td>27</td><td>26</td><td>20</td><td>7</td><td>4</td><td>4</td></tr>
+<tr><td>30</td><td>27</td><td>14</td><td>7</td><td>6</td><td>3</td><td>2</td></tr>
+<tr><td>37</td><td>26</td><td>19</td><td>18</td><td>13</td><td>9</td><td>1</td></tr>
+<tr><td>35</td><td>34</td><td>31</td><td>26</td><td>20</td><td>4</td><td>4</td></tr>
+<tr><td>32</td><td>19</td><td>15</td><td>14</td><td>12</td><td>8</td><td>4</td></tr>
+<tr><td>33</td><td>27</td><td>16</td><td>12</td><td>8</td><td>7</td><td>5</td></tr>
+<tr><td>37</td><td>36</td><td>35</td><td>24</td><td>16</td><td>6</td><td>7</td></tr>
+<tr><td>37</td><td>33</td><td>24</td><td>19</td><td>11</td><td>4</td><td>7</td></tr>
+<tr><td>35</td><td>31</td><td>26</td><td>22</td><td>7</td><td>5</td><td>6</td></tr>
+<tr><td>37</td><td>31</td><td>29</td><td>24</td><td>13</td><td>6</td><td>7</td></tr>
+<tr><td>31</td><td>27</td><td>23</td><td>22</td><td>15</td><td>9</td><td>2</td></tr>
+<tr><td>31</td><td>26</td><td>22</td><td>6</td><td>4</td><td>3</td><td>3</td></tr>
+<tr><td>34</td><td>30</td><td>24</td><td>20</td><td>11</td><td>1</td><td>4</td></tr>
+<tr><td>37</td><td>25</td><td>19</td><td>15</td><td>11</td><td>1</td><td>7</td></tr>
+<tr><td>33</td><td>26</td><td>20</td><td>19</td><td>12</td><td>7</td><td>1</td></tr>
+<tr><td>37</td><td>32</td><td>31</td><td>29</td><td>28</td><td>14</td><td>3</td></tr>
+<tr><td>37</td><td>28</td><td>24</td><td>23</td><td>5</td><td>1</td><td>7</td></tr>
+<tr><td>29</td><td>25</td><td>17</td><td>9</td><td>8</td><td>5</td><td>5</td></tr>
+<tr><td>35</td><td>33</td><td>29</td><td>19</td><td>17</td><td>1</td><td>1</td></tr>
+<tr><td>31</td><td>29</td><td>23</td><td>21</td><td>12</td><td>9</td><td>6</td></tr>
+<tr><td>36</td><td>30</td><td>24</td><td>6</td><td>5</td><td>2</td><td>2</td></tr>
+<tr><td>30</td><td>25</td><td>15</td><td>8</td><td>4</td><td>2</td><td>7</td></tr>
+<tr><td>34</td><td>32</td><td>18</td><td>14</td><td>4</td><td>3</td><td>7</td></tr>
+<tr><td>20</td><td>18</td><td>17</td><td>7</td><td>6</td><td>2</td><td>5</td></tr>
+<tr><td>35</td><td>32</td><td>24</td><td>16</td><td>3</td><td>1</td><td>5</td></tr>
+<tr><td>35</td><td>24</td><td>16</td><td>8</td><td>5</td><td>1</td><td>3</td></tr>
+<tr><td>30</td><td>29</td><td>17</td><td>11</td><td>7</td><td>6</td><td>4</td></tr>
+<tr><td>36</td><td>29</td><td>28</td><td>18</td><td>11</td><td>5</td><td>7</td></tr>
+<tr><td>27</td><td>21</td><td>10</td><td>6</td><td>5</td><td>2</td><td>6</td></tr>
+<tr><td>35</td><td>29</td><td>26</td><td>18</td><td>8</td><td>1</td><td>4</td></tr>
+<tr><td>37</td><td>33</td><td>20</td><td>13</td><td>6</td><td>5</td><td>6</td></tr>
+<tr><td>31</td><td>30</td><td>28</td><td>13</td><td>12</td><td>7</td><td>2</td></tr>
+<tr><td>31</td><td>27</td><td>21</td><td>15</td><td>13</td><td>11</td><td>3</td></tr>
+<tr><td>26</td><td>23</td><td>20</td><td>16</td><td>14</td><td>1</td><td>3</td></tr>
+<tr><td>36</td><td>32</td><td>24</td><td>19</td><td>16</td><td>2</td><td>1</td></tr>
+<tr><td>30</td><td>29</td><td>18</td><td>14</td><td>9</td><td>1</td><td>3</td></tr>
+<tr><td>37</td><td>26</td><td>21</td><td>12</td><td>11</td><td>1</td><td>5</td></tr>
+<tr><td>35</td><td>30</td><td>27</td><td>18</td><td>7</td><td>4</td><td>2</td></tr>
+<tr><td>36</td><td>34</td><td>30</td><td>24</td><td>18</td><td>15</td><td>5</td></tr>
+<tr><td>35</td><td>29</td><td>28</td><td>14</td><td>8</td><td>7</td><td>2</td></tr>
+<tr><td>37</td><td>33</td><td>30</td><td>13</td><td>12</td><td>2</td><td>7</td></tr>
+<tr><td>37</td><td>36</td><td>25</td><td>21</td><td>7</td><td>5</td><td>1</td></tr>
+<tr><td>35</td><td>34</td><td>23</td><td>17</td><td>10</td><td>8</td><td>5</td></tr>
+<tr><td>21</td><td>12</td><td>9</td><td>7</td><td>6</td><td>2</td><td>5</td></tr>
+<tr><td>36</td><td>32</td><td>26</td><td>22</td><td>16</td><td>1</td><td>5</td></tr>
+<tr><td>35</td><td>27</td><td>24</td><td>22</td><td>18</td><td>14</td><td>4</td></tr>
+<tr><td>35</td><td>33</td><td>32</td><td>24</td><td>20</td><td>14</td><td>6</td></tr>
+<tr><td>33</td><td>30</td><td>23</td><td>19</td><td>12</td><td>2</td><td>4</td></tr>
+<tr><td>32</td><td>29</td><td>28</td><td>26</td><td>4</td><td>3</td><td>6</td></tr>
+<tr><td>36</td><td>33</td><td>28</td><td>20</td><td>6</td><td>5</td><td>6</td></tr>
+<tr><td>36</td><td>20</td><td>19</td><td>8</td><td>4</td><td>1</td><td>7</td></tr>
+<tr><td>33</td><td>32</td><td>26</td><td>20</td><td>8</td><td>4</td><td>7</td></tr>
+<tr><td>34</td><td>33</td><td>24</td><td>19</td><td>16</td><td>6</td><td>5</td></tr>
+<tr><td>37</td><td>33</td><td>29</td><td>22</td><td>16</td><td>6</td><td>5</td></tr>
+<tr><td>18</td><td>14</td><td>12</td><td>11</td><td>7</td><td>4</td><td>7</td></tr>
+<tr><td>32</td><td>25</td><td>22</td><td>11</td><td>4</td><td>1</td><td>1</td></tr>
+<tr><td>32</td><td>31</td><td>19</td><td>15</td><td>7</td><td>2</td><td>7</td></tr>
+<tr><td>23</td><td>22</td><td>9</td><td>7</td><td>6</td><td>2</td><td>1</td></tr>
+<tr><td>37</td><td>26</td><td>18</td><td>10</td><td>6</td><td>1</td><td>1</td></tr>
+<tr><td>37</td><td>32</td><td>28</td><td>23</td><td>15</td><td>6</td><td>7</td></tr>
+<tr><td>26</td><td>17</td><td>13</td><td>9</td><td>4</td><td>1</td><td>2</td></tr>
+<tr><td>37</td><td>36</td><td>27</td><td>15</td><td>7</td><td>1</td><td>4</td></tr>
+<tr><td>34</td><td>33</td><td>32</td><td>27</td><td>22</td><td>14</td><td>3</td></tr>
+<tr><td>24</td><td>23</td><td>21</td><td>14</td><td>5</td><td>1</td><td>4</td></tr>
+<tr><td>35</td><td>27</td><td>21</td><td>16</td><td>13</td><td>7</td><td>3</td></tr>
+<tr><td>34</td><td>33</td><td>30</td><td>10</td><td>9</td><td>5</td><td>4</td></tr>
+<tr><td>29</td><td>27</td><td>25</td><td>18</td><td>10</td><td>1</td><td>1</td></tr>
+<tr><td>37</td><td>34</td><td>27</td><td>9</td><td>5</td><td>2</td><td>6</td></tr>
+<tr><td>34</td><td>32</td><td>16</td><td>9</td><td>8</td><td>3</td><td>7</td></tr>
+<tr><td>34</td><td>30</td><td>29</td><td>26</td><td>22</td><td>18</td><td>7</td></tr>
+<tr><td>24</td><td>20</td><td>19</td><td>13</td><td>10</td><td>7</td><td>7</td></tr>
+<tr><td>35</td><td>32</td><td>31</td><td>23</td><td>21</td><td>5</td><td>4</td></tr>
+<tr><td>37</td><td>16</td><td>14</td><td>12</td><td>9</td><td>6</td><td>5</td></tr>
+<tr><td>24</td><td>18</td><td>14</td><td>4</td><td>3</td><td>1</td><td>6</td></tr>
+<tr><td>34</td><td>28</td><td>26</td><td>11</td><td>6</td><td>2</td><td>1</td></tr>
+<tr><td>36</td><td>12</td><td>10</td><td>9</td><td>6</td><td>3</td><td>6</td></tr>
+<tr><td>37</td><td>34</td><td>30</td><td>21</td><td>7</td><td>1</td><td>4</td></tr>
+<tr><td>36</td><td>31</td><td>25</td><td>23</td><td>8</td><td>4</td><td>7</td></tr>
+<tr><td>37</td><td>20</td><td>19</td><td>14</td><td>5</td><td>4</td><td>1</td></tr>
+<tr><td>35</td><td>34</td><td>33</td><td>29</td><td>11</td><td>6</td><td>6</td></tr>
+<tr><td>20</td><td>15</td><td>11</td><td>8</td><td>6</td><td>2</td><td>1</td></tr>
+<tr><td>31</td><td>25</td><td>7</td><td>6</td><td>3</td><td>1</td><td>4</td></tr>
+<tr><td>34</td><td>30</td><td>24</td><td>9</td><td>6</td><td>5</td><td>5</td></tr>
+<tr><td>36</td><td>34</td><td>31</td><td>23</td><td>13</td><td>1</td><td>7</td></tr>
+<tr><td>34</td><td>26</td><td>18</td><td>16</td><td>10</td><td>2</td><td>1</td></tr>
+<tr><td>29</td><td>17</td><td>15</td><td>14</td><td>12</td><td>7</td><td>1</td></tr>
+<tr><td>30</td><td>24</td><td>19</td><td>12</td><td>7</td><td>4</td><td>6</td></tr>
+<tr><td>32</td><td>20</td><td>12</td><td>9</td><td>5</td><td>3</td><td>1</td></tr>
+<tr><td>30</td><td>26</td><td>23</td><td>17</td><td>14</td><td>8</td><td>2</td></tr>
+<tr><td>24</td><td>21</td><td>15</td><td>13</td><td>11</td><td>6</td><td>3</td></tr>
+<tr><td>35</td><td>28</td><td>14</td><td>9</td><td>4</td><td>1</td><td>1</td></tr>
+<tr><td>33</td><td>22</td><td>17</td><td>14</td><td>8</td><td>4</td><td>6</td></tr>
+<tr><td>30</td><td>23</td><td>20</td><td>19</td><td>17</td><td>10</td><td>3</td></tr>
+<tr><td>31</td><td>23</td><td>21</td><td>20</td><td>17</td><td>8</td><td>1</td></tr>
+<tr><td>34</td><td>29</td><td>23</td><td>22</td><td>21</td><td>1</td><td>6</td></tr>
+<tr><td>23</td><td>18</td><td>16</td><td>13</td><td>3</td><td>1</td><td>4</td></tr>
+<tr><td>19</td><td>15</td><td>14</td><td>12</td><td>9</td><td>3</td><td>5</td></tr>
+<tr><td>37</td><td>30</td><td>28</td><td>18</td><td>16</td><td>7</td><td>5</td></tr>
+<tr><td>36</td><td>35</td><td>28</td><td>17</td><td>16</td><td>13</td><td>4</td></tr>
+<tr><td>32</td><td>17</td><td>14</td><td>13</td><td>11</td><td>4</td><td>4</td></tr>
+<tr><td>36</td><td>34</td><td>19</td><td>10</td><td>7</td><td>3</td><td>4</td></tr>
+<tr><td>31</td><td>28</td><td>26</td><td>25</td><td>6</td><td>3</td><td>3</td></tr>
+<tr><td>34</td><td>25</td><td>15</td><td>10</td><td>3</td><td>2</td><td>3</td></tr>
+<tr><td>28</td><td>21</td><td>14</td><td>10</td><td>6</td><td>4</td><td>4</td></tr>
+<tr><td>34</td><td>31</td><td>24</td><td>21</td><td>14</td><td>5</td><td>7</td></tr>
+<tr><td>35</td><td>30</td><td>26</td><td>23</td><td>11</td><td>3</td><td>4</td></tr>
+<tr><td>36</td><td>29</td><td>28</td><td>20</td><td>19</td><td>10</td><td>1</td></tr>
+<tr><td>28</td><td>21</td><td>15</td><td>13</td><td>11</td><td>6</td><td>6</td></tr>
+<tr><td>32</td><td>29</td><td>9</td><td>7</td><td>5</td><td>3</td><td>6</td></tr>
+<tr><td>35</td><td>29</td><td>28</td><td>18</td><td>6</td><td>4</td><td>1</td></tr>
+<tr><td>35</td><td>24</td><td>23</td><td>22</td><td>15</td><td>5</td><td>7</td></tr>
+<tr><td>28</td><td>17</td><td>16</td><td>12</td><td>11</td><td>9</td><td>5</td></tr>
+<tr><td>34</td><td>33</td><td>19</td><td>14</td><td>7</td><td>3</td><td>1</td></tr>
+<tr><td>37</td><td>17</td><td>10</td><td>7</td><td>5</td><td>4</td><td>3</td></tr>
+<tr><td>31</td><td>26</td><td>23</td><td>18</td><td>9</td><td>8</td><td>3</td></tr>
+<tr><td>31</td><td>29</td><td>22</td><td>15</td><td>14</td><td>4</td><td>3</td></tr>
+<tr><td>29</td><td>27</td><td>21</td><td>12</td><td>4</td><td>2</td><td>5</td></tr>
+<tr><td>25</td><td>18</td><td>12</td><td>9</td><td>4</td><td>2</td><td>3</td></tr>
+<tr><td>35</td><td>31</td><td>29</td><td>24</td><td>21</td><td>11</td><td>1</td></tr>
+<tr><td>35</td><td>20</td><td>17</td><td>16</td><td>10</td><td>2</td><td>3</td></tr>
+<tr><td>29</td><td>25</td><td>19</td><td>18</td><td>5</td><td>3</td><td>1</td></tr>
+<tr><td>33</td><td>17</td><td>13</td><td>12</td><td>11</td><td>9</td><td>1</td></tr>
+<tr><td>27</td><td>23</td><td>19</td><td>16</td><td>11</td><td>2</td><td>5</td></tr>
+<tr><td>37</td><td>31</td><td>26</td><td>18</td><td>7</td><td>1</td><td>1</td></tr>
+<tr><td>21</td><td>20</td><td>15</td><td>11</td><td>7</td><td>5</td><td>3</td></tr>
+<tr><td>34</td><td>30</td><td>22</td><td>9</td><td>8</td><td>3</td><td>7</td></tr>
+<tr><td>36</td><td>26</td><td>25</td><td>21</td><td>13</td><td>5</td><td>2</td></tr>
+<tr><td>28</td><td>24</td><td>15</td><td>7</td><td>4</td><td>2</td><td>4</td></tr>
+<tr><td>34</td><td>30</td><td>25</td><td>15</td><td>12</td><td>2</td><td>7</td></tr>
+<tr><td>35</td><td>28</td><td>20</td><td>6</td><td>5</td><td>3</td><td>6</td></tr>
+<tr><td>37</td><td>13</td><td>5</td><td>4</td><td>3</td><td>1</td><td>1</td></tr>
+<tr><td>34</td><td>30</td><td>16</td><td>13</td><td>12</td><td>4</td><td>2</td></tr>
+<tr><td>37</td><td>32</td><td>27</td><td>24</td><td>11</td><td>5</td><td>5</td></tr>
+<tr><td>36</td><td>25</td><td>23</td><td>14</td><td>3</td><td>1</td><td>2</td></tr>
+<tr><td>17</td><td>16</td><td>15</td><td>14</td><td>12</td><td>6</td><td>6</td></tr>
+<tr><td>37</td><td>35</td><td>23</td><td>16</td><td>13</td><td>6</td><td>7</td></tr>
+<tr><td>37</td><td>24</td><td>9</td><td>8</td><td>6</td><td>3</td><td>4</td></tr>
+<tr><td>27</td><td>20</td><td>17</td><td>10</td><td>6</td><td>2</td><td>4</td></tr>
+<tr><td>31</td><td>17</td><td>14</td><td>13</td><td>10</td><td>8</td><td>3</td></tr>
+<tr><td>30</td><td>29</td><td>24</td><td>13</td><td>7</td><td>5</td><td>5</td></tr>
+<tr><td>29</td><td>22</td><td>14</td><td>11</td><td>4</td><td>3</td><td>2</td></tr>
+<tr><td>22</td><td>17</td><td>16</td><td>12</td><td>4</td><td>1</td><td>1</td></tr>
+<tr><td>29</td><td>24</td><td>14</td><td>13</td><td>12</td><td>4</td><td>4</td></tr>
+<tr><td>35</td><td>19</td><td>16</td><td>15</td><td>11</td><td>9</td><td>6</td></tr>
+<tr><td>33</td><td>20</td><td>19</td><td>13</td><td>8</td><td>5</td><td>1</td></tr>
+<tr><td>33</td><td>30</td><td>27</td><td>26</td><td>17</td><td>4</td><td>5</td></tr>
+<tr><td>37</td><td>35</td><td>22</td><td>18</td><td>15</td><td>1</td><td>7</td></tr>
+<tr><td>37</td><td>34</td><td>25</td><td>17</td><td>12</td><td>7</td><td>3</td></tr>
+<tr><td>37</td><td>27</td><td>22</td><td>20</td><td>16</td><td>4</td><td>3</td></tr>
+<tr><td>35</td><td>28</td><td>25</td><td>23</td><td>22</td><td>13</td><td>5</td></tr>
+<tr><td>25</td><td>21</td><td>14</td><td>6</td><td>5</td><td>2</td><td>2</td></tr>
+<tr><td>29</td><td>28</td><td>25</td><td>16</td><td>4</td><td>3</td><td>3</td></tr>
+<tr><td>36</td><td>27</td><td>16</td><td>8</td><td>5</td><td>2</td><td>4</td></tr>
+<tr><td>36</td><td>35</td><td>34</td><td>10</td><td>6</td><td>3</td><td>6</td></tr>
+<tr><td>36</td><td>34</td><td>29</td><td>27</td><td>24</td><td>12</td><td>4</td></tr>
+<tr><td>26</td><td>25</td><td>21</td><td>19</td><td>7</td><td>1</td><td>5</td></tr>
+<tr><td>37</td><td>22</td><td>21</td><td>16</td><td>10</td><td>5</td><td>5</td></tr>
+<tr><td>25</td><td>22</td><td>19</td><td>14</td><td>7</td><td>1</td><td>7</td></tr>
+<tr><td>34</td><td>33</td><td>31</td><td>24</td><td>13</td><td>6</td><td>2</td></tr>
+<tr><td>33</td><td>29</td><td>28</td><td>25</td><td>24</td><td>22</td><td>5</td></tr>
+<tr><td>34</td><td>30</td><td>16</td><td>9</td><td>4</td><td>1</td><td>2</td></tr>
+<tr><td>36</td><td>35</td><td>34</td><td>28</td><td>22</td><td>3</td><td>1</td></tr>
+<tr><td>35</td><td>31</td><td>20</td><td>16</td><td>12</td><td>4</td><td>4</td></tr>
+<tr><td>36</td><td>31</td><td>20</td><td>18</td><td>14</td><td>5</td><td>2</td></tr>
+<tr><td>36</td><td>33</td><td>32</td><td>25</td><td>17</td><td>5</td><td>6</td></tr>
+<tr><td>20</td><td>15</td><td>14</td><td>12</td><td>11</td><td>4</td><td>6</td></tr>
+<tr><td>32</td><td>17</td><td>15</td><td>14</td><td>10</td><td>1</td><td>3</td></tr>
+<tr><td>37</td><td>36</td><td>27</td><td>25</td><td>14</td><td>8</td><td>5</td></tr>
+<tr><td>32</td><td>30</td><td>24</td><td>15</td><td>13</td><td>2</td><td>1</td></tr>
+<tr><td>36</td><td>34</td><td>16</td><td>10</td><td>4</td><td>1</td><td>6</td></tr>
+<tr><td>27</td><td>26</td><td>24</td><td>11</td><td>10</td><td>8</td><td>2</td></tr>
+<tr><td>35</td><td>25</td><td>10</td><td>7</td><td>6</td><td>3</td><td>3</td></tr>
+<tr><td>37</td><td>35</td><td>30</td><td>24</td><td>7</td><td>5</td><td>4</td></tr>
+<tr><td>32</td><td>30</td><td>19</td><td>12</td><td>9</td><td>6</td><td>6</td></tr>
+<tr><td>29</td><td>25</td><td>24</td><td>15</td><td>12</td><td>11</td><td>7</td></tr>
+<tr><td>37</td><td>27</td><td>18</td><td>12</td><td>10</td><td>7</td><td>7</td></tr>
+<tr><td>35</td><td>29</td><td>27</td><td>26</td><td>8</td><td>6</td><td>1</td></tr>
+<tr><td>29</td><td>28</td><td>23</td><td>21</td><td>18</td><td>15</td><td>6</td></tr>
+<tr><td>35</td><td>27</td><td>26</td><td>4</td><td>2</td><td>1</td><td>1</td></tr>
+<tr><td>37</td><td>19</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td></tr>
+<tr><td>35</td><td>33</td><td>30</td><td>26</td><td>21</td><td>5</td><td>4</td></tr>
+<tr><td>36</td><td>26</td><td>23</td><td>12</td><td>11</td><td>1</td><td>3</td></tr>
+<tr><td>33</td><td>28</td><td>19</td><td>13</td><td>6</td><td>1</td><td>4</td></tr>
+<tr><td>37</td><td>35</td><td>30</td><td>23</td><td>21</td><td>5</td><td>4</td></tr>
+<tr><td>37</td><td>30</td><td>21</td><td>17</td><td>11</td><td>6</td><td>3</td></tr>
+<tr><td>37</td><td>35</td><td>33</td><td>28</td><td>24</td><td>13</td><td>4</td></tr>
+<tr><td>32</td><td>30</td><td>29</td><td>28</td><td>17</td><td>10</td><td>3</td></tr>
+<tr><td>31</td><td>29</td><td>26</td><td>24</td><td>20</td><td>3</td><td>2</td></tr>
+<tr><td>36</td><td>33</td><td>24</td><td>13</td><td>7</td><td>1</td><td>5</td></tr>
+<tr><td>37</td><td>21</td><td>10</td><td>4</td><td>3</td><td>1</td><td>1</td></tr>
+<tr><td>29</td><td>28</td><td>25</td><td>20</td><td>7</td><td>6</td><td>7</td></tr>
+<tr><td>37</td><td>30</td><td>25</td><td>22</td><td>16</td><td>13</td><td>1</td></tr>
+<tr><td>35</td><td>30</td><td>22</td><td>14</td><td>12</td><td>7</td><td>6</td></tr>
+<tr><td>37</td><td>24</td><td>23</td><td>21</td><td>5</td><td>1</td><td>7</td></tr>
+<tr><td>32</td><td>27</td><td>24</td><td>10</td><td>7</td><td>5</td><td>4</td></tr>
+<tr><td>30</td><td>23</td><td>20</td><td>16</td><td>3</td><td>2</td><td>7</td></tr>
+<tr><td>27</td><td>25</td><td>22</td><td>14</td><td>4</td><td>2</td><td>3</td></tr>
+<tr><td>30</td><td>29</td><td>13</td><td>10</td><td>3</td><td>1</td><td>7</td></tr>
+<tr><td>35</td><td>28</td><td>24</td><td>23</td><td>13</td><td>1</td><td>3</td></tr>
+<tr><td>16</td><td>13</td><td>12</td><td>6</td><td>4</td><td>2</td><td>6</td></tr>
+<tr><td>32</td><td>31</td><td>28</td><td>22</td><td>20</td><td>17</td><td>4</td></tr>
+<tr><td>32</td><td>16</td><td>9</td><td>7</td><td>4</td><td>3</td><td>3</td></tr>
+<tr><td>33</td><td>26</td><td>24</td><td>16</td><td>9</td><td>2</td><td>4</td></tr>
+<tr><td>31</td><td>27</td><td>24</td><td>22</td><td>13</td><td>8</td><td>4</td></tr>
+<tr><td>37</td><td>34</td><td>29</td><td>26</td><td>9</td><td>8</td><td>2</td></tr>
+<tr><td>24</td><td>21</td><td>20</td><td>19</td><td>17</td><td>5</td><td>4</td></tr>
+<tr><td>31</td><td>23</td><td>22</td><td>21</td><td>13</td><td>1</td><td>7</td></tr>
+<tr><td>34</td><td>22</td><td>13</td><td>11</td><td>9</td><td>4</td><td>7</td></tr>
+<tr><td>36</td><td>35</td><td>34</td><td>29</td><td>26</td><td>2</td><td>6</td></tr>
+<tr><td>33</td><td>26</td><td>18</td><td>17</td><td>9</td><td>6</td><td>2</td></tr>
+<tr><td>33</td><td>25</td><td>24</td><td>20</td><td>19</td><td>17</td><td>3</td></tr>
+<tr><td>31</td><td>26</td><td>15</td><td>13</td><td>4</td><td>1</td><td>3</td></tr>
+<tr><td>27</td><td>23</td><td>22</td><td>17</td><td>9</td><td>4</td><td>7</td></tr>
+<tr><td>25</td><td>17</td><td>15</td><td>14</td><td>6</td><td>3</td><td>6</td></tr>
+<tr><td>30</td><td>24</td><td>22</td><td>20</td><td>19</td><td>2</td><td>6</td></tr>
+<tr><td>34</td><td>33</td><td>27</td><td>14</td><td>7</td><td>1</td><td>2</td></tr>
+<tr><td>36</td><td>34</td><td>31</td><td>11</td><td>6</td><td>1</td><td>4</td></tr>
+<tr><td>34</td><td>24</td><td>16</td><td>15</td><td>12</td><td>10</td><td>1</td></tr>
+<tr><td>26</td><td>22</td><td>14</td><td>13</td><td>9</td><td>3</td><td>2</td></tr>
+<tr><td>36</td><td>32</td><td>28</td><td>18</td><td>14</td><td>1</td><td>4</td></tr>
+<tr><td>36</td><td>22</td><td>12</td><td>10</td><td>7</td><td>6</td><td>7</td></tr>
+<tr><td>35</td><td>25</td><td>12</td><td>6</td><td>5</td><td>1</td><td>2</td></tr>
+<tr><td>37</td><td>23</td><td>16</td><td>15</td><td>8</td><td>5</td><td>7</td></tr>
+<tr><td>31</td><td>29</td><td>28</td><td>16</td><td>13</td><td>8</td><td>5</td></tr>
+<tr><td>34</td><td>30</td><td>29</td><td>28</td><td>24</td><td>23</td><td>6</td></tr>
+<tr><td>30</td><td>19</td><td>11</td><td>4</td><td>3</td><td>2</td><td>3</td></tr>
+<tr><td>36</td><td>35</td><td>27</td><td>10</td><td>8</td><td>7</td><td>5</td></tr>
+<tr><td>36</td><td>27</td><td>23</td><td>22</td><td>18</td><td>2</td><td>1</td></tr>
+<tr><td>34</td><td>31</td><td>25</td><td>24</td><td>5</td><td>2</td><td>7</td></tr>
+<tr><td>36</td><td>25</td><td>15</td><td>9</td><td>7</td><td>4</td><td>1</td></tr>
+<tr><td>35</td><td>27</td><td>24</td><td>20</td><td>7</td><td>3</td><td>1</td></tr>
+<tr><td>32</td><td>27</td><td>17</td><td>16</td><td>12</td><td>8</td><td>3</td></tr>
+<tr><td>33</td><td>31</td><td>24</td><td>23</td><td>22</td><td>2</td><td>7</td></tr>
+<tr><td>29</td><td>26</td><td>23</td><td>20</td><td>10</td><td>8</td><td>1</td></tr>
+<tr><td>35</td><td>25</td><td>9</td><td>8</td><td>7</td><td>6</td><td>2</td></tr>
+<tr><td>27</td><td>22</td><td>21</td><td>19</td><td>18</td><td>5</td><td>7</td></tr>
+<tr><td>31</td><td>28</td><td>25</td><td>21</td><td>15</td><td>10</td><td>5</td></tr>
+<tr><td>31</td><td>30</td><td>21</td><td>16</td><td>12</td><td>10</td><td>7</td></tr>
+<tr><td>34</td><td>30</td><td>16</td><td>15</td><td>13</td><td>4</td><td>7</td></tr>
+<tr><td>36</td><td>34</td><td>31</td><td>20</td><td>11</td><td>2</td><td>1</td></tr>
+<tr><td>33</td><td>29</td><td>28</td><td>22</td><td>20</td><td>5</td><td>4</td></tr>
+<tr><td>28</td><td>20</td><td>15</td><td>9</td><td>8</td><td>6</td><td>5</td></tr>
+<tr><td>36</td><td>32</td><td>28</td><td>26</td><td>7</td><td>3</td><td>3</td></tr>
+<tr><td>22</td><td>16</td><td>15</td><td>3</td><td>2</td><td>1</td><td>3</td></tr>
+<tr><td>31</td><td>29</td><td>18</td><td>16</td><td>12</td><td>3</td><td>5</td></tr>
+<tr><td>37</td><td>26</td><td>32</td><td>16</td><td>12</td><td>9</td><td>4</td></tr>
+<tr><td>28</td><td>27</td><td>22</td><td>9</td><td>5</td><td>3</td><td>5</td></tr>
+<tr><td>31</td><td>26</td><td>17</td><td>16</td><td>7</td><td>3</td><td>3</td></tr>
+
+</tbody>
+</table>
+<div>
+<a href="https://drive.google.com/drive/folders/1Q06VnvSrle3My4MpX5z3UXmb07OswY-g?usp=sharing" target="_blank">
+    צפייה בצילומי הטפסים
+</a>
+</div>
+<div style="font-size: 2em; margin: 20px;">🏗️</div>
+</body>
+</html>
