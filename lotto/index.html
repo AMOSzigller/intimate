@@ -46,6 +46,9 @@
     .button:hover {
         background-color: #155ab5;
     }
+    canvas {
+        margin-top: 20px;
+    }
 </style>
 <script>
     function startCountdown() {
@@ -75,6 +78,48 @@
     }
 
     document.addEventListener("DOMContentLoaded", startCountdown);
+
+    function drawPieChart() {
+        const canvas = document.getElementById("participantsChart");
+        const ctx = canvas.getContext("2d");
+        const data = [33.33, 33.33, 33.33];
+        const labels = ["בר", "אסימוש", "צביקה"];
+        const colors = ["#1a73e8", "#ffa500", "#ff5722"];
+
+        let startAngle = 0;
+
+        data.forEach((percentage, index) => {
+            const sliceAngle = (percentage / 100) * 2 * Math.PI;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, canvas.height / 2);
+            ctx.arc(
+                canvas.width / 2,
+                canvas.height / 2,
+                canvas.height / 2,
+                startAngle,
+                startAngle + sliceAngle
+            );
+            ctx.closePath();
+            ctx.fillStyle = colors[index];
+            ctx.fill();
+            startAngle += sliceAngle;
+        });
+
+        // Add labels
+        startAngle = 0;
+        data.forEach((percentage, index) => {
+            const sliceAngle = (percentage / 100) * 2 * Math.PI;
+            const labelAngle = startAngle + sliceAngle / 2;
+            const labelX = canvas.width / 2 + (canvas.height / 2.5) * Math.cos(labelAngle);
+            const labelY = canvas.height / 2 + (canvas.height / 2.5) * Math.sin(labelAngle);
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "16px Arial";
+            ctx.fillText(labels[index], labelX - 20, labelY);
+            startAngle += sliceAngle;
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", drawPieChart);
 </script>
 </head>
 <body>
@@ -87,11 +132,7 @@
 </div>
 <div class="summary">
 <h2>משתתפים</h2>
-<ul style="text-align: center; margin: 0 auto; list-style-type: none; padding: 0;">
-    <li>בר - 33.33%</li>
-    <li>אסימוש - 33.33%</li>
-    <li>צביקה - 33.33%</li>
-</ul>
+<canvas id="participantsChart" width="300" height="300"></canvas>
 <p style="font-size: 1.2em; color: #ffa500;">עלות ההשתתפות: 120 ש"ח</p>
 <p>סכום שנאסף: <strong>360 ש"ח</strong></p>
 <p>מספר טורים: <strong>60</strong></p>
