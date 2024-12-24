@@ -94,7 +94,46 @@
         color: #ffa500;
         margin-top: 10px;
     }
+    .collapsible {
+        background-color: #292929;
+        color: white;
+        cursor: pointer;
+        padding: 10px;
+        width: 50%;
+        border: none;
+        text-align: center;
+        outline: none;
+        font-size: 1.2em;
+        margin: 10px auto;
+        border-radius: 5px;
+    }
+    .collapsible:hover {
+        background-color: #444;
+    }
+    .content {
+        padding: 0 15px;
+        display: none;
+        overflow: hidden;
+        background-color: #1e1e1e;
+        border-radius: 5px;
+    }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const collapsibles = document.querySelectorAll('.collapsible');
+        collapsibles.forEach(collapsible => {
+            collapsible.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
+        });
+    });
+</script>
 </head>
 <body>
 <h1>אינטימיים שולחים יחד לוטו</h1>
@@ -114,30 +153,33 @@
 </div>
 
 <div class="summary">
-<h2>משתתפים</h2>
-<ul style="text-align: center; margin: 0 auto; list-style-type: none; padding: 0;">
-    <li>7.14% - בר</li>
-    <li>אסימוש - 7.14%</li>
-    <li>צביקה - 7.14%</li>
-    <li>שגיא - 7.14%</li>
-    <li>גבי - 7.14%</li>
-    <li>רועי.ב - 7.14%</li>
-    <li>זקיס - 7.14%</li>
-    <li>אורנזי - 7.14%</li>
-    <li>נדב - 7.14%</li>
-    <li>יונגר - 7.14%</li>
-    <li>שוקי - 7.14%</li>
-    <li>רועי.ש - 7.14%</li>
-    <li>עדי - 7.14%</li>
-    <li>קסיאס - 7.14%</li>
-</ul>
-<p style="font-size: 1.2em; color: #ffa500;">עלות ההשתתפות: 120 ש"ח</p>
-<p>סכום שנאסף: <strong>1,680 ש"ח</strong></p>
-<p>מספר טורים: <strong>280</strong></p>
+<button type="button" class="collapsible">הצג/הסתר משתתפים ומידע נוסף</button>
+<div class="content">
+    <h2>משתתפים</h2>
+    <ul style="text-align: center; margin: 0 auto; list-style-type: none; padding: 0;">
+        <li>7.14% - בר</li>
+        <li>אסימוש - 7.14%</li>
+        <li>צביקה - 7.14%</li>
+        <li>שגיא - 7.14%</li>
+        <li>גבי - 7.14%</li>
+        <li>רועי.ב - 7.14%</li>
+        <li>זקיס - 7.14%</li>
+        <li>אורנזי - 7.14%</li>
+        <li>נדב - 7.14%</li>
+        <li>יונגר - 7.14%</li>
+        <li>שוקי - 7.14%</li>
+        <li>רועי.ש - 7.14%</li>
+        <li>עדי - 7.14%</li>
+        <li>קסיאס - 7.14%</li>
+    </ul>
+    <p style="font-size: 1.2em; color: #ffa500;">עלות ההשתתפות: 120 ש"ח</p>
+    <p>סכום שנאסף: <strong>1,680 ש"ח</strong></p>
+    <p>מספר טורים: <strong>280</strong></p>
+</div>
 </div>
 
 <div class="form-table">
-    <h2>טופס לוטו שיטתי 10</h2>
+    <h2>טופס דאבל לוטו שיטתי 10</h2>
     <div class="form-row">
         <div class="number-box">4</div>
         <div class="number-box">5</div>
@@ -158,7 +200,7 @@
 </div>
 
 <div class="form-table">
-    <h2>טופס לוטו שיטתי 8</h2>
+    <h2>טופס דאבל לוטו שיטתי 8</h2>
     <div class="form-row">
         <div class="number-box">5</div>
         <div class="number-box">11</div>
@@ -177,7 +219,7 @@
 </div>
 
 <div class="form-table">
-    <h2>טופס לוטו שיטתי 5=6</h2>
+    <h2>טופס דאבל לוטו שיטתי 5=6</h2>
     <div class="form-row">
         <div class="number-box missing">?*</div>
         <div class="number-box missing">?*</div>
@@ -194,6 +236,7 @@
 
 <div class="form-table">
     <h2>טופס דאבל לוטו רגיל 10 (לוטומט)</h2>
+    <p>סיכויי זכיה: 1:1,627,349</p>
 </div>
 
 <div style="font-size: 2em; margin: 20px;">🏗️</div>
