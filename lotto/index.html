@@ -48,33 +48,10 @@
     }
 </style>
 <script>
-    function startCountdown() {
-        const targetDate = new Date("2024-12-23T23:00:00+02:00");
+    document.addEventListener("DOMContentLoaded", function() {
         const countdownElement = document.getElementById("countdown");
-
-        function updateCountdown() {
-            const now = new Date();
-            const timeDifference = targetDate - now;
-
-            if (timeDifference <= 0) {
-                countdownElement.textContent = "";
-                clearInterval(interval);
-                return;
-            }
-
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-            countdownElement.textContent = `${days}:${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        }
-
-        const interval = setInterval(updateCountdown, 1000);
-        updateCountdown();
-    }
-
-    document.addEventListener("DOMContentLoaded", startCountdown);
+        countdownElement.textContent = "ההרשמה הסתיימה 🎉";
+    });
 </script>
 </head>
 <body>
@@ -82,7 +59,7 @@
 <a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלה הקודמת</a>
 <div class="details">
 <p>תאריך ההגרלה: יום שלישי 24 לדצמבר 2024 בשעה 23:00</p>
-<h2>:ההרשמה מסתיימת בעוד</h2>
+<h2>:ההרשמה הסתיימה</h2>
 <p id="countdown"></p>
 </div>
 <div class="summary">
