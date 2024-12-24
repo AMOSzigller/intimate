@@ -12,6 +12,11 @@
         background-color: #121212;
         color: #e0e0e0;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
     h1, h2 {
         color: #1a73e8;
@@ -23,6 +28,7 @@
         background-color: #1e1e1e;
         width: 80%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        text-align: center;
     }
     .tracker {
         display: flex;
@@ -40,6 +46,7 @@
         font-size: 1.2em;
         color: white;
         background-color: #1a73e8;
+        text-align: center;
     }
     .tracker .step.completed {
         background-color: green;
@@ -147,8 +154,8 @@
 <div class="tracker">
     <div class="step completed">העברת תשלומים ✅</div>
     <div class="step completed">בחירת מספרים ✅</div>
-    <div class="step in-progress">שליחת טפסים 🕒</div>
-    <div class="step">תוצאות ההגרלה</div>
+    <div class="step completed">שליחת טפסים ✅</div>
+    <div class="step in-progress">מחכים לתוצאות ההגרלה 🕒</div>
     <div class="step">תשולם זכיה לחברי הקבוצה</div>
 </div>
 
@@ -288,13 +295,13 @@
         <div class="number-box missing">5</div>
     </div>
     <div class="form-row">
+        <div class="number-box">1</div>
+        <div class="number-box">4</div>
+        <div class="number-box">7</div>
+        <div class="number-box">8</div>
+        <div class="number-box">9</div>
         <div class="number-box">15</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box missing">?</div>
+        <div class="number-box missing">1</div>
     </div>
     <div class="form-row">
         <div class="number-box">6</div>
@@ -306,26 +313,27 @@
         <div class="number-box missing">2</div>
     </div>
     <div class="form-row">
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box missing">?</div>
+        <div class="number-box">2</div>
+        <div class="number-box">16</div>
+        <div class="number-box">18</div>
+        <div class="number-box">26</div>
+        <div class="number-box">27</div>
+        <div class="number-box">28</div>
+        <div class="number-box missing">2</div>
     </div>
     <div class="form-row">
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box">?</div>
-        <div class="number-box missing">?</div>
+        <div class="number-box">5</div>
+        <div class="number-box">7</div>
+        <div class="number-box">22</div>
+        <div class="number-box">23</div>
+        <div class="number-box">25</div>
+        <div class="number-box">27</div>
+        <div class="number-box missing">6</div>
     </div>
     <p>סיכויי זכיה: 1:1,627,349</p>
 </div>
 
-<div style="font-size: 2em; margin: 20px;">🏗️</div>
+<a href="https://drive.google.com/drive/folders/1wZ9_RY9So19DyrSX0lVmvq9Ndnb0_en8?usp=sharing" class="button">צפייה בצילומי הטפסים</a>
+<div style="font-size: 2em; margin: 20px; text-align: center;">🏗️</div>
 </body>
 </html>
