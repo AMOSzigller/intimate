@@ -16,7 +16,7 @@
     h1, h2 {
         color: #1a73e8;
     }
-    .details, .summary {
+    .details, .summary, .tracker, .form-table {
         margin: 20px auto;
         padding: 15px;
         border-radius: 8px;
@@ -24,10 +24,53 @@
         width: 80%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
-    #countdown {
-        font-size: 2em;
-        color: #ffa500;
-        margin-top: 10px;
+    .tracker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+        background-color: #292929;
+        border: 2px solid #ffa500;
+        border-radius: 10px;
+    }
+    .tracker .step {
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        color: white;
+        background-color: #1a73e8;
+    }
+    .tracker .step.completed {
+        background-color: green;
+    }
+    .tracker .step.in-progress {
+        background-color: orange;
+    }
+    .form-table {
+        display: inline-block;
+        text-align: center;
+    }
+    .form-row {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+    }
+    .number-box {
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #1a73e8;
+        border-radius: 5px;
+        font-size: 1.2em;
+        background-color: #292929;
+    }
+    .number-box.missing {
+        background-color: #ffa500;
+        color: black;
     }
     .button {
         background-color: #1a73e8;
@@ -46,13 +89,12 @@
     .button:hover {
         background-color: #155ab5;
     }
+    .note {
+        font-size: 0.9em;
+        color: #ffa500;
+        margin-top: 10px;
+    }
 </style>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const countdownElement = document.getElementById("countdown");
-        countdownElement.textContent = "ההרשמה הסתיימה 🎉";
-    });
-</script>
 </head>
 <body>
 <h1>אינטימיים שולחים יחד לוטו</h1>
@@ -62,6 +104,15 @@
 <h2>ההרשמה הסתיימה</h2>
 <p id="countdown"></p>
 </div>
+
+<div class="tracker">
+    <div class="step completed">העברת תשלומים ✅</div>
+    <div class="step in-progress">בחירת מספרים 🕒</div>
+    <div class="step">שליחת טפסים</div>
+    <div class="step">תוצאות ההגרלה</div>
+    <div class="step">תשולם זכיה לחברי הקבוצה</div>
+</div>
+
 <div class="summary">
 <h2>משתתפים</h2>
 <ul style="text-align: center; margin: 0 auto; list-style-type: none; padding: 0;">
@@ -84,6 +135,80 @@
 <p>סכום שנאסף: <strong>1,680 ש"ח</strong></p>
 <p>מספר טורים: <strong>280</strong></p>
 </div>
+
+<div class="form-table">
+    <h2>טופס לוטו שיטתי 10</h2>
+    <div class="form-row">
+        <div class="number-box">4</div>
+        <div class="number-box">5</div>
+        <div class="number-box">8</div>
+        <div class="number-box">9</div>
+        <div class="number-box">18</div>
+        <div class="number-box">24</div>
+        <div class="number-box">29</div>
+        <div class="number-box">31</div>
+        <div class="number-box">33</div>
+        <div class="number-box missing">?*</div>
+    </div>
+    <div class="form-row">
+        <div class="number-box">3</div>
+    </div>
+    <p>סיכויי זכיה: 1:77,493</p>
+    <p class="note">מספר טרם נבחר*</p>
+</div>
+
+<div class="form-table">
+    <h2>טופס לוטו שיטתי 8</h2>
+    <div class="form-row">
+        <div class="number-box">5</div>
+        <div class="number-box">11</div>
+        <div class="number-box">21</div>
+        <div class="number-box">18</div>
+        <div class="number-box">1</div>
+        <div class="number-box">6</div>
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+    </div>
+    <div class="form-row">
+        <div class="number-box">4</div>
+    </div>
+    <p>סיכויי זכיה: 1:581,196</p>
+    <p class="note">מספרים טרם נבחרו*</p>
+</div>
+
+<div class="form-table">
+    <h2>טופס לוטו שיטתי 5=6</h2>
+    <div class="form-row">
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+    </div>
+    <div class="form-row">
+        <div class="number-box missing">?*</div>
+    </div>
+    <p>סיכויי זכיה: 1:508,547</p>
+    <p class="note">טרם נבחרו מספרים*</p>
+</div>
+
+<div class="form-table">
+    <h2>טופס לוטו רגיל 10</h2>
+    <div class="form-row">
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+        <div class="number-box missing">?*</div>
+    </div>
+    <div class="form-row">
+        <div class="number-box missing">?*</div>
+    </div>
+    <p>סיכויי זכיה: 1:1,627,349</p>
+    <p class="note">טרם נבחרו מספרים*</p>
+</div>
+
 <div style="font-size: 2em; margin: 20px;">🏗️</div>
 </body>
 </html>
