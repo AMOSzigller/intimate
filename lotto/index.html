@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -49,20 +48,20 @@
             const now = new Date().getTime();
             const distance = targetDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor((distance % 1000) / 100);
 
-            document.getElementById("countdown").innerHTML = `${days}:${hours}:${minutes}:${seconds}`;
+            document.getElementById("countdown").innerHTML = `${hours}:${minutes}:${seconds}.${milliseconds}`;
 
             if (distance < 0) {
                 clearInterval(interval);
-                document.getElementById("countdown").innerHTML = "0:0:0:0";
+                document.getElementById("countdown").innerHTML = "0:0:0.0";
             }
         }
 
-        const interval = setInterval(updateCountdown, 1000);
+        const interval = setInterval(updateCountdown, 100);
         updateCountdown();
     </script>
 </head>
