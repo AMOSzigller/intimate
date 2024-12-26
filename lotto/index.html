@@ -1,131 +1,65 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אינטימיים שולחים יחד לוטו</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #2c2c2c;
-            color: #f4f4f4;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            color: #4CAF50;
-        }
-        .countdown {
-            font-size: 2.5em;
-            color: #FF5722;
-            margin: 10px 0;
-        }
-        .details, .lotto-section {
-            margin: 20px 0;
-            font-size: 1.2em;
-        }
-        .number-grid {
-            display: grid;
-            grid-template-columns: repeat(10, 50px);
-            gap: 10px;
-            justify-content: center;
-            margin: 10px 0;
-        }
-        .number-box {
-            width: 50px;
-            height: 50px;
-            background-color: #444;
-            color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5em;
-            border-radius: 5px;
-        }
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: white;
-            background-color: #2196F3;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .button:hover {
-            background-color: #0b7dda;
-        }
-        .crane-emoji {
-            font-size: 4em;
-            margin-top: 20px;
-        }
-    </style>
-    <script>
-        function updateCountdown() {
-            const targetDate = new Date("2024-12-26T23:15:00+02:00").getTime();
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            const tenths = Math.floor((distance % 1000) / 100);
-
-            document.getElementById("countdown").innerHTML = `${hours}:${minutes}:${seconds}.${tenths}`;
-
-            if (distance < 0) {
-                clearInterval(interval);
-                document.getElementById("countdown").innerHTML = "0:0:0.0";
-            }
-        }
-
-        const interval = setInterval(updateCountdown, 100);
-        updateCountdown();
-    </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>אינטימיים שולחים יחד לוטו</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #e0e0e0;
+        text-align: center;
+    }
+    h1, h2 {
+        color: #1a73e8;
+    }
+    .details, .summary {
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #1e1e1e;
+        width: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .finished {
+        color: red;
+        font-size: 1.5em;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px;
+    }
+    .image-container img {
+        max-width: 45%;
+        height: auto;
+        border: 2px solid #333;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+</style>
 </head>
 <body>
-    <h1>אינטימיים שולחים יחד לוטו</h1>
-    <div class="details">
-        <p>תאריך ההגרלה: יום חמישי 26 לדצמבר 2024 בשעה 23:15</p>
-        <p>ההגרלה מתקיימת בעוד</p>
-        <div id="countdown" class="countdown"></div>
-    </div>
-    <div class="lotto-section">
-        <h2>דאבל לוטו שיטתי 10</h2>
-        <div class="number-grid">
-            <div class="number-box">4</div>
-            <div class="number-box">5</div>
-            <div class="number-box">7</div>
-            <div class="number-box">8</div>
-            <div class="number-box">9</div>
-            <div class="number-box">18</div>
-            <div class="number-box">24</div>
-            <div class="number-box">29</div>
-            <div class="number-box">31</div>
-            <div class="number-box">33</div>
-        </div>
-        <div class="number-box" style="margin: auto;">3</div>
-    </div>
-    <div class="details">
-        <a href="https://drive.google.com/drive/folders/1rUFpuSQ39-tgf2E6NgU0-h-nLBDHAjRa?usp=sharing" class="button">לחץ כאן לצפייה בטפסים</a>
-        <p>משתתפים</p>
-        <p>בר: 1/12</p>
-        <p>רועי.ש: 1/12</p>
-        <p>רועי.ב: 1/12</p>
-        <p>עדי: 1/12</p>
-        <p>גבי: 1/12</p>
-        <p>אורנזי: 1/12</p>
-        <p>צביקה: 1/12</p>
-        <p>זקיס: 1/12</p>
-        <p>שגיא: 1/12</p>
-        <p>שוקי: 1/12</p>
-        <p>אסימוש: 1/12</p>
-        <p>יונגר: 1/12</p>
-        <p>עלות ההשתתפות: 120 ש"ח</p>
-        <p>סכום שנאסף: 1,440 ש"ח</p>
-        <p>מספר טורים: 240</p>
-    </div>
-    <a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
-    <div class="crane-emoji">🏗️</div>
+<h1>אינטימיים שולחים יחד לוטו</h1>
+<p class="finished">ההגרלה הסתיימה</p>
+<p style="font-size: 1.5em; color: #ffa500;">תוצאות האמת: 36, 15, 12, 10, 7, 3 | מספר חזק: 7</p>
+<div class="details">
+<p>שותפים שווים</p>
+<p>בר, רועי.ש, רועי.ב, עדי, גבי, אורנזי, צביקה, זקחס, שגיא, שוקי, אסימוש, יונגר קסיאס</p>
+<p>עלות השתתפות: <strong>120 ש"ח</strong></p>
+<p>סכום שנאסף: <strong>1,440 ש"ח</strong></p>
+<p>מספר טורים: <strong>240</strong></p>
+<p>סכום זכיה: <strong>0 ש"ח</strong></p>
+</div>
+<div class="image-container">
+    <img src="2024-12-26_דאבל_שיטתי.png" alt="2024-12-26_דאבל_שיטתי">
+    <img src="2024-12-26_דאבל.png" alt="2024-12-26_דאבל">
+    <img src="2024-12-26_דאבל_שני.png" alt="2024-12-26_דאבל_שני">
+</div>
 </body>
 </html>
