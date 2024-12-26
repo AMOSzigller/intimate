@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -20,9 +21,27 @@
             color: #FF5722;
             margin: 10px 0;
         }
-        .details {
+        .details, .lotto-section {
             margin: 20px 0;
             font-size: 1.2em;
+        }
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            gap: 10px;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .number-box {
+            width: 50px;
+            height: 50px;
+            background-color: #444;
+            color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            border-radius: 5px;
         }
         .button {
             display: inline-block;
@@ -44,16 +63,16 @@
     </style>
     <script>
         function updateCountdown() {
-            const targetDate = new Date("December 25, 2024 23:00:00").getTime();
+            const targetDate = new Date("2024-12-26T23:15:00+02:00").getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
 
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            const milliseconds = Math.floor((distance % 1000) / 100);
+            const tenths = Math.floor((distance % 1000) / 100);
 
-            document.getElementById("countdown").innerHTML = `${hours}:${minutes}:${seconds}.${milliseconds}`;
+            document.getElementById("countdown").innerHTML = `${hours}:${minutes}:${seconds}.${tenths}`;
 
             if (distance < 0) {
                 clearInterval(interval);
@@ -68,21 +87,39 @@
 <body>
     <h1>אינטימיים שולחים יחד לוטו</h1>
     <div class="details">
-        <p>תאריך ההגרלה: יום חמישי 26 לדצמבר 2024 בשעה 23:00</p>
-        <p>ההרשמה מסתיימת בעוד</p>
+        <p>תאריך ההגרלה: יום חמישי 26 לדצמבר 2024 בשעה 23:15</p>
+        <p>ההגרלה מתקיימת בעוד</p>
         <div id="countdown" class="countdown"></div>
+    </div>
+    <div class="lotto-section">
+        <h2>דאבל לוטו שיטתי 10</h2>
+        <div class="number-grid">
+            <div class="number-box">4</div>
+            <div class="number-box">5</div>
+            <div class="number-box">7</div>
+            <div class="number-box">8</div>
+            <div class="number-box">9</div>
+            <div class="number-box">18</div>
+            <div class="number-box">24</div>
+            <div class="number-box">29</div>
+            <div class="number-box">31</div>
+            <div class="number-box">33</div>
+        </div>
+        <div class="number-box" style="margin: auto;">3</div>
+    </div>
+    <div class="details">
         <p>משתתפים</p>
-        <p>בר: 9%</p>
-        <p>רועי.ש: 9%</p>
-        <p>רועי.ב: 9%</p>
-        <p>עדי: 9%</p>
-        <p>גבי: 9%</p>
-    	<p>אורנזי: 9%</p>
-    	<p>צביקה: 9%</p>
-	<p>זקיס: 9%</p>
-	<p>שגיא: 9%</p>
-	<p>שוקי: 9%</p>
-	<p>אסימוש: 9%</p>   
+        <p>בר: 1/11</p>
+        <p>רועי.ש: 1/11</p>
+        <p>רועי.ב: 1/11</p>
+        <p>עדי: 1/11</p>
+        <p>גבי: 1/11</p>
+        <p>אורנזי: 1/11</p>
+        <p>צביקה: 1/11</p>
+        <p>זקיס: 1/11</p>
+        <p>שגיא: 1/11</p>
+        <p>שוקי: 1/11</p>
+        <p>אסימוש: 1/11</p>
         <p>עלות ההשתתפות: 120 ש"ח</p>
         <p>סכום שנאסף: 1,320 ש"ח</p>
         <p>מספר טורים: 220</p>
