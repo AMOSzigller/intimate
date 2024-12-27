@@ -1,81 +1,90 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>אינטימיים שולחים יחד לוטו</title>
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #121212;
-        color: #e0e0e0;
-        text-align: center;
-    }
-    h1, h2 {
-        color: #1a73e8;
-    }
-    .details, .summary {
-        margin: 20px auto;
-        padding: 15px;
-        border-radius: 8px;
-        background-color: #1e1e1e;
-        width: 80%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .finished {
-        color: red;
-        font-size: 1.5em;
-    }
-    .image-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin: 20px;
-    }
-    .image-container img {
-        max-width: 45%;
-        height: auto;
-        border: 2px solid #333;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .history-button {
-        background-color: #1a73e8;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        font-size: 1.1em;
-        cursor: pointer;
-        margin: 10px 0;
-        text-decoration: none;
-        display: inline-block;
-    }
-    .history-button:hover {
-        background-color: #1557b0;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אינטימיים שולחים יחד לוטו</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #00e676;
+        }
+        .countdown {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ff5722;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .details {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .detail {
+            background-color: #333;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+            color: #00e676;
+        }
+        footer {
+            margin-top: auto;
+            font-size: 4rem;
+        }
+    </style>
 </head>
 <body>
-<h1>אינטימיים שולחים יחד לוטו</h1>
-<p class="finished">ההגרלה הסתיימה</p>
-<p style="font-size: 1.5em; color: #ffa500;">תוצאות האמת: 36, 15, 12, 10, 7, 3 | מספר חזק: 7</p>
-<div class="details">
-<p>שותפים שווים</p>
-<p>בר, רועי.ש, רועי.ב, עדי, גבי, אורנזי, צביקה, זקחס, שגיא, שוקי, אסימוש, יונגר קסיאס</p>
-<p>עלות השתתפות: <strong>120 ש"ח</strong></p>
-<p>סכום שנאסף: <strong>1,440 ש"ח</strong></p>
-<p>מספר טורים: <strong>240</strong></p>
-<p>סכום זכיה: <strong>0 ש"ח</strong></p>
-<a href="https://intimiim.com/history_Lotto" class="history-button">לתוצאות ההגרלות הקודמות</a>
-</div>
-<div class="image-container">
-    <img src="2024-12-26_דאבל_שיטתי.png" alt="2024-12-26_דאבל_שיטתי">
-    <img src="2024-12-26_דאבל.png" alt="2024-12-26_דאבל">
-    <img src="2024-12-26_דאבל_שני.png" alt="2024-12-26_דאבל_שני">
-</div>
+    <h1>אינטימיים שולחים יחד לוטו</h1>
+    <div class="countdown" id="countdown">
+        מחשבים הזמן...
+    </div>
+    <div class="details">
+        <div class="detail">משתתפים: בר</div>
+        <div class="detail">סכום שנאסף: 120 ש"ח</div>
+        <div class="detail">מספר טורים: 20</div>
+    </div>
+    <footer>
+        🏗️
+    </footer>
+
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("2024-12-27T22:00:00");
+            const now = new Date();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+                const milliseconds = Math.floor((difference % 1000) / 100);
+
+                document.getElementById("countdown").innerText =
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${milliseconds}`;
+            } else {
+                document.getElementById("countdown").innerText = "00:00:00.0";
+            }
+        }
+
+        setInterval(updateCountdown, 100);
+        updateCountdown();
+    </script>
 </body>
 </html>
