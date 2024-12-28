@@ -47,7 +47,6 @@
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,87,34,1) 0%, rgba(255,0,0,1) 100%);
             color: white;
             font-size: 1rem;
             text-align: center;
@@ -59,6 +58,15 @@
         }
         .bubble:hover {
             transform: scale(1.1);
+        }
+        .bubble.gabi {
+            background: radial-gradient(circle, rgba(255,255,0,1) 0%, rgba(255,200,0,1) 100%);
+        }
+        .bubble.asimush, .bubble.sagi {
+            background: radial-gradient(circle, rgba(0,128,255,1) 0%, rgba(0,64,255,1) 100%);
+        }
+        .bubble.default {
+            background: radial-gradient(circle, rgba(64,64,64,1) 0%, rgba(32,32,32,1) 100%);
         }
         .history-button {
             margin-top: 20px;
@@ -80,16 +88,16 @@
         מחשבים הזמן...
     </div>
     <div class="bubble-container">
-        <div class="bubble" style="width: 109px; height: 109px;">בר<br>10.93%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">אורנזי<br>10.93%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">גבי<br>10.93%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">צביקה<br>10.93%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">שגיא<br>10.93%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">יונגר<br>10.93%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">אסימוש<br>10.93%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">רועי.ב<br>10.93%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">זקיס<br>10.93%</div>
-        <div class="bubble" style="width: 50px; height: 50px;">רן<br>1.63%</div>
+        <div class="bubble default" style="width: 109px; height: 109px;">בר<br>10.93%</div>
+        <div class="bubble default" style="width: 109px; height: 109px;">אורנזי<br>10.93%</div>
+        <div class="bubble gabi" style="width: 109px; height: 109px;">גבי<br>10.93%</div>
+        <div class="bubble default" style="width: 109px; height: 109px;">צביקה<br>10.93%</div>
+        <div class="bubble sagi" style="width: 109px; height: 109px;">שגיא<br>10.93%</div>
+        <div class="bubble default" style="width: 109px; height: 109px;">יונגר<br>10.93%</div>
+        <div class="bubble asimush" style="width: 109px; height: 109px;">אסימוש<br>10.93%</div>
+        <div class="bubble default" style="width: 109px; height: 109px;">רועי.ב<br>10.93%</div>
+        <div class="bubble default" style="width: 109px; height: 109px;">זקיס<br>10.93%</div>
+        <div class="bubble default" style="width: 50px; height: 50px;">רן<br>1.63%</div>
     </div>
     <a href="https://intimiim.com/history_Lotto/" class="history-button">לתוצאות ההגרלות הקודמות</a>
 
