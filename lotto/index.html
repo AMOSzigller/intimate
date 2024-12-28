@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -16,30 +17,12 @@
     h1, h2 {
         color: #1a73e8;
     }
-    .details, .summary {
+    .details {
         margin: 20px auto;
         padding: 15px;
         border-radius: 8px;
         background-color: #1e1e1e;
         width: 80%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .finished {
-        color: red;
-        font-size: 1.5em;
-    }
-    .image-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin: 20px;
-    }
-    .image-container img {
-        max-width: 45%;
-        height: auto;
-        border: 2px solid #333;
-        border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
     .button {
@@ -58,26 +41,49 @@
     .button:hover {
         background-color: #1558b0;
     }
+    .countdown {
+        font-size: 3em;
+        color: #ffa500;
+        margin: 20px 0;
+    }
+    .crane {
+        font-size: 2em;
+        margin-top: 10px;
+    }
 </style>
+<script>
+    function updateCountdown() {
+        const targetDate = new Date("2024-12-31T23:30:00+02:00").getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance >= 0) {
+            const totalHours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+            const milliseconds = String(Math.floor((distance % 1000) / 100)).padStart(1, '0');
+
+            document.getElementById("countdown").textContent = `${totalHours}:${minutes}:${seconds}.${milliseconds}`;
+            setTimeout(updateCountdown, 100);
+        } else {
+            document.getElementById("countdown").textContent = "00:00:00.0";
+        }
+    }
+    document.addEventListener("DOMContentLoaded", updateCountdown);
+</script>
 </head>
 <body>
 <h1>אינטימיים שולחים יחד לוטו</h1>
-<p class="finished">ההגרלה הסתיימה</p>
-<p style="font-size: 1.5em; color: #ffa500;">תוצאות האמת: 34, 30, 24, 15, 13, 6 | מספר חזק: 7</p>
+<p>ההגרלה הבאה בעוד</p>
+<div id="countdown" class="countdown"></div>
 <div class="details">
-<p>שותפים 8.03%</p>
-<p>בר, אורנזי, גבי, צביקה, שגיא, יונגר, אסימוש, רועי.ב, זקיס, שוקי, רועי.ש, עדי</p>
-<p>שותפים 1.21%</p>
-<p>רן, ינון, נדב</p>
-<p>סכום שנאסף: <strong>1,494 ש"ח</strong></p>
-<p>מספר טורים: <strong>249</strong></p>
-<p>סכום זכיה: <strong>180 ש"ח</strong></p>
-<a href="https://intimiim.com/history_Lotto/" class="button">לתוצאות ההגרלות הקודמות</a>
-</div>
-<div class="image-container">
-    <img src="2024-12-28 1_3.png" alt="2024-12-28 1_3">
-    <img src="2024-12-28 2_3.png" alt="2024-12-28 2_3">
-    <img src="2024-12-28 3_3.png" alt="2024-12-28 3_3">
+<p>עלות ההשתתפות: 6-120 ש"ח (בכפולות של 6)</p>
+<p>משתתפים:</p>
+<p>בר (120 ש"ח)</p>
+<p>סכום שנאסף: 120 ש"ח</p>
+<p>מספר טורים: 20</p>
+<a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
+<div class="crane">🏗️</div>
 </div>
 </body>
 </html>
