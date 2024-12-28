@@ -1,108 +1,83 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אינטימיים שולחים יחד לוטו</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #121212;
-            color: #e0e0e0;
-            text-align: center;
-        }
-        h1 {
-            font-size: 3rem;
-            margin: 0.5rem;
-            color: #00e676;
-        }
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #f0f0f0;
-        }
-        .countdown {
-            font-size: 3rem;
-            color: #ff5722;
-            font-family: 'Courier New', Courier, monospace;
-            margin-bottom: 1rem;
-        }
-        .view-forms-button {
-            display: inline-block;
-            width: 200px;
-            padding: 0.5rem;
-            text-align: center;
-            font-size: 1.2rem;
-            color: #ffffff;
-            background-color: #2196f3;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            margin-bottom: 2rem;
-        }
-        .view-forms-button:hover {
-            background-color: #1976d2;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 auto;
-            max-width: 400px;
-            text-align: left;
-        }
-        li {
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-        }
-    </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>אינטימיים שולחים יחד לוטו</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #e0e0e0;
+        text-align: center;
+    }
+    h1, h2 {
+        color: #1a73e8;
+    }
+    .details, .summary {
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #1e1e1e;
+        width: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .finished {
+        color: red;
+        font-size: 1.5em;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px;
+    }
+    .image-container img {
+        max-width: 45%;
+        height: auto;
+        border: 2px solid #333;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #ffffff;
+        background-color: #1a73e8;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .button:hover {
+        background-color: #1558b0;
+    }
+</style>
 </head>
 <body>
-    <h1>אינטימיים שולחים יחד לוטו</h1>
-    <div class="subtitle">ההגרלה מתקיימת בעוד</div>
-    <div class="countdown" id="countdown">00:00:00.0</div>
-    <a class="view-forms-button" href="https://drive.google.com/drive/folders/1f6-f6N8WMrat9OHkg_s8IOudmaqrX0Vh?usp=sharing" target="_blank">לצפייה בטפסים</a>
-    <ul>
-        <li>בר - 8%</li>
-        <li>אורנזי - 8%</li>
-        <li>גבי - 8%</li>
-        <li>צביקה - 8%</li>
-        <li>שגיא - 8%</li>
-        <li>יונגר - 8%</li>
-        <li>אסימוש - 8%</li>
-        <li>רועי.ב - 8%</li>
-        <li>זקיס - 8%</li>
-        <li>שוקי - 8%</li>
-        <li>רועי.ש - 8%</li>
-        <li>עדי - 8%</li>
-        <li>רן - 1%</li>
-        <li>ינון - 1%</li>
-        <li>נדב - 1%</li>
-    </ul>
-
-    <script>
-        const countdownElement = document.getElementById("countdown");
-        const targetDate = new Date("2024-12-28T23:30:00+02:00");
-
-        function updateCountdown() {
-            const now = new Date();
-            const timeLeft = targetDate - now;
-
-            if (timeLeft > 0) {
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                const milliseconds = Math.floor((timeLeft % 1000) / 100);
-
-                countdownElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${milliseconds}`;
-            } else {
-                countdownElement.textContent = "00:00:00.0";
-            }
-        }
-
-        setInterval(updateCountdown, 100);
-    </script>
+<h1>אינטימיים שולחים יחד לוטו</h1>
+<p class="finished">ההגרלה הסתיימה</p>
+<p style="font-size: 1.5em; color: #ffa500;">תוצאות האמת: 34, 30, 24, 15, 13, 6 | מספר חזק: 7</p>
+<div class="details">
+<p>שותפים 8.03%</p>
+<p>בר, אורנזי, גבי, צביקה, שגיא, יונגר, אסימוש, רועי.ב, זקיס, שוקי, רועי.ש, עדי</p>
+<p>שותפים 1.21%</p>
+<p>רן, ינון, נדב</p>
+<p>סכום שנאסף: <strong>1,494 ש"ח</strong></p>
+<p>מספר טורים: <strong>249</strong></p>
+<p>סכום זכיה: <strong>0 ש"ח</strong></p>
+<a href="https://intimiim.com/history_Lotto/" class="button">לתוצאות ההגרלות הקודמות</a>
+</div>
+<div class="image-container">
+    <img src="2024-12-28 1_3.png" alt="2024-12-28 1_3">
+    <img src="2024-12-28 2_3.png" alt="2024-12-28 2_3">
+    <img src="2024-12-28 3_3.png" alt="2024-12-28 3_3">
+</div>
 </body>
 </html>
