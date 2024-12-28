@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -12,33 +11,27 @@
             padding: 0;
             background: #121212;
             color: #e0e0e0;
-            overflow: hidden;
-            position: relative;
-            height: 100vh;
+            text-align: center;
         }
         h1 {
             font-size: 3rem;
             margin: 0.5rem;
             color: #00e676;
-            text-align: center;
         }
         .subtitle {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: #f0f0f0;
-            text-align: center;
         }
         .countdown {
             font-size: 3rem;
             color: #ff5722;
             font-family: 'Courier New', Courier, monospace;
-            text-align: center;
             margin-bottom: 1rem;
         }
         .view-forms-button {
-            display: block;
+            display: inline-block;
             width: 200px;
-            margin: 0 auto 1rem;
             padding: 0.5rem;
             text-align: center;
             font-size: 1.2rem;
@@ -48,56 +41,21 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            margin-bottom: 2rem;
         }
         .view-forms-button:hover {
             background-color: #1976d2;
         }
-        .bubble-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            border: 2px solid #e0e0e0;
-            overflow: hidden;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 400px;
+            text-align: left;
         }
-        .bubble, .heart {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            font-weight: bold;
-            text-align: center;
-        }
-        .bubble {
-            background: radial-gradient(circle, rgba(64,64,64,1) 0%, rgba(32,32,32,1) 100%);
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-        .bubble.gabi {
-            background: radial-gradient(circle, rgba(255,255,0,1) 0%, rgba(255,200,0,1) 100%);
-            color: blue;
-            text-shadow: none;
-        }
-        .bubble.adi {
-            background-image: url('./adi.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-shadow: 1px 1px 2px black;
-        }
-        .heart {
-            width: 100px;
-            height: 100px;
+        li {
             font-size: 1.2rem;
-            color: white;
-            font-weight: bold;
-            background-image: url('./heart.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            margin: 0.5rem 0;
         }
     </style>
 </head>
@@ -106,23 +64,23 @@
     <div class="subtitle">ההגרלה מתקיימת בעוד</div>
     <div class="countdown" id="countdown">00:00:00.0</div>
     <a class="view-forms-button" href="https://drive.google.com/drive/folders/1f6-f6N8WMrat9OHkg_s8IOudmaqrX0Vh?usp=sharing" target="_blank">לצפייה בטפסים</a>
-    <div class="bubble-container" id="bubble-container">
-        <div class="bubble" style="width: 109px; height: 109px;">בר<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">אורנזי<br>8%</div>
-        <div class="bubble gabi" style="width: 109px; height: 109px;">גבי<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">צביקה<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px; background-color: blue;">שגיא<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">יונגר<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px; background-color: blue;">אסימוש<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">רועי.ב<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">זקיס<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">שוקי<br>8%</div>
-        <div class="bubble" style="width: 109px; height: 109px;">רועי.ש<br>8%</div>
-        <div class="bubble adi" style="width: 109px; height: 109px;">עדי<br>8%</div>
-        <div class="bubble" style="width: 50px; height: 50px;">רן<br>1%</div>
-        <div class="bubble" style="width: 50px; height: 50px;">ינון<br>1%</div>
-        <div class="heart">נדב<br>1%</div>
-    </div>
+    <ul>
+        <li>בר - 8%</li>
+        <li>אורנזי - 8%</li>
+        <li>גבי - 8%</li>
+        <li>צביקה - 8%</li>
+        <li>שגיא - 8%</li>
+        <li>יונגר - 8%</li>
+        <li>אסימוש - 8%</li>
+        <li>רועי.ב - 8%</li>
+        <li>זקיס - 8%</li>
+        <li>שוקי - 8%</li>
+        <li>רועי.ש - 8%</li>
+        <li>עדי - 8%</li>
+        <li>רן - 1%</li>
+        <li>ינון - 1%</li>
+        <li>נדב - 1%</li>
+    </ul>
 
     <script>
         const countdownElement = document.getElementById("countdown");
@@ -134,7 +92,7 @@
 
             if (timeLeft > 0) {
                 const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60)) / (1000 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
                 const milliseconds = Math.floor((timeLeft % 1000) / 100);
 
@@ -144,82 +102,7 @@
             }
         }
 
-        const bubbleContainer = document.getElementById('bubble-container');
-        const bubbles = Array.from(bubbleContainer.children);
-        const velocities = bubbles.map(() => ({
-            x: Math.random() * 4 - 2,
-            y: Math.random() * 4 - 2
-        }));
-
-        function checkCollision(b1, b2) {
-            const dx = b1.offsetLeft - b2.offsetLeft;
-            const dy = b1.offsetTop - b2.offsetTop;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            return distance < (b1.offsetWidth / 2 + b2.offsetWidth / 2);
-        }
-
-        function resolveCollision(b1, b2, v1, v2) {
-            const dx = b1.offsetLeft - b2.offsetLeft;
-            const dy = b1.offsetTop - b2.offsetTop;
-            const angle = Math.atan2(dy, dx);
-            const speed1 = Math.sqrt(v1.x ** 2 + v1.y ** 2);
-            const speed2 = Math.sqrt(v2.x ** 2 + v2.y ** 2);
-            const direction1 = Math.atan2(v1.y, v1.x);
-            const direction2 = Math.atan2(v2.y, v2.x);
-
-            v1.x = speed2 * Math.cos(direction2 - angle);
-            v1.y = speed2 * Math.sin(direction2 - angle);
-            v2.x = speed1 * Math.cos(direction1 - angle);
-            v2.y = speed1 * Math.sin(direction1 - angle);
-        }
-
-        function moveBubbles() {
-            const containerRect = bubbleContainer.getBoundingClientRect();
-
-            bubbles.forEach((bubble, index) => {
-                const velocity = velocities[index];
-                const rect = bubble.getBoundingClientRect();
-
-                let newX = rect.left + velocity.x;
-                let newY = rect.top + velocity.y;
-
-                // Bounce off walls
-                if (newX <= containerRect.left || newX + rect.width >= containerRect.right) {
-                    velocities[index].x *= -1;
-                }
-                if (newY <= containerRect.top || newY + rect.height >= containerRect.bottom) {
-                    velocities[index].y *= -1;
-                }
-
-                // Check collisions with other bubbles
-                for (let i = 0; i < bubbles.length; i++) {
-                    if (i !== index && checkCollision(bubble, bubbles[i])) {
-                        resolveCollision(bubble, bubbles[i], velocities[index], velocities[i]);
-                    }
-                }
-
-                bubble.style.left = `${bubble.offsetLeft + velocities[index].x}px`;
-                bubble.style.top = `${bubble.offsetTop + velocities[index].y}px`;
-            });
-        }
-
-        // Add click event to change direction
-        bubbles.forEach((bubble, index) => {
-            bubble.addEventListener('click', () => {
-                velocities[index].x *= -1;
-                velocities[index].y *= -1;
-            });
-        });
-
-        // Initialize positions
-        bubbles.forEach(bubble => {
-            bubble.style.position = 'absolute';
-            bubble.style.left = `${Math.random() * (bubbleContainer.offsetWidth - bubble.offsetWidth)}px`;
-            bubble.style.top = `${Math.random() * (bubbleContainer.offsetHeight - bubble.offsetHeight)}px`;
-        });
-
         setInterval(updateCountdown, 100);
-        setInterval(moveBubbles, 16);
     </script>
 </body>
 </html>
