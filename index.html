@@ -3,129 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אינטימיים</title>
+    <title>אתר האינטימיים</title>
     <style>
-        /* סגנונות קיימים */
-        :root {
-            --bg-color: #121212;
-            --card-bg-color: #1e1e1e;
-            --text-color: #e0e0e0;
-            --highlight-color: #1a73e8;
-            --button-bg-color: #333333;
-            --button-hover-color: #474747;
-            --new-button-color: #4CAF50;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            direction: rtl;
+            text-align: center;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background: #121212;
+            color: #e0e0e0;
         }
-
-        header {
-            background-color: var(--card-bg-color);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid var(--highlight-color);
-        }
-
-        h1 {
-            font-size: 2em;
-            margin: 0;
-        }
-
-        nav {
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 15px 0;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: var(--button-bg-color);
-            display: inline-block;
+        .container {
+            margin: 50px auto;
             width: 90%;
-        }
-
-        nav ul li a:hover {
-            background-color: var(--button-hover-color);
-        }
-
-        .new-feature {
+            max-width: 400px;
+            background: #1e1e1e;
             padding: 20px;
-            background-color: #222;
-            color: var(--highlight-color);
-            text-align: center;
-            margin: 20px 0;
-            border-radius: 8px;
-            font-size: 1.2em;
-            animation: pulse 2s infinite;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        @keyframes pulse {
-            0% { opacity: 0.8; }
-            50% { opacity: 1; }
-            100% { opacity: 0.8; }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #292929;
+            color: #e0e0e0;
         }
-
-        footer {
-            background-color: var(--card-bg-color);
-            color: var(--text-color);
-            text-align: center;
-            padding: 20px;
-            border-top: 2px solid var(--highlight-color);
+        input[type="text"]::placeholder, input[type="password"]::placeholder {
+            color: rgba(224, 224, 224, 0.7);
         }
-
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5em;
-            }
-
-            nav ul li a {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #26a69a, #00695c);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #4db6ac, #004d40);
+        }
+        .buttons {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .buttons button {
+            width: 100%;
+            margin: 10px 0;
+        }
+        .buttons button:hover {
+            background: linear-gradient(135deg, #4fc3f7, #0288d1);
         }
     </style>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'אינטימי' && password === 'כולם_שונאים_שיחות_וידאו') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+            } else {
+                alert('שם משתמש או ססמא לא נכונים');
+            }
+        }
+
+        function premiumFeature() {
+            alert('זמין למנויים בתשלום בלבד');
+        }
+    </script>
 </head>
 <body>
-
-<header>
-    <h1>ברוכים הבאים לאתר האינטימיים</h1>
-</header>
-
-<main>
-    <nav>
-        <ul>
-            <li><a href="/lotto/index.html" class="new-button">הגרלת הלוטו</a></li>
-            <li><a href="/hsrank">HS Standard Leaderboards</a></li>
-            <li><a href="https://intimiim.com/crypto" class="new-button">קריפטו</a></li>
-            <li><a href="/quiz" class="quiz-button">תשובות לחידון האינטימיים הגדול</a></li>
-            <li><a href="/arabi" class="new-button">?ערבי, מזרחי או אינטימי</a></li>
-            <li><a href="https://nadavstocks.com" target="_blank">תשאל את נדב מה מחיר הביטקוין</a></li>
-        </ul>
-    </nav>
-    <div class="new-feature">
-        🎉 IntimiBets :בקרוב  🎲
+    <div id="loginForm" class="container">
+        <h1>ברוכים הבאים לאתר האינטימיים</h1>
+        <input type="text" id="username" placeholder="שם משתמש">
+        <input type="password" id="password" placeholder="ססמא">
+        <button onclick="login()">כניסה</button>
     </div>
-</main>
 
-<footer>
-    <p>&copy; 2024 אינטימיים. כל הזכויות שמורות</p>
-</footer>
-
+    <div id="mainContent" class="container" style="display: none;">
+        <h1>ברוכים הבאים לאתר האינטימיים</h1>
+        <div class="buttons">
+            <button onclick="premiumFeature()">אינטימיים שולחים יחד לוטו</button>
+            <button onclick="window.location.href='https://intimiim.com/hsrank'">אינטימיים משחקים הארתסטון</button>
+            <button onclick="premiumFeature()">הרשמה ללייזר טאג ועל האש קבוצתי</button>
+            <button onclick="premiumFeature()">הבלוג של האינטימיים</button>
+            <button onclick="premiumFeature()">חידת האינטימיים</button>
+            <button onclick="premiumFeature()">סקר האינטימיים הגדול</button>
+            <button onclick="premiumFeature()">קריפטו</button>
+            <button onclick="premiumFeature()">סימולטור אינטימי</button>
+        </div>
+    </div>
 </body>
 </html>
