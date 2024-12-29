@@ -63,11 +63,16 @@
         }
     </style>
     <script>
+        function flipIntimi() {
+            alert('פליפ אינטימי מבוצע בהצלחה!');
+        }
+    
         function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            if (username === 'אינטימי' && password === 'כולם_שונאים_שיחות_וידאו') {
+            if ((username === 'אינטימי' && password === 'כולם_שונאים_שיחות_וידאו') || 
+                      (username === 'Nadav' && password === 'Nadav1234')) {
                 document.getElementById('loginForm').style.display = 'none';
                 document.getElementById('mainContent').style.display = 'block';
             } else {
@@ -91,6 +96,7 @@
     <div id="mainContent" class="container" style="display: none;">
         <h1>ברוכים הבאים לאתר האינטימיים</h1>
         <div class="buttons">
+            <button onclick="flipIntimi()">פליפ אינטימי</button>
             <button onclick="premiumFeature()">אינטימיים שולחים יחד לוטו</button>
             <button onclick="window.location.href='https://intimiim.com/hsrank'">אינטימיים משחקים הארתסטון</button>
             <button onclick="premiumFeature()">הרשמה ללייזר טאג ועל האש קבוצתי</button>
