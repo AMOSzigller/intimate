@@ -1,89 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="he">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>אינטימיים שולחים יחד לוטו</title>
-<style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #121212;
-        color: #e0e0e0;
-        text-align: center;
-    }
-    h1, h2 {
-        color: #1a73e8;
-    }
-    .details {
-        margin: 20px auto;
-        padding: 15px;
-        border-radius: 8px;
-        background-color: #1e1e1e;
-        width: 80%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .button {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 1em;
-        color: #ffffff;
-        background-color: #1a73e8;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-        cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    .button:hover {
-        background-color: #1558b0;
-    }
-    .countdown {
-        font-size: 3em;
-        color: #ffa500;
-        margin: 20px 0;
-    }
-    .crane {
-        font-size: 2em;
-        margin-top: 10px;
-    }
-</style>
-<script>
-    function updateCountdown() {
-        const targetDate = new Date("2024-12-31T23:30:00+02:00").getTime();
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance >= 0) {
-            const totalHours = Math.floor(distance / (1000 * 60 * 60));
-            const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-            const milliseconds = String(Math.floor((distance % 1000) / 100)).padStart(1, '0');
-
-            document.getElementById("countdown").textContent = `${totalHours}:${minutes}:${seconds}.${milliseconds}`;
-            setTimeout(updateCountdown, 100);
-        } else {
-            document.getElementById("countdown").textContent = "00:00:00.0";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אתר האינטימיים</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            direction: rtl;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
         }
-    }
-    document.addEventListener("DOMContentLoaded", updateCountdown);
-</script>
+        .container {
+            margin: 50px auto;
+            width: 90%;
+            max-width: 400px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #292929;
+            color: #e0e0e0;
+        }
+        input[type="text"]::placeholder, input[type="password"]::placeholder {
+            color: rgba(224, 224, 224, 0.7);
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #26a69a, #00695c);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #4db6ac, #004d40);
+        }
+    </style>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'אינטימי' && password === 'כולם_שונאים_שיחות_וידאו') {
+                alert('זמין למנויים בתשלום בלבד');
+            } else {
+                alert('שם משתמש או ססמא לא נכונים');
+            }
+        }
+    </script>
 </head>
 <body>
-<h1>אינטימיים שולחים יחד לוטו</h1>
-<p>ההגרלה הבאה בעוד</p>
-<div id="countdown" class="countdown"></div>
-<div class="details">
-<p>עלות ההשתתפות: 6-120 ש"ח (בכפולות של 6)</p>
-<p>משתתפים</p>
-<p>בר (120 ש"ח)</p>
-<p>סכום שנאסף: 120 ש"ח</p>
-<p>מספר טורים: 20</p>
-<a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
-<div class="crane">🏗️</div>
-</div>
+    <div id="loginForm" class="container">
+        <h1>ברוכים הבאים לאתר האינטימיים</h1>
+        <input type="text" id="username" placeholder="שם משתמש">
+        <input type="password" id="password" placeholder="ססמא">
+        <button onclick="login()">כניסה</button>
+    </div>
 </body>
 </html>
