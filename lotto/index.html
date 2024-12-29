@@ -56,7 +56,8 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            if (username === 'אינטימי' && password === 'כולם_שונאים_שיחות_וידאו') {
+            if ((username === 'אינטימי' && password === 'כולם_שונאים_שיחות_וידאו') || 
+                (username === 'Nadav' && password === 'Nadav1234')) {
                 alert('זמין למנויים בתשלום בלבד');
             } else {
                 alert('שם משתמש או ססמא לא נכונים');
