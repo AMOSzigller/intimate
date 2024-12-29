@@ -1,158 +1,75 @@
-<html dir="rtl"> 
+<!DOCTYPE html>
+<html lang="he">
 <head>
-	<meta charset="utf-8" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<title>ערבי, מזרחי או אינטימי?</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אתר האינטימיים</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            direction: rtl;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
+        }
+        .container {
+            margin: 50px auto;
+            width: 90%;
+            max-width: 400px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #292929;
+            color: #e0e0e0;
+        }
+        input[type="text"]::placeholder, input[type="password"]::placeholder {
+            color: rgba(224, 224, 224, 0.7);
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(135deg, #26a69a, #00695c);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #4db6ac, #004d40);
+        }
+    </style>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-	<meta property="og:title" content="?ערבי, מזרחי או אינטימי" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://mizrahiolo.github.io/0.jpg" />
-    <meta property="og:url" content="https://mizrahiolo.github.io/index.html" />
-    <meta property="og:site_name" content="?ערבי, מזרחי או אינטימי" />
-    <meta property="og:description" content="החידון שמשגע את האינטימיים" />
-    <meta property="fb:admins" content="johndoe" />
-
-<style>
-a:link {color: black; }
-
-	body {
-		font-family: Arial;
-	}
-
-	.peace {
-		padding-top: 12px;
-		font-size: 12;
-	}
-	.checkButton {
-		margin: 0 auto;
-		color: white;
-		width: 200px;
-		padding: 10px;	
-		background-color: #89E897;
-		font-size: 30;
-		text-decoration: underline;
-	}
-
-	.checkButton a:link {
-		color: black;
-	}
-
-	.option {
-		padding: 5px;
-	}
-
-	.checkButton a:visited {
-		color: black;
-	}
-
-	.answersTd {
-		text-align: center;
-		border-bottom-color: #BDDEDD;
-		margin-bottom: 10px;
-		border-bottom: 10px;
-		padding-bottom: 25px;
-		font-size: 24;
-	}
-
-	.logoTd {
-		text-align: center;
-		padding-bottom: 10px;
-		font-size: 52;
-	}
-
-	.imgTd {
-		text-align: center;
-		font-size: 62;
-	}
-	
-	.img {
-		background-color: #BDDEDD;
-		padding: 20px;
-	}
-
-	.tbl {
-		margin: 0 auto;
-	}
-</style>
-
-<script type="text/javascript">
-	// וקטור התשובות: תמונה 0 = אינטימי (10), כל השאר = ערבי (00)
-	var answersVector = 0b000000000000000000000000000000000010; // רק ביטים 0 ו-1 הם "אינטימי".
-
-	var arrOptions = ["ערבי", "מזרחי", "אינטימי"]; // 3 אפשרויות בחירה
-	var NUM_OF_OPTIONS = arrOptions.length;
-	var NUM_OF_QUESTIONS = 18;
-	var correctColor = "#89E897";
-	var wrongColor = "#E88989";
-
-	var wrongUnic = "&#10008;";
-	var correctUnic = "&#10003;";
-
-	function checkAnswers() {
-		var curAns;
-		var totalCorrect = 0;
-
-		for (var i = 0; i < NUM_OF_QUESTIONS; i++) {
-			curAns = $("input:radio[name='" + i + "']:checked").val();
-			var correctAns = (parseInt(answersVector, 10) >> (i * 2)) & 0b11; // בודקים את 2 הביטים של כל תשובה
-
-			if (curAns == undefined) 
-				curAns = -1;
-
-			if (curAns == correctAns) {
-				$("#img" + i).css('background-color', correctColor);
-				$("#imgTd" + i).append(correctUnic);
-				$("#option" + i + "_" + curAns).css('background-color', correctColor);
-				totalCorrect++;
-			} else {
-				$("#img" + i).css('background-color', wrongColor);
-				$("#option" + i + "_" + correctAns).css('background-color', correctColor);
-				$("#imgTd" + i).append(wrongUnic);
-			}
-		}
-
-		$("#logo").fadeOut();
-		window.scrollTo(0, 0);
-		$("#logo").append("<span style='background-color: #89E897;'> פגעת ב-" + totalCorrect + " מתוך " + NUM_OF_QUESTIONS + "</span>");
-		$("#logo").fadeIn();
-	}
-
-	function putRow(num) {
-		var rowStr = "<tr><td id='imgTd" + num + "' class='imgTd' colspan='" + NUM_OF_OPTIONS + "'><img class='img' src='" + num + ".jpg' id='img" + num + "'></td></tr><tr class='answersTr'><td class='answersTd'>";
-		for (var i = 0; i < NUM_OF_OPTIONS; i++) {
-			rowStr += "<input type='radio' name='" + num + "' value='" + i + "'><span id ='option" + num + "_" + i + "' class='option'>" + arrOptions[i] + "</span>&nbsp;";
-		}
-		rowStr += "</td></tr>";
-
-		$("#mainTable").append(rowStr);
-	}
-
-	function initTable() {
-		for (var i = 0; i < NUM_OF_QUESTIONS; i++) {
-			putRow(i);
-		}
-	}
-</script>
+            if (username === 'אינטימי' && password === 'כולם_שונאים_שיחות_וידאו') {
+                alert('זמין למנויים בתשלום בלבד');
+            } else {
+                alert('שם משתמש או ססמא לא נכונים');
+            }
+        }
+    </script>
 </head>
-
-<body onLoad="initTable()">
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-
-	<form name="answers" id="answersRadios">
-		<table class="tbl" border="0" id="mainTable">
-			<tr><td id ="logo" class="logoTd" colspan="3"><div class="title">ערבי, מזרחי או אינטימי?</div></td></tr>
-		</table>
-		<p>
-		<div align="center">
-			<div class="checkButton" onClick="checkAnswers()"><a href="#">גלגל</a></div>
-		</div>
-	</form>
+<body>
+    <div id="loginForm" class="container">
+        <h1>ברוכים הבאים לאתר האינטימיים</h1>
+        <input type="text" id="username" placeholder="שם משתמש">
+        <input type="password" id="password" placeholder="ססמא">
+        <button onclick="login()">כניסה</button>
+    </div>
 </body>
 </html>
