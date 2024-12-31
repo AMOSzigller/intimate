@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const submissions = [];
-
+.
 app.post('/submit', (req, res) => {
     const { name, numbers, strongNumber } = req.body;
 
