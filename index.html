@@ -1,112 +1,164 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אתר האינטימיים</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            direction: rtl;
-            text-align: center;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: #121212;
+            background-color: #121212;
             color: #e0e0e0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .container {
-            margin: 50px auto;
-            width: 90%;
-            max-width: 400px;
-            background: #1e1e1e;
+        header {
             padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            background: #292929;
-            color: #e0e0e0;
-        }
-        input[type="text"]::placeholder, input[type="password"]::placeholder {
-            color: rgba(224, 224, 224, 0.7);
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background: linear-gradient(135deg, #26a69a, #00695c);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            background: #1e1e1e;
+            color: #76c7c0;
+            font-size: 24px;
             font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        button:hover {
-            background: linear-gradient(135deg, #4db6ac, #004d40);
-        }
-        .buttons {
-            margin: 20px auto;
-            max-width: 600px;
-        }
-        .buttons button {
             width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        .button {
+            background: #333333;
+            border: 1px solid #76c7c0;
+            color: #76c7c0;
+            padding: 15px 30px;
+            font-size: 1em;
             margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 80%;
+            max-width: 400px;
         }
-        .buttons button:hover {
-            background: linear-gradient(135deg, #4fc3f7, #0288d1);
+        .button:hover {
+            background: #76c7c0;
+            color: #121212;
+            transform: translateY(-3px);
         }
-    </style>
-    <script>
-        function flipIntimi() {
-            alert('פליפ אינטימי מבוצע בהצלחה!');
-        }
-    
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            if ((username === 'אינטימי' && password === 'כולם_שונאים_שיחות_וידאו') || 
-                      (username === 'Nadav' && password === 'Nadav1234')) {
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
-            } else {
-                alert('שם משתמש או ססמא לא נכונים');
+        @media (max-width: 600px) {
+            .button {
+                padding: 12px 20px;
+                font-size: 0.9em;
             }
         }
-
-        function premiumFeature() {
-            alert('זמין למנויים בתשלום בלבד');
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1e1e1e;
+            border: 1px solid #76c7c0;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
         }
-    </script>
+        .popup input {
+            width: 80%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #76c7c0;
+            border-radius: 5px;
+            background: #333333;
+            color: #e0e0e0;
+        }
+        .popup button {
+            background: #76c7c0;
+            border: none;
+            color: #121212;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .popup button:hover {
+            background: #28a745;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
-    <div id="loginForm" class="container">
-        <h1>ברוכים הבאים לאתר האינטימיים</h1>
-        <input type="text" id="username" placeholder="שם משתמש">
-        <input type="password" id="password" placeholder="ססמא">
-        <button onclick="login()">כניסה</button>
+    <header>אתר האינטימיים</header>
+
+    <div>
+        <button class="button" onclick="location.href='https://intimiim.com/lotto'">הגרלת הלוטו הקרובה בעוד <span id="countdown">00:00:00:00</span></button>
+        <button class="button" onclick="location.href='https://intimiim.com/hsrank'">אינטימיים עם לב אבן</button>
+        <button class="button" onclick="location.href='https://intimiim.com/crypto'">קריפטו אינטימי</button>
     </div>
 
-    <div id="mainContent" class="container" style="display: none;">
-        <h1>ברוכים הבאים לאתר האינטימיים</h1>
-        <div class="buttons">
-            <button onclick="flipIntimi()">פליפ אינטימי</button>
-            <button onclick="premiumFeature()">אינטימיים שולחים יחד לוטו</button>
-            <button onclick="window.location.href='https://intimiim.com/hsrank'">אינטימיים משחקים הארתסטון</button>
-            <button onclick="window.location.href='https://intimiim.com/numbers'">בוחרים מספרים ללוטו</button>
-            <button onclick="premiumFeature()">הרשמה ללייזר טאג ועל האש קבוצתי</button>
-            <button onclick="premiumFeature()">הבלוג של האינטימיים</button>
-            <button onclick="premiumFeature()">חידת האינטימיים</button>
-            <button onclick="premiumFeature()">סקר האינטימיים הגדול</button>
-            <button onclick="premiumFeature()">קריפטו</button>
-            <button onclick="premiumFeature()">סימולטור אינטימי</button>
-        </div>
+    <button class="button" onclick="showPremiumPopup()">אינטימיים פרימיום</button>
+
+    <div class="overlay" id="overlay" onclick="closePopups()"></div>
+
+    <div class="popup" id="premiumPopup">
+        <h3>התחבר</h3>
+        <input type="text" placeholder="שם משתמש">
+        <input type="password" placeholder="סיסמה">
+        <button onclick="alert('ברוך הבא!')">כניסה</button>
+        <button onclick="showContactPopup()">הצטרפות</button>
     </div>
+
+    <div class="popup" id="contactPopup">
+        <h3>הצטרפות</h3>
+        <p>צור קשר עם בר</p>
+    </div>
+
+    <script>
+        const targetDate = new Date('2025-01-04T23:30:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "ההגרלה הסתיימה!";
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor((distance % 1000) / 100);
+
+            document.getElementById('countdown').innerHTML = `${hours}:${minutes}:${seconds}:${milliseconds}`;
+        }
+
+        setInterval(updateCountdown, 100);
+
+        function showPremiumPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('premiumPopup').style.display = 'block';
+        }
+
+        function showContactPopup() {
+            document.getElementById('premiumPopup').style.display = 'none';
+            document.getElementById('contactPopup').style.display = 'block';
+        }
+
+        function closePopups() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('premiumPopup').style.display = 'none';
+            document.getElementById('contactPopup').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
