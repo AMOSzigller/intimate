@@ -41,8 +41,8 @@ app.post('/api/chat', async (req, res) => {
       ],
     });
 
-    // החזרת התשובה למשתמש
-    res.json({ response: response.data.choices[0].message.content });
+    // החזרת הטקסט בלבד (content) למשתמש
+    res.json({ message: response.data.choices[0].message.content });
   } catch (error) {
     console.error('Error communicating with OpenAI API:', error.response ? error.response.data : error.message);
 
