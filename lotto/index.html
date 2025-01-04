@@ -1,44 +1,131 @@
-
 <!DOCTYPE html>
 <html lang="he">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>היסטוריית הגרלות - אינטימיים</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #2c2c2c;
-            color: #f4f4f4;
-            text-align: center;
-            padding: 20px;
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>אינטימיים שולחים יחד לוטו</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #e0e0e0;
+        text-align: center;
+    }
+    h1, h2 {
+        color: #1a73e8;
+    }
+    .details {
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #1e1e1e;
+        width: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #ffffff;
+        background-color: #1a73e8;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .button:hover {
+        background-color: #1558b0;
+    }
+    .countdown {
+        font-size: 3em;
+        color: #ffa500;
+        margin: 20px 0;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+        justify-content: center; /* Center the grid horizontally */
+        align-items: center; /* Center the grid vertically */
+        text-align: center;
+        margin: 20px auto;
+        max-width: 600px; /* Set a maximum width for better centering */
+    }
+    .grid div {
+        padding: 10px;
+        background-color: #2a2a2a;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    #participationPopup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    #participationPopup button {
+        margin-top: 10px;
+    }
+</style>
+<script>
+    function updateCountdown() {
+        const targetDate = new Date("2025-01-07T23:30:00+02:00").getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance >= 0) {
+            const totalHours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+            const milliseconds = String(Math.floor((distance % 1000) / 100)).padStart(1, '0');
+
+            document.getElementById("countdown").textContent = `${totalHours}:${minutes}:${seconds}.${milliseconds}`;
+            setTimeout(updateCountdown, 100);
+        } else {
+            document.getElementById("countdown").textContent = "00:00:00.0";
         }
-        h1 {
-            color: #4CAF50;
-        }
-        .button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: white;
-            background-color: #2196F3;
-            text-decoration: none;
-            border-radius: 5px;
-            width: fit-content;
-        }
-        .button:hover {
-            background-color: #0b7dda;
-        }
-    </style>
+    }
+
+    function toggleParticipationPopup() {
+        const popup = document.getElementById('participationPopup');
+        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    document.addEventListener("DOMContentLoaded", updateCountdown);
+</script>
 </head>
 <body>
-    <h1>היסטוריית הגרלות - אינטימיים</h1>
-    <a href="https://intimiim.com/history_Lotto/2025-01-04" class="button"> 2025-01-04</a>    
-    <a href="https://intimiim.com/history_Lotto/2024-12-31" class="button"> 2024-12-31</a>
-    <a href="https://intimiim.com/history_Lotto/2024-12-28" class="button"> 2024-12-28</a>
-    <a href="https://intimiim.com/history_Lotto/2024-12-26" class="button"> 2024-12-26</a>
-    <a href="https://intimiim.com/history_Lotto/2024-12-24" class="button"> 2024-12-24</a>
-    <a href="https://intimiim.com/history_Lotto/2024-12-21" class="button"> 2024-12-21</a>
+<h1>אינטימיים שולחים יחד לוטו</h1>
+<p>ההגרלה הבאה בעוד</p>
+<div id="countdown" class="countdown"></div>
+<button class="button" onclick="toggleParticipationPopup()">?איך משתתפים</button>
+<div id="participationPopup">
+    <p>בשביל להשתתף יש להעביר לבר 120 ש"ח</p>
+    <button class="button" onclick="toggleParticipationPopup()">סגור</button>
+</div>
+<div class="details">
+<p>עלות ההשתתפות: 120 ש"ח</p>
+<p>משתתפים</p>
+<div class="grid">
+    <div>בר</div>
+    <div>רועי.ב</div>
+    <div>עדי</div>
+</div>
+<p>סכום שנאסף: 360 ש"ח</p>
+<p>מספר טורים: 60</p>
+<a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
+<div class="crane">🏗️</div>
+</div>
 </body>
 </html>
