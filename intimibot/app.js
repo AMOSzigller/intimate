@@ -1,4 +1,4 @@
-const API_URL = "https://<your-service-name>.onrender.com/api/chat";
+const API_URL = "https://intimate-1.onrender.com/api/chat";
 
 document.getElementById('askBtn').addEventListener('click', async () => {
     const question = document.getElementById('question').value;
