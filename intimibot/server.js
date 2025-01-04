@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 // הגדרת OpenAI API Key ממשתני סביבה
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY, // ודא שהמפתח מוגדר ב-Render כמשתנה סביבה
+  apiKey: process.env.OPENAI_API_KEY, // ודא שהמפתח מוגדר ב-Render
 });
 const openai = new OpenAIApi(configuration);
 
@@ -17,7 +17,7 @@ const openai = new OpenAIApi(configuration);
 app.use(bodyParser.json());
 app.use(cors());
 
-// נתיב ראשי להצגת הודעה פשוטה
+// נתיב ראשי
 app.get('/', (req, res) => {
   res.send('Welcome to Yunger AI Bot Proxy!');
 });
@@ -25,30 +25,30 @@ app.get('/', (req, res) => {
 // נתיב לטיפול בבקשות POST ל-/api/chat
 app.post('/api/chat', async (req, res) => {
   try {
-    const { prompt } = req.body; // קבלת ה-prompt מהבקשה
+    const { prompt } = req.body;
 
+    // בדיקה אם שדה ה-prompt קיים
     if (!prompt) {
       return res.status(400).send({ error: 'Prompt is required' });
     }
 
     // שליחת הבקשה ל-OpenAI API
     const response = await openai.createCompletion({
-      model: 'text-davinci-003',
+      model: 'text-davinci-003', // ודא שהמודל נגיש עבורך
       prompt: prompt,
       max_tokens: 100,
     });
 
-    // שליחת התשובה בחזרה
-    res.json(response.data.choices[0].text.trim());
+    // החזרת התשובה למשתמש
+    res.json({ response: response.data.choices[0].text.trim() });
   } catch (error) {
-    console.error(error);
-    res.status(500).send({ error: 'Error communicating with OpenAI API' });
-  }
-});
+    console.error('Error communicating with OpenAI API:', error.response ? error.response.data : error.message);
 
-// טיפול בבקשות GET ל-/api/chat
-app.get('/api/chat', (req, res) => {
-  res.status(405).send('This endpoint only supports POST requests.');
+    // טיפול בשגיאות והחזרת הודעה מפורטת
+    res.status(500).send({
+      error: error.response ? error.response.data : 'Unknown error occurred',
+    });
+  }
 });
 
 // הפעלת השרת
