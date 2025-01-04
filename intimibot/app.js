@@ -1,5 +1,5 @@
 const API_URL = "https://api.openai.com/v1/completions";
-const API_KEY = "YOUR_OPENAI_API_KEY"; // אל תכניס API Key ישירות בקוד דפדפן
+const API_KEY = "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"; // אל תכניס API Key ישירות בקוד דפדפן
 
 document.getElementById('askBtn').addEventListener('click', async () => {
     const question = document.getElementById('question').value;
