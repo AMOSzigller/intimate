@@ -17,6 +17,11 @@ const openai = new OpenAIApi(configuration);
 app.use(bodyParser.json());
 app.use(cors());
 
+// נתיב ראשי לטיפול בבקשות ל-"/"
+app.get('/', (req, res) => {
+  res.send('Welcome to Yunger AI Bot!');
+});
+
 // נתיב לטיפול בבקשות ל-OpenAI
 app.post('/api/chat', async (req, res) => {
   try {
