@@ -49,6 +49,22 @@
         font-size: 2em;
         margin-top: 10px;
     }
+    #participationPopup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    #participationPopup button {
+        margin-top: 10px;
+    }
 </style>
 <script>
     function updateCountdown() {
@@ -68,6 +84,12 @@
             document.getElementById("countdown").textContent = "00:00:00.0";
         }
     }
+
+    function toggleParticipationPopup() {
+        const popup = document.getElementById('participationPopup');
+        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
     document.addEventListener("DOMContentLoaded", updateCountdown);
 </script>
 </head>
@@ -75,22 +97,26 @@
 <h1>אינטימיים שולחים יחד לוטו</h1>
 <p>ההגרלה הבאה בעוד</p>
 <div id="countdown" class="countdown"></div>
+<button class="button" onclick="toggleParticipationPopup()">?איך משתתפים</button>
+<div id="participationPopup">
+    <p>בשביל להשתתף יש להעביר לבר 120 ש"ח</p>
+    <button class="button" onclick="toggleParticipationPopup()">סגור</button>
+</div>
 <div class="details">
 <p>עלות ההשתתפות: 120 ש"ח</p>
 <p>משתתפים</p>
-<p>בר (120 ש"ח)</p>
-<p>עדי (120 ש"ח)</p>
-<p>זקיס (120 ש"ח)</p>
-<p>שוקי (120 ש"ח)</p>
-<p>גבי (120 ש"ח)</p>
-<p>צביקה (120 ש"ח)</p>
-<p>עמית (120 ש"ח)</p>
-<p>אסימוש (120 ש"ח)</p>
-<p>יונגר (120 ש"ח)</p>
-<p>אורנזי (120 ש"ח)</p>
-<p>שגיא (120 ש"ח)</p>
-<p>רועי.ב (120 ש"ח)</p>
-    
+<p>בר</p>
+<p>עדי</p>
+<p>זקיס</p>
+<p>שוקי</p>
+<p>גבי</p>
+<p>צביקה</p>
+<p>עמית</p>
+<p>אסימוש</p>
+<p>יונגר</p>
+<p>אורנזי</p>
+<p>שגיא</p>
+<p>רועי.ב</p>
 <p>סכום שנאסף: 1,440 ש"ח</p>
 <p>מספר טורים: 240</p>
 <a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
