@@ -16,12 +16,30 @@
     h1, h2 {
         color: #1a73e8;
     }
-    .details {
+    .details, .summary {
         margin: 20px auto;
         padding: 15px;
         border-radius: 8px;
         background-color: #1e1e1e;
         width: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .finished {
+        color: red;
+        font-size: 1.5em;
+    }
+    .image-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px;
+    }
+    .image-container img {
+        max-width: 45%;
+        height: auto;
+        border: 2px solid #333;
+        border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
     .button {
@@ -40,101 +58,22 @@
     .button:hover {
         background-color: #1558b0;
     }
-    .countdown {
-        font-size: 3em;
-        color: #ffa500;
-        margin: 20px 0;
-    }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 10px;
-        justify-content: center; /* Center the grid horizontally */
-        align-items: center; /* Center the grid vertically */
-        text-align: center;
-        margin: 20px auto;
-        max-width: 600px; /* Set a maximum width for better centering */
-    }
-    .grid div {
-        padding: 10px;
-        background-color: #2a2a2a;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    #participationPopup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #1e1e1e;
-        color: #e0e0e0;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        text-align: center;
-    }
-    #participationPopup button {
-        margin-top: 10px;
-    }
 </style>
-<script>
-    function updateCountdown() {
-        const targetDate = new Date("2025-01-04T23:30:00+02:00").getTime();
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance >= 0) {
-            const totalHours = Math.floor(distance / (1000 * 60 * 60));
-            const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-            const milliseconds = String(Math.floor((distance % 1000) / 100)).padStart(1, '0');
-
-            document.getElementById("countdown").textContent = `${totalHours}:${minutes}:${seconds}.${milliseconds}`;
-            setTimeout(updateCountdown, 100);
-        } else {
-            document.getElementById("countdown").textContent = "00:00:00.0";
-        }
-    }
-
-    function toggleParticipationPopup() {
-        const popup = document.getElementById('participationPopup');
-        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-    }
-
-    document.addEventListener("DOMContentLoaded", updateCountdown);
-</script>
 </head>
 <body>
 <h1>אינטימיים שולחים יחד לוטו</h1>
-<p>ההגרלה הבאה בעוד</p>
-<div id="countdown" class="countdown"></div>
-<button class="button" onclick="toggleParticipationPopup()">?איך משתתפים</button>
-<div id="participationPopup">
-    <p>בשביל להשתתף יש להעביר לבר 120 ש"ח</p>
-    <button class="button" onclick="toggleParticipationPopup()">סגור</button>
-</div>
+<p class="finished">ההגרלה הסתיימה</p>
+<p style="font-size: 1.5em; color: #ffa500;">תוצאות האמת: 33, 28, 22, 21, 17, 6 | מספר חזק: 5</p>
 <div class="details">
-<p>עלות ההשתתפות: 120 ש"ח</p>
-<p>משתתפים</p>
-<div class="grid">
-    <div>בר</div>
-    <div>עדי</div>
-    <div>זקיס</div>
-    <div>שוקי</div>
-    <div>גבי</div>
-    <div>צביקה</div>
-    <div>עמית</div>
-    <div>אסימוש</div>
-    <div>יונגר</div>
-    <div>אורנזי</div>
-    <div>שגיא</div>
-    <div>רועי.ב</div>
+<p>שותפים שווים</p>
+<p>בר, עדי, זקיס, שוקי, גבי, צביקה, עמית, אסימוש, יונגר, אורנזי, שגיא, רועי.ב</p>
+<p>סכום שנאסף: <strong>1,440 ש"ח</strong></p>
+<p>מספר טורים: <strong>240</strong></p>
+<p>סכום זכיה: <strong>0 ש"ח</strong></p>
+<a href="https://intimiim.com/history_Lotto/" class="button">לתוצאות ההגרלות הקודמות</a>
 </div>
-<p>סכום שנאסף: 1,440 ש"ח</p>
-<p>מספר טורים: 240</p>
-<a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
-<div class="crane">🏗️</div>
+<div class="image-container">
+    <img src="2025-01-04.png" alt="2024-12-28 1_3">
 </div>
 </body>
 </html>
