@@ -20,15 +20,18 @@ document.getElementById('askBtn').addEventListener('click', async () => {
             body: JSON.stringify({ prompt: question }),
         });
 
-        const data = await response.json();
-        if (data.error) {
-            responseDiv.textContent = "Error: " + data.error.message;
-            return;
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
         }
 
-        responseDiv.textContent = data;
+        const data = await response.json();
+        if (data.error) {
+            responseDiv.textContent = `Error from API: ${data.error.message}`;
+        } else {
+            responseDiv.textContent = data;
+        }
     } catch (error) {
-        responseDiv.textContent = "שגיאה: לא ניתן לקבל תשובה.";
+        responseDiv.textContent = `שגיאה: ${error.message || "לא ניתן לקבל תשובה."}`;
         console.error(error);
     }
 });
