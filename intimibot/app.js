@@ -25,10 +25,12 @@ document.getElementById('askBtn').addEventListener('click', async () => {
         }
 
         const data = await response.json();
-        if (data.error) {
-            responseDiv.textContent = `Error from API: ${data.error.message}`;
+
+        // הצגת תוכן ההודעה (message) בלבד
+        if (data.message) {
+            responseDiv.textContent = data.message;
         } else {
-            responseDiv.textContent = data;
+            responseDiv.textContent = "שגיאה: לא התקבלה תשובה.";
         }
     } catch (error) {
         responseDiv.textContent = `שגיאה: ${error.message || "לא ניתן לקבל תשובה."}`;
