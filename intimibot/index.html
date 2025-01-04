@@ -3,14 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IntimiBot</title>
+  <title>Yunger - AI Agent</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>IntimiBot - שאל את ChatGPT</h1>
-  <input type="text" id="question" placeholder="כתוב את השאלה שלך כאן" size="50">
-  <button id="askBtn">שאל</button>
-  <div id="response"></div>
+  <div class="container">
+    <div class="header">
+      <img src="yunger.png" alt="Yunger - The AI Agent" class="agent-image">
+      <h1>Yunger</h1>
+      <h2>Your AI Crypto Agent</h2>
+    </div>
+    <div class="chat-container">
+      <p class="intro-text">I'm Yunger, your trusted AI agent for all things futuristic, crypto, and beyond. Ask me anything!</p>
+      <input type="text" id="question" placeholder="Type your question here..." class="chat-input">
+      <button id="askBtn" class="chat-button">Ask Yunger</button>
+      <div id="response" class="chat-response"></div>
+    </div>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>
