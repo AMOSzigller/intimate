@@ -45,9 +45,21 @@
         color: #ffa500;
         margin: 20px 0;
     }
-    .crane {
-        font-size: 2em;
-        margin-top: 10px;
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+        justify-content: center; /* Center the grid horizontally */
+        align-items: center; /* Center the grid vertically */
+        text-align: center;
+        margin: 20px auto;
+        max-width: 600px; /* Set a maximum width for better centering */
+    }
+    .grid div {
+        padding: 10px;
+        background-color: #2a2a2a;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
     #participationPopup {
         display: none;
@@ -105,18 +117,20 @@
 <div class="details">
 <p>עלות ההשתתפות: 120 ש"ח</p>
 <p>משתתפים</p>
-<p>בר</p>
-<p>עדי</p>
-<p>זקיס</p>
-<p>שוקי</p>
-<p>גבי</p>
-<p>צביקה</p>
-<p>עמית</p>
-<p>אסימוש</p>
-<p>יונגר</p>
-<p>אורנזי</p>
-<p>שגיא</p>
-<p>רועי.ב</p>
+<div class="grid">
+    <div>בר</div>
+    <div>עדי</div>
+    <div>זקיס</div>
+    <div>שוקי</div>
+    <div>גבי</div>
+    <div>צביקה</div>
+    <div>עמית</div>
+    <div>אסימוש</div>
+    <div>יונגר</div>
+    <div>אורנזי</div>
+    <div>שגיא</div>
+    <div>רועי.ב</div>
+</div>
 <p>סכום שנאסף: 1,440 ש"ח</p>
 <p>מספר טורים: 240</p>
 <a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
