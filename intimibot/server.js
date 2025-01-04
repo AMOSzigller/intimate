@@ -32,15 +32,17 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).send({ error: 'Prompt is required' });
     }
 
-    // שליחת הבקשה ל-OpenAI API
-    const response = await openai.createCompletion({
-      model: 'text-davinci-003', // ודא שהמודל נגיש עבורך
-      prompt: prompt,
-      max_tokens: 100,
+    // שליחת הבקשה ל-OpenAI API עם המודל gpt-3.5-turbo
+    const response = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: [
+        { role: 'system', content: 'You are an AI assistant.' },
+        { role: 'user', content: prompt },
+      ],
     });
 
     // החזרת התשובה למשתמש
-    res.json({ response: response.data.choices[0].text.trim() });
+    res.json({ response: response.data.choices[0].message.content });
   } catch (error) {
     console.error('Error communicating with OpenAI API:', error.response ? error.response.data : error.message);
 
