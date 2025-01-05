@@ -32,6 +32,7 @@ body {
 /* תמונת הסוכן */
 .agent {
   margin: 20px 0;
+  position: relative;
 }
 
 .agent-image {
@@ -39,9 +40,11 @@ body {
   height: 150px;
   border-radius: 50%;
   border: 5px solid #00ffff;
-  box-shadow: 0 0 15px #00ffff;
+  box-shadow: 0 0 15px #00ffff, 0 0 25px rgba(0, 255, 255, 0.5);
+  animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
 }
 
+/* כותרת ותיאור הסוכן */
 .agent h2 {
   font-size: 2rem;
   color: #00ffff;
@@ -50,6 +53,28 @@ body {
 .agent p {
   font-size: 1rem;
   color: #aaa;
+}
+
+/* אנימציות */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 15px #00ffff, 0 0 25px rgba(0, 255, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 25px #00ffff, 0 0 50px rgba(0, 255, 255, 0.7);
+  }
 }
 
 /* אינטראקציה */
@@ -95,7 +120,7 @@ button:hover {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* אפקטים */
+/* אפקטים נוספים */
 @keyframes fadeIn {
   from {
     opacity: 0;
