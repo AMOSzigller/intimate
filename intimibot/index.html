@@ -24,7 +24,6 @@
       <input type="text" id="question" placeholder="כאן מכניסים שאלה" />
       <button id="askBtn">תשאל את יונגר</button>
       <div id="response"></div>
-      <div id="previous-question" style="margin-top: 20px; color: #ccc;"></div>
     </div>
 
     <!-- כפתור בתחתית העמוד -->
@@ -37,7 +36,6 @@
     const questionInput = document.getElementById('question');
     const askButton = document.getElementById('askBtn');
     const responseDiv = document.getElementById('response');
-    const previousQuestionDiv = document.getElementById('previous-question');
 
     askButton.addEventListener('click', () => {
       const question = questionInput.value.trim();
@@ -46,16 +44,13 @@
         return;
       }
 
-      // שמירת השאלה הקודמת
-      previousQuestionDiv.textContent = `Previous question: ${question}`;
-
       // סימולציה של שליחת שאלה וקבלת תשובה
       responseDiv.textContent = 'חושב על תשובה...';
       setTimeout(() => {
         responseDiv.textContent = `תשובה לשאלה: ${question}`;
       }, 2000);
 
-      // השאלה לא נעלמת עד שיוזן תוכן חדש
+      // השאלה נשארת בתיבת הטקסט
     });
   </script>
 </body>
