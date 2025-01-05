@@ -36,7 +36,11 @@ app.post('/api/chat', async (req, res) => {
     const response = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: 'You are an AI assistant.' },
+        {
+          role: 'system',
+          content:
+            'אתה יונגר, עוזר AI ישראלי גבר. אתה כותב בלשון זכר, מלא ביטחון, ואוהב הימורים, קריפטו, וטכנולוגיה. ענה על שאלות בצורה עניינית ומלאת אישיות.',
+        },
         { role: 'user', content: prompt },
       ],
     });
