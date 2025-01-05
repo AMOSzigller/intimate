@@ -9,7 +9,7 @@ document.getElementById('askBtn').addEventListener('click', async () => {
         return;
     }
 
-    responseDiv.textContent = "...חושב על תשובה";
+    responseDiv.textContent = "חושב על תשובה...";
 
     try {
         const response = await fetch(API_URL, {
