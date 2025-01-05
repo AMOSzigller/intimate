@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  direction: rtl; /* הגדרת כיוון הטקסט לימין */
 }
 
 .container {
@@ -32,7 +33,6 @@ body {
 /* תמונת הסוכן */
 .agent {
   margin: 20px 0;
-  position: relative;
 }
 
 .agent-image {
@@ -44,7 +44,6 @@ body {
   animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
 }
 
-/* כותרת ותיאור הסוכן */
 .agent h2 {
   font-size: 2rem;
   color: #00ffff;
@@ -53,28 +52,7 @@ body {
 .agent p {
   font-size: 1rem;
   color: #aaa;
-}
-
-/* אנימציות */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes glow {
-  from {
-    box-shadow: 0 0 15px #00ffff, 0 0 25px rgba(0, 255, 255, 0.5);
-  }
-  to {
-    box-shadow: 0 0 25px #00ffff, 0 0 50px rgba(0, 255, 255, 0.7);
-  }
+  text-align: right; /* יישור טקסט לימין */
 }
 
 /* אינטראקציה */
@@ -92,6 +70,7 @@ input[type="text"] {
   color: #fff;
   outline: none;
   box-shadow: 0 0 10px #00ffff;
+  text-align: right; /* יישור טקסט לימין */
 }
 
 button {
@@ -117,15 +96,37 @@ button:hover {
   font-size: 1.2rem;
   color: #fff;
   text-shadow: 0 0 10px #00ffff;
+  text-align: right; /* יישור התשובה לימין */
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* אפקטים נוספים */
+/* אפקטים */
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 15px #00ffff, 0 0 25px rgba(0, 255, 255, 0.5);
+  }
+  to {
+    box-shadow: 0 0 25px #00ffff, 0 0 50px rgba(0, 255, 255, 0.7);
   }
 }
