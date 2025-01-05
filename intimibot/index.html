@@ -8,12 +8,24 @@
 </head>
 <body>
   <div class="container">
-    <h1>Yunger AI Bot</h1>
-    <p>Type your question below and Yunger will respond:</p>
-    <input type="text" id="question" placeholder="Type your question here..." />
-    <button id="askBtn">Ask</button>
-    <div id="response"></div>
+    <div class="header">
+      <h1>Yunger AI</h1>
+      <p>Your AI Agent</p>
+    </div>
+
+    <div class="agent">
+      <img src="yunger.png" alt="Yunger AI" class="agent-image">
+      <h2>Yunger</h2>
+      <p>Hey! I'm Yunger, your AI agent. Ask me anything about anything!</p>
+    </div>
+
+    <div class="interaction">
+      <input type="text" id="question" placeholder="What's your question?" />
+      <button id="askBtn">Ask Yunger</button>
+      <div id="response"></div>
+    </div>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
