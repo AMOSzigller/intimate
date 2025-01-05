@@ -8,15 +8,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* גובה מלא */
-  direction: rtl; /* הגדרת כיוון הטקסט לימין */
+  min-height: 100vh;
+  direction: rtl;
 }
 
 .container {
   text-align: center;
-  width: 90%; /* התאמה למובייל */
-  max-width: 500px; /* הגבלה על הגודל */
-  background: rgba(255, 255, 255, 0.1); /* רקע שקוף */
+  width: 90%; /* מתאים למובייל */
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
@@ -40,7 +40,7 @@ body {
 }
 
 .agent-image {
-  width: 120px; /* גודל קטן יותר למובייל */
+  width: 120px; /* גודל קטן יותר */
   height: 120px;
   border-radius: 50%;
   border: 5px solid #00ffff;
@@ -49,14 +49,14 @@ body {
 }
 
 .agent h2 {
-  font-size: 2rem;
+  font-size: 1.8rem; /* כותרת קטנה יותר */
   color: #00ffff;
 }
 
 .agent p {
   font-size: 1rem;
   color: #aaa;
-  text-align: right; /* יישור טקסט לימין */
+  text-align: center;
 }
 
 /* אינטראקציה */
@@ -65,7 +65,8 @@ body {
 }
 
 input[type="text"] {
-  width: 100%; /* התאמה למובייל */
+  width: 100%; /* מותאם לגודל הקונטיינר */
+  max-width: 400px;
   padding: 10px;
   font-size: 1rem;
   border: 2px solid #00ffff;
@@ -74,12 +75,11 @@ input[type="text"] {
   color: #fff;
   outline: none;
   box-shadow: 0 0 10px #00ffff;
-  text-align: right; /* יישור טקסט לימין */
 }
 
 button {
   margin-top: 10px;
-  padding: 10px 20px;
+  padding: 10px 15px; /* גודל מותאם לכפתור */
   font-size: 1rem;
   border: none;
   border-radius: 5px;
@@ -88,7 +88,8 @@ button {
   cursor: pointer;
   box-shadow: 0 0 15px #00ffff;
   transition: all 0.3s ease-in-out;
-  width: 100%; /* התאמה למובייל */
+  width: auto; /* מתאים לגודל התוכן */
+  max-width: 200px; /* מקסימום רוחב */
 }
 
 button:hover {
@@ -101,7 +102,7 @@ button:hover {
   font-size: 1.2rem;
   color: #fff;
   text-shadow: 0 0 10px #00ffff;
-  text-align: right; /* יישור התשובה לימין */
+  text-align: center;
   animation: fadeIn 0.5s ease-in-out;
 }
 
