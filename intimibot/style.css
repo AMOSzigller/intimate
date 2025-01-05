@@ -9,11 +9,11 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  direction: rtl;
+  direction: rtl; /* טקסט מיושר לימין */
 }
 
 .container {
-  text-align: center;
+  text-align: center; /* כל הטקסטים במרכז */
   width: 90%; /* מתאים למובייל */
   max-width: 500px;
   background: rgba(255, 255, 255, 0.1);
@@ -56,7 +56,9 @@ body {
 .agent p {
   font-size: 1rem;
   color: #aaa;
-  text-align: center;
+  text-align: center; /* מרכז את הטקסט */
+  margin: 10px 0;
+  line-height: 1.6; /* שיפור מרווח בין השורות */
 }
 
 /* אינטראקציה */
@@ -75,6 +77,8 @@ input[type="text"] {
   color: #fff;
   outline: none;
   box-shadow: 0 0 10px #00ffff;
+  text-align: center; /* מרכז את הטקסט בתוך השדה */
+  direction: rtl; /* מתאים לעברית */
 }
 
 button {
@@ -102,7 +106,7 @@ button:hover {
   font-size: 1.2rem;
   color: #fff;
   text-shadow: 0 0 10px #00ffff;
-  text-align: center;
+  text-align: center; /* מרכז את התשובה */
   animation: fadeIn 0.5s ease-in-out;
 }
 
