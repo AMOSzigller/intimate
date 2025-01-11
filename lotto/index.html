@@ -81,7 +81,7 @@
 </style>
 <script>
     function updateCountdown() {
-        const targetDate = new Date("2025-01-11T23:30:00+02:00").getTime();
+        const targetDate = new Date("2025-01-14T23:30:00+02:00").getTime();
         const now = new Date().getTime();
         const distance = targetDate - now;
 
@@ -96,11 +96,6 @@
         } else {
             document.getElementById("countdown").textContent = "00:00:00.0";
         }
-    }
-
-    function toggleParticipationPopup() {
-        const popup = document.getElementById('participationPopup');
-        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
     }
 
     document.addEventListener("DOMContentLoaded", updateCountdown);
