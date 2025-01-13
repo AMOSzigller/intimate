@@ -94,6 +94,35 @@
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 999;
     }
+
+    /* סגנון לכפתור חדש */
+    .button.new {
+        position: relative;
+        animation: pulse 1.5s infinite;
+    }
+
+    .button.new::after {
+        content: "!חדש";
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #ff0000;
+        color: #ffffff;
+        font-size: 0.8em;
+        font-weight: bold;
+        padding: 2px 5px;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            box-shadow: 0 0 10px #1a73e8, 0 0 20px #1a73e8;
+        }
+        50% {
+            box-shadow: 0 0 20px #1a73e8, 0 0 30px #1a73e8;
+        }
+    }
 </style>
 <script>
     function updateCountdown() {
@@ -136,7 +165,7 @@
 <div id="countdown" class="countdown"></div>
 <div class="button-container">
     <button class="button" onclick="toggleParticipationPopup()">?איך משתתפים</button>
-    <a href="https://intimiim.com/lotto/blood/" class="button">?כמה אני שרוף</a>
+    <a href="https://intimiim.com/lotto/blood/" class="button new">?כמה אני שרוף</a>
 </div>
 
 <div id="popupOverlay" onclick="toggleParticipationPopup()"></div>
