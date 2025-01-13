@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -17,6 +16,13 @@
     h1, h2 {
         color: #1a73e8;
     }
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; /* רווח בין הכפתורים */
+        margin-top: 20px;
+    }
     .details {
         margin: 20px auto;
         padding: 15px;
@@ -27,7 +33,6 @@
     }
     .button {
         display: inline-block;
-        margin-top: 20px;
         padding: 10px 20px;
         font-size: 1em;
         color: #ffffff;
@@ -50,11 +55,11 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 10px;
-        justify-content: center; /* Center the grid horizontally */
-        align-items: center; /* Center the grid vertically */
+        justify-content: center;
+        align-items: center;
         text-align: center;
         margin: 20px auto;
-        max-width: 600px; /* Set a maximum width for better centering */
+        max-width: 600px;
     }
     .grid div {
         padding: 10px;
@@ -74,9 +79,20 @@
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         text-align: center;
+        z-index: 1000;
     }
     #participationPopup button {
         margin-top: 10px;
+    }
+    #popupOverlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
     }
 </style>
 <script>
@@ -98,6 +114,19 @@
         }
     }
 
+    function toggleParticipationPopup() {
+        const popup = document.getElementById("participationPopup");
+        const overlay = document.getElementById("popupOverlay");
+
+        if (popup.style.display === "none" || popup.style.display === "") {
+            popup.style.display = "block";
+            overlay.style.display = "block";
+        } else {
+            popup.style.display = "none";
+            overlay.style.display = "none";
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", updateCountdown);
 </script>
 </head>
@@ -105,32 +134,38 @@
 <h1>אינטימיים שולחים יחד לוטו</h1>
 <p>ההגרלה הבאה בעוד</p>
 <div id="countdown" class="countdown"></div>
-<button class="button" onclick="toggleParticipationPopup()">?איך משתתפים</button>
+<div class="button-container">
+    <button class="button" onclick="toggleParticipationPopup()">?איך משתתפים</button>
+    <a href="https://intimiim.com/lotto/blood/" class="button">?כמה אני שרוף</a>
+</div>
+
+<div id="popupOverlay" onclick="toggleParticipationPopup()"></div>
 <div id="participationPopup">
-    <p>בשביל להשתתף יש להעביר לבר 120 ש"ח</p>
+    <p>כדי להשתתף יש להעביר לבר 120 ש"ח</p>
     <button class="button" onclick="toggleParticipationPopup()">סגור</button>
 </div>
+
 <div class="details">
-<p>עלות ההשתתפות: 120 ש"ח</p>
-<p>משתתפים</p>
-<div class="grid">
-    <div>בר</div>
-    <div>עדי</div>
-    <div>זקיס</div>
-    <div>אסימוש</div>
-    <div>צביקה</div>
-    <div>גבי</div>
-    <div>יונגר</div>
-    <div>אורנזי</div>
-    <div>עמיץ</div>
-    <div>רועי.ב</div>
-    <div>שוקי</div>
-    <div>שגיא</div>
-</div>
-<p>סכום שנאסף: 1,440 ש"ח</p>
-<p>מספר טורים: 240</p>
-<a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
-<div class="crane">🏗️</div>
+    <p>עלות ההשתתפות: 120 ש"ח</p>
+    <p>משתתפים</p>
+    <div class="grid">
+        <div>בר</div>
+        <div>עדי</div>
+        <div>זקיס</div>
+        <div>אסימוש</div>
+        <div>צביקה</div>
+        <div>גבי</div>
+        <div>יונגר</div>
+        <div>אורנזי</div>
+        <div>עמיץ</div>
+        <div>רועי.ב</div>
+        <div>שוקי</div>
+        <div>שגיא</div>
+    </div>
+    <p>סכום שנאסף: 1,440 ש"ח</p>
+    <p>מספר טורים: 240</p>
+    <a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
+    <div class="crane">🏗️</div>
 </div>
 </body>
 </html>
