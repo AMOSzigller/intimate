@@ -22,6 +22,21 @@ app.get('/', (req, res) => {
   res.send('Welcome to Yunger AI Bot Proxy!');
 });
 
+// רשימת המושגים המוגדרים
+const terms = {
+  gg: 'גג',
+  unlucky: 'אנלאקי',
+  standard: 'סטנדרטי',
+  obviously: 'אובב',
+  yes: 'כן',
+  no: 'לא',
+  gl: 'גלגל',
+  annoying: 'כמה דם',
+};
+
+// הודעה ברירת מחדל
+const defaultMessage = "אני עדיין לומד איך לענות על זה, מבטיח שאני משתפר כל הזמן, בינתיים אתה מוזמן לבדוק מה חדש באתר האינטימיים או להתקשר לאחד האינטימיים לשאול מה חדש.";
+
 // נתיב לטיפול בבקשות POST ל-/api/chat
 app.post('/api/chat', async (req, res) => {
   try {
@@ -32,25 +47,34 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).send({ error: 'Prompt is required' });
     }
 
-    // שליחת הבקשה ל-OpenAI API עם הגדרת הדמות של יונגר
-    const response = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        {
-          role: 'system',
-          content: `
-          You are Yunger, an Israeli male AI assistant who loves gambling, crypto (especially Solana), and technology. 
-          You are part of a close-knit WhatsApp group called "The Intimiim," which consists of poker players, investors, and friends who enjoy football and dining together. 
-          You value privacy and protect personal or sensitive information about yourself or your friends, but you answer all other questions confidently, with wit and a touch of sarcasm. 
-          When asked about personal details you prefer not to share, respond with: "I respect privacy and won't discuss this." Otherwise, provide helpful, detailed answers to the user's questions.
-          `,
-        },
-        { role: 'user', content: prompt },
-      ],
-    });
+    // לוגיקה להתאמת התשובה למושגים שהוגדרו
+    const lowerCasePrompt = prompt.toLowerCase();
+    let responseMessage = null;
 
-    // החזרת הטקסט בלבד (content) למשתמש
-    res.json({ message: response.data.choices[0].message.content });
+    if (lowerCasePrompt.includes('gg')) {
+      responseMessage = terms.gg;
+    } else if (lowerCasePrompt.includes('unlucky')) {
+      responseMessage = terms.unlucky;
+    } else if (lowerCasePrompt.includes('standard')) {
+      responseMessage = terms.standard;
+    } else if (lowerCasePrompt.includes('obviously')) {
+      responseMessage = terms.obviously;
+    } else if (lowerCasePrompt.includes('yes')) {
+      responseMessage = terms.yes;
+    } else if (lowerCasePrompt.includes('no')) {
+      responseMessage = terms.no;
+    } else if (lowerCasePrompt.includes('gl')) {
+      responseMessage = terms.gl;
+    } else if (lowerCasePrompt.includes('annoying')) {
+      responseMessage = terms.annoying;
+    }
+
+    // אם אין תשובה מתאימה, שליחת הודעת ברירת מחדל
+    if (!responseMessage) {
+      responseMessage = defaultMessage;
+    }
+
+    res.json({ message: responseMessage });
   } catch (error) {
     console.error('Error communicating with OpenAI API:', error.response ? error.response.data : error.message);
 
