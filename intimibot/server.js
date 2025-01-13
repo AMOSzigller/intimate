@@ -47,34 +47,31 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).send({ error: 'Prompt is required' });
     }
 
-    // לוגיקה להתאמת התשובה למושגים שהוגדרו
-    const lowerCasePrompt = prompt.toLowerCase();
-    let responseMessage = null;
+    // שליחת הבקשה ל-OpenAI API עם הגדרת המושגים
+    const response = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: [
+        {
+          role: 'system',
+          content: `You are a helpful assistant who can only respond using the following predefined terms:
+          - גג (Good Game)
+          - אנלאקי (Unlucky)
+          - סטנדרטי (Standard)
+          - אובב (Obviously)
+          - כן (Yes)
+          - לא (No)
+          - גלגל (Good Luck)
+          - כמה דם (Annoying)
+          If the input does not match any of these terms, respond with the default message: "${defaultMessage}".`
+        },
+        { role: 'user', content: prompt },
+      ],
+    });
 
-    if (lowerCasePrompt.includes('gg')) {
-      responseMessage = terms.gg;
-    } else if (lowerCasePrompt.includes('unlucky')) {
-      responseMessage = terms.unlucky;
-    } else if (lowerCasePrompt.includes('standard')) {
-      responseMessage = terms.standard;
-    } else if (lowerCasePrompt.includes('obviously')) {
-      responseMessage = terms.obviously;
-    } else if (lowerCasePrompt.includes('yes')) {
-      responseMessage = terms.yes;
-    } else if (lowerCasePrompt.includes('no')) {
-      responseMessage = terms.no;
-    } else if (lowerCasePrompt.includes('gl')) {
-      responseMessage = terms.gl;
-    } else if (lowerCasePrompt.includes('annoying')) {
-      responseMessage = terms.annoying;
-    }
+    // קבלת התשובה מה-API
+    const aiResponse = response.data.choices[0].message.content.trim();
 
-    // אם אין תשובה מתאימה, שליחת הודעת ברירת מחדל
-    if (!responseMessage) {
-      responseMessage = defaultMessage;
-    }
-
-    res.json({ message: responseMessage });
+    res.json({ message: aiResponse });
   } catch (error) {
     console.error('Error communicating with OpenAI API:', error.response ? error.response.data : error.message);
 
