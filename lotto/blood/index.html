@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>כמה אני שרוף בלוטו</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #121212;
+        color: #e0e0e0;
+        text-align: center;
+    }
+    h1, h2 {
+        color: #1a73e8;
+    }
+    .button {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #ffffff;
+        background-color: #1a73e8;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .button:hover {
+        background-color: #1558b0;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 20px auto;
+        max-width: 600px;
+    }
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    .popup button {
+        margin-top: 10px;
+    }
+</style>
+<script>
+    const participants = [
+        { name: "אורנזי", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "אסימוש", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "בר", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "גבי", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "זקיס", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "יונגר", losses: [106.1, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "ינון", losses: [1.5, 16.0] },
+        { name: "נדב", losses: [107.7, 98.3, 16.0] },
+        { name: "עדי", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "עמיץ", losses: [107.7, 102.8, 56.0, 71.7] },
+        { name: "צביקה", losses: [98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "קסיאס", losses: [98.3] },
+        { name: "רועי.ב", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "רועי.ש", losses: [107.7, 98.3, 120.0, 106.0, 93.7] },
+        { name: "שגיא", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "שוקי", losses: [107.7, 98.3, 120.0, 106.0, 93.7, 102.8, 56.0, 71.7] },
+        { name: "רן", losses: [16.0] }
+    ];
+
+    function renderParticipants() {
+        const grid = document.querySelector('.grid');
+        grid.innerHTML = '';
+        participants.forEach((participant, index) => {
+            const button = document.createElement('button');
+            button.className = 'button';
+            button.textContent = participant.name;
+            button.onclick = () => showPopup(index);
+            grid.appendChild(button);
+        });
+    }
+
+    function showPopup(index) {
+        const participant = participants[index];
+        const popup = document.getElementById('popup');
+        const totalLoss = participant.losses.reduce((acc, loss) => acc + loss, 0);
+        popup.querySelector('p').textContent = `סה"כ הפסדים: ₪${totalLoss.toFixed(2)}\nפירוט: ${participant.losses.join(', ')}`;
+        popup.style.display = 'block';
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', renderParticipants);
+</script>
+</head>
+<body>
+<h1>אינטימיים שרופים בלוטו</h1>
+<p>בחר משתתף כדי לראות כמה הוא שרוף</p>
+<div class="grid"></div>
+<div id="popup" class="popup">
+    <p></p>
+    <button class="button" onclick="closePopup()">סגור</button>
+</div>
+</body>
+</html>
