@@ -95,33 +95,12 @@
         z-index: 999;
     }
 
-    /* סגנון לכפתור חדש */
-    .button.new {
-        position: relative;
-        animation: pulse 1.5s infinite;
-    }
-
-    .button.new::after {
-        content: "🔥!חדש";
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background-color: #ff0000;
-        color: #ffffff;
-        font-size: 0.8em;
-        font-weight: bold;
-        padding: 2px 5px;
-        border-radius: 50%;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    @keyframes pulse {
-        0%, 100% {
-            box-shadow: 0 0 10px #1a73e8, 0 0 20px #1a73e8;
-        }
-        50% {
-            box-shadow: 0 0 20px #1a73e8, 0 0 30px #1a73e8;
-        }
+    /* סגנון לכפתורים ספציפיים */
+    .grid div:nth-child(4), /* אסימוש */
+    .grid div:nth-child(10), /* רועי.ב */
+    .grid div:nth-child(11) { /* שוקי */
+        background-color: red;
+        color: white;
     }
 </style>
 <script>
@@ -189,10 +168,11 @@
         <div>עמיץ</div>
         <div>רועי.ב</div>
         <div>שוקי</div>
-        <div>שגיא+נדב🔒</div>
+        <div>🔒שגיא+נדב🔒</div>
+
     </div>
-    <p>סכום שנאסף: 2,880 ש"ח</p>
-    <p>מספר טורים: 480</p>
+    <p>סכום שנאסף: 1,440 ש"ח</p>
+    <p>מספר טורים: 240</p>
     <a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
     <div class="crane">🏗️</div>
 </div>
