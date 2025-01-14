@@ -59,6 +59,7 @@
             transition: transform 0.2s;
             color: var(--text-color);
             text-align: center;
+            cursor: pointer;
         }
 
         .crypto-card:hover {
@@ -118,10 +119,50 @@
             margin-top: 2px;
         }
 
-        .error-message {
-            color: #F44336;
-            font-size: 16px;
-            margin-top: 20px;
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: none;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .popup img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .popup button {
+            background-color: var(--button-bg-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
         }
     </style>
 </head>
@@ -131,6 +172,17 @@
     <div class="last-updated" id="lastUpdated">עדכון אחרון: טוען...</div>
 
     <div id="cryptoList" class="crypto-list"></div>
+
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <div class="popup" id="popup">
+        <img src="oranz.png" alt="Oran">
+        <h2>ברוכים הבאים לבורסאורנזי!</h2>
+        <p>בחר מה ברצונך לעשות:</p>
+        <button onclick="buyAction()">לקנות</button>
+        <button onclick="sellAction()">למכור</button>
+        <button onclick="stakingAction()">סטייקינג</button>
+        <button onclick="wasteTimeAction()">לבזבז לי את הזמן</button>
+    </div>
 
     <script>
         const cryptos = [
@@ -156,7 +208,6 @@
                 const lastUpdated = new Date().toLocaleString('he-IL');
                 document.getElementById('lastUpdated').textContent = `עדכון אחרון: ${lastUpdated}`;
 
-                // מיון לפי הערך המוחלט של אחוז השינוי
                 const sortedData = data.sort((a, b) => 
                     Math.abs(b.price_change_percentage_24h || 0) - Math.abs(a.price_change_percentage_24h || 0)
                 );
@@ -174,6 +225,7 @@
 
                     const card = document.createElement('div');
                     card.className = 'crypto-card';
+                    card.onclick = openPopup;
 
                     card.innerHTML = `
                         <div class="crypto-info">
@@ -196,7 +248,38 @@
         }
 
         fetchCryptoData();
-        setInterval(fetchCryptoData, 60000); // עדכון כל דקה
+        setInterval(fetchCryptoData, 60000);
+
+        function openPopup() {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function buyAction() {
+            const quantity = prompt('מה הכמות שתרצה לקנות?');
+            const wallet = prompt('לאיזה ארנק להעביר את הסחורה?');
+
+            if (quantity && wallet) {
+                alert('העסקה בתהליך ותעודכן בקרוב. גלגל');
+            }
+        }
+
+        function sellAction() {
+            alert('אין לך כרגע סחורה למכור, אולי תשקול להצטרף להגרלת הלוטו בינתיים');
+        }
+
+        function stakingAction() {
+            alert('פעולה זו כרוכה בעמלת שורה ובעמלת שוקי. לא ניתן לבצע פעולה ללא סחורה.');
+        }
+
+        function wasteTimeAction() {
+            alert('מאוחר מדי');
+        }
     </script>
 </body>
 </html>
