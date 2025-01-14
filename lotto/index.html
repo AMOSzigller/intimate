@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>אינטימיים מגזימים בלוטו</title>
+<title>אינטימיים שולחים יחד לוטו</title>
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,13 +15,6 @@
     }
     h1, h2 {
         color: #1a73e8;
-    }
-    .button-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px; /* רווח בין הכפתורים */
-        margin-top: 20px;
     }
     .details {
         margin: 20px auto;
@@ -42,135 +35,31 @@
         text-decoration: none;
         cursor: pointer;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        margin-bottom: 10px;
     }
     .button:hover {
         background-color: #1558b0;
     }
-    .countdown {
-        font-size: 3em;
-        color: #ffa500;
-        margin: 20px 0;
-    }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 10px;
-        justify-content: center;
+    .button-container {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        text-align: center;
-        margin: 20px auto;
-        max-width: 600px;
-    }
-    .grid div {
-        padding: 10px;
-        background-color: #2a2a2a;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    #participationPopup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #1e1e1e;
-        color: #e0e0e0;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        z-index: 1000;
-    }
-    #participationPopup button {
-        margin-top: 10px;
-    }
-    #popupOverlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-    }
-
-    /* סגנון לכפתורים ספציפיים */
-        background-color: red;
-        color: white;
     }
 </style>
-<script>
-    function updateCountdown() {
-        const targetDate = new Date("2025-01-14T23:30:00+02:00").getTime();
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance >= 0) {
-            const totalHours = Math.floor(distance / (1000 * 60 * 60));
-            const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-            const milliseconds = String(Math.floor((distance % 1000) / 100)).padStart(1, '0');
-
-            document.getElementById("countdown").textContent = `${totalHours}:${minutes}:${seconds}.${milliseconds}`;
-            setTimeout(updateCountdown, 100);
-        } else {
-            document.getElementById("countdown").textContent = "00:00:00.0";
-        }
-    }
-
-    function toggleParticipationPopup() {
-        const popup = document.getElementById("participationPopup");
-        const overlay = document.getElementById("popupOverlay");
-
-        if (popup.style.display === "none" || popup.style.display === "") {
-            popup.style.display = "block";
-            overlay.style.display = "block";
-        } else {
-            popup.style.display = "none";
-            overlay.style.display = "none";
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", updateCountdown);
-</script>
 </head>
 <body>
-<h1>אינטימיים מגזימים יחד בלוטו</h1>
-<p>ההגרלה הבאה בעוד</p>
-<div id="countdown" class="countdown"></div>
-<div class="button-container">
-    <button class="button" onclick="toggleParticipationPopup()">?איך משתתפים</button>
-    <a href="https://intimiim.com/lotto/blood/" class="button new">?כמה אני שרוף</a>
-</div>
-
-<div id="popupOverlay" onclick="toggleParticipationPopup()"></div>
-<div id="participationPopup">
-    <p>כדי להשתתף יש להעביר לבר 240 ש"ח</p>
-    <button class="button" onclick="toggleParticipationPopup()">סגור</button>
-</div>
-
+<h1>אינטימיים שולחים יחד לוטו</h1>
+<h2>אין הגרלה פעילה</h2>
 <div class="details">
-    <p>עלות ההשתתפות: 240 ש"ח</p>
-    <p>משתתפים</p>
-    <div class="grid">
-        <div>בר</div>
-        <div>עדי</div>
-        <div>זקיס</div>
-        <div>אסימוש</div>
-        <div>צביקה</div>
-        <div>גבי</div>
-        <div>יונגר</div>
-        <div>אורנזי</div>
-        <div>עמיץ</div>
-        <div>רועי.ב</div>
-        <div>שוקי</div>
-        <div>שגיא+נדב🔒</div>
-    </div>
-    <p>סכום שנאסף: 2,880 ש"ח</p>
-    <p>מספר טורים: 480</p>
-    <a href="https://intimiim.com/history_Lotto" class="button">לתוצאות ההגרלות הקודמות</a>
-    <div class="crane">🏗️</div>
+    <p>הגרלות: 9</p>
+    <p>טורים: 2,469</p>
+    <p>השקעה: 14,814 ש"ח</p>
+    <p>פרסים: 3,824 ש"ח (25.8%)</p>
+</div>
+<div class="button-container">
+    <a href="https://intimiim.com/history_Lotto/" class="button">לתוצאות ההגרלות</a>
+    <a href="https://intimiim.com/lotto/blood/" class="button">שריפות</a>
+    <a href="https://drive.google.com/drive/folders/17BUt456ildfTTOBqQy1g5DGgzMx_X8y0?usp=sharing" class="button">צילומי הטפסים</a>
 </div>
 </body>
 </html>
