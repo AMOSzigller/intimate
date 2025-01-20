@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intimiim - GPT WARS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            display: none; /* Hidden by default */
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff4500;
+            text-shadow: 0 0 10px #ff4500;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #111;
+        }
+        table, th, td {
+            border: 1px solid #444;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+        }
+        th {
+            background-color: #222;
+        }
+        .wallet {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #111;
+            border: 1px solid #444;
+            display: inline-block;
+        }
+        .wallet-code {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #ff4500;
+            text-shadow: 0 0 5px #ff4500;
+        }
+        .qr img {
+            margin-top: 10px;
+            border: 1px solid #444;
+        }
+        .status {
+            font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            th, td {
+                padding: 5px;
+                font-size: 0.9em;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const password = "116";
+        const userInput = prompt("Please enter the password:");
+        if (userInput === password) {
+            document.body.style.display = "block";
+        } else {
+            document.write("<h1>Access Denied</h1><p style='color: #ff4500;'>Incorrect password. Please refresh and try again.</p>");
+        }
+    </script>
+
+    <h1>intimiim - GPT WARS</h1>
+
+    <div class="wallet">
+        <p>Send your investment to the following wallet address (USDT ERC20):</p>
+        <p class="wallet-code">XXX</p>
+        <p class="qr"><img src="https://via.placeholder.com/150" alt="QR Code for Wallet"></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Planned Investment</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>בר</td>
+                <td>$1,000</td>
+                <td class="status">Pending</td>
+            </tr>
+            <tr>
+                <td>אורנזי</td>
+                <td>$1,500</td>
+                <td class="status">Pending</td>
+            </tr>
+            <tr>
+                <td>שוקי</td>
+                <td>$10,000</td>
+                <td class="status">Pending</td>
+            </tr>
+            <tr>
+                <td>יונגר</td>
+                <td>$2,000</td>
+                <td class="status">Pending</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
