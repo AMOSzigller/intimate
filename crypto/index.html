@@ -1,285 +1,29 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>אינטימיים - קריפטו</title>
+    <title>Bring Them Home</title>
     <style>
-        /* עיצוב כללי */
-        :root {
-            --bg-color: #121212;
-            --card-bg-color: #1e1e1e;
-            --text-color: #e0e0e0;
-            --highlight-color: #1a73e8;
-            --button-bg-color: #333333;
-            --button-hover-color: #474747;
-            --disabled-color: #555555;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            text-align: center;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h1 {
-            color: var(--text-color);
-            margin-top: 20px;
-            font-size: 2.2em;
-        }
-
-        .last-updated {
-            color: var(--disabled-color);
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .crypto-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
             justify-content: center;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .crypto-card {
-            background-color: var(--card-bg-color);
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            width: 100%;
-            max-width: 250px;
-            transition: transform 0.2s;
-            color: var(--text-color);
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .crypto-card:hover {
-            transform: scale(1.05);
-            border: 1px solid var(--highlight-color);
-        }
-
-        .crypto-info {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 10px;
+            height: 100vh;
+            background-color: #000;
         }
 
-        .crypto-info img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-        }
-
-        .crypto-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--text-color);
-        }
-
-        .price {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-top: 10px;
-        }
-
-        .price-ils {
-            font-size: 20px;
-            color: var(--disabled-color);
-            margin-top: 5px;
-        }
-
-        .change {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .change.positive {
-            color: #4CAF50;
-        }
-
-        .change.negative {
-            color: #F44336;
-        }
-
-        .change-period {
-            font-size: 12px;
-            color: #888;
-            margin-top: 2px;
-        }
-
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: var(--card-bg-color);
-            border-radius: 12px;
-            padding: 20px;
-            width: 300px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            display: none;
-            text-align: center;
-            color: var(--text-color);
-        }
-
-        .popup img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-
-        .popup button {
-            background-color: var(--button-bg-color);
-            color: var(--text-color);
-            border: none;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .popup button:hover {
-            background-color: var(--button-hover-color);
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+            width: auto;
+            display: block;
         }
     </style>
 </head>
 <body>
-
-    <h1>אינטימיים - קריפטו</h1>
-    <div class="last-updated" id="lastUpdated">עדכון אחרון: טוען...</div>
-
-    <div id="cryptoList" class="crypto-list"></div>
-
-    <div class="overlay" id="overlay" onclick="closePopup()"></div>
-    <div class="popup" id="popup">
-        <img src="oranz.png" alt="Oran">
-        <h2>ברוכים הבאים לבורסאורנזי!</h2>
-        <p>בחר מה ברצונך לעשות:</p>
-        <button onclick="buyAction()">לקנות</button>
-        <button onclick="sellAction()">למכור</button>
-        <button onclick="stakingAction()">סטייקינג</button>
-        <button onclick="wasteTimeAction()">לבזבז לי את הזמן</button>
-    </div>
-
-    <script>
-        const cryptos = [
-            { id: 'bitcoin', name: 'Bitcoin', img: 'nadav.png' },
-            { id: 'ethereum', name: 'Ethereum', img: 'shuki.png' },
-            { id: 'solana', name: 'Solana', img: 'yunger.png' },
-            { id: 'dogecoin', name: 'Dogecoin', img: 'dog.png' },
-            { id: 'pepe', name: 'PEPE', img: 'PEPE.png', decimalPlaces: 7 },
-            { id: 'tri-sigma', name: 'Trisig', img: 'amit.png', decimalPlaces: 4 },
-            { id: 'cookie', name: 'Cookie', img: 'cookie.png', decimalPlaces: 5 },
-        ];
-
-        async function fetchCryptoData() {
-            try {
-                const ids = cryptos.map(c => c.id).join(',');
-                const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&price_change_percentage=24h`;
-                const response = await fetch(url);
-
-                if (!response.ok) throw new Error('Network response was not ok');
-
-                const data = await response.json();
-
-                const lastUpdated = new Date().toLocaleString('he-IL');
-                document.getElementById('lastUpdated').textContent = `עדכון אחרון: ${lastUpdated}`;
-
-                const sortedData = data.sort((a, b) => 
-                    Math.abs(b.price_change_percentage_24h || 0) - Math.abs(a.price_change_percentage_24h || 0)
-                );
-
-                document.getElementById('cryptoList').innerHTML = '';
-
-                sortedData.forEach((cryptoData) => {
-                    const crypto = cryptos.find(c => c.id === cryptoData.id);
-                    if (!crypto) return;
-
-                    const priceUSD = `$${cryptoData.current_price.toFixed(crypto.decimalPlaces || 2)}`;
-                    const priceILS = `₪${(cryptoData.current_price * 3.3).toFixed(crypto.decimalPlaces || 2)}`;
-                    const change24h = cryptoData.price_change_percentage_24h != null ? cryptoData.price_change_percentage_24h.toFixed(2) : 'N/A';
-                    const changeClass = change24h !== 'N/A' && cryptoData.price_change_percentage_24h >= 0 ? 'positive' : 'negative';
-
-                    const card = document.createElement('div');
-                    card.className = 'crypto-card';
-                    card.onclick = openPopup;
-
-                    card.innerHTML = `
-                        <div class="crypto-info">
-                            ${crypto.img ? `<img src="${crypto.img}" alt="${crypto.name} Image">` : ''}
-                            <span class="crypto-name">${crypto.name}</span>
-                        </div>
-                        <div class="price">${priceUSD}</div>
-                        <div class="price-ils">${priceILS}</div>
-                        <div class="change ${changeClass}">
-                            ${change24h !== 'N/A' ? `${cryptoData.price_change_percentage_24h >= 0 ? '▲' : '▼'} ${Math.abs(change24h)}%` : 'N/A'}
-                        </div>
-                        <div class="change-period">(24h)</div>
-                    `;
-
-                    document.getElementById('cryptoList').appendChild(card);
-                });
-            } catch (error) {
-                console.error('Error fetching crypto data:', error);
-            }
-        }
-
-        fetchCryptoData();
-        setInterval(fetchCryptoData, 60000);
-
-        function openPopup() {
-            document.getElementById('popup').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        function buyAction() {
-            const quantity = prompt('מה הכמות שתרצה לקנות?');
-            const wallet = prompt('לאיזה ארנק להעביר את הסחורה?');
-
-            if (quantity && wallet) {
-                alert('העסקה בתהליך ותעודכן בקרוב. גלגל');
-            }
-        }
-
-        function sellAction() {
-            alert('אין לך כרגע סחורה למכור, אולי תשקול להצטרף להגרלת הלוטו בינתיים');
-        }
-
-        function stakingAction() {
-            alert('פעולה זו כרוכה בעמלת שורה ובעמלת שוקי. לא ניתן לבצע פעולה ללא סחורה.');
-        }
-
-        function wasteTimeAction() {
-            alert('מאוחר מדי');
-        }
-    </script>
+    <img src="bringthemhome.jpg" alt="Bring Them Home">
 </body>
 </html>
