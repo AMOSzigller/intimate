@@ -60,7 +60,7 @@
       text-decoration: underline;
     }
 
-    /* אזור ראשי (Hero) */
+    /* אזור Hero */
     .hero {
       height: 100vh;
       background: url('https://via.placeholder.com/1600x900?text=%D7%A8%D7%A7%D7%A2+%D7%94%D7%99%D7%A8%D7%95') center center / cover no-repeat;
@@ -71,7 +71,6 @@
       padding: 0 2rem;
     }
 
-    /* יוצרים שכבה כהה-שקופה מעל התמונה כדי להבליט את הטקסט */
     .hero::before {
       content: "";
       position: absolute;
@@ -291,12 +290,37 @@
     footer {
       background: #000;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
     }
 
     footer p {
       font-size: 0.9rem;
       color: #777;
+      margin-bottom: 1rem;
+    }
+
+    /* קישורי רשתות חברתיות */
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #e51b23;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .social-links a:hover {
+      background-color: #bb171d;
     }
 
     /* התאמה למסכים קטנים */
@@ -411,7 +435,7 @@
       <input type="text" id="name" name="name" placeholder="לדוגמה: יוסי כהן" required>
 
       <label for="email">אימייל</label>
-      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+      <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
 
       <label for="phone">טלפון</label>
       <input type="tel" id="phone" name="phone" placeholder="לדוגמה: 050-0000000" required>
@@ -426,6 +450,14 @@
   <!-- כותרת תחתונה -->
   <footer>
     <p>© 2025 גבי ליבשיץ - כל הזכויות שמורות.</p>
+
+    <!-- קישורים לרשתות חברתיות -->
+    <div class="social-links">
+      <a href="https://www.instagram.com/sosickstagram" target="_blank">אינסטגרם</a>
+      <a href="https://www.facebook.com/Gabylivs" target="_blank">פייסבוק</a>
+      <a href="https://open.spotify.com/show/2Op6rxjHxGc01UWAiVKhRz?si=5b52795b555d45f3" target="_blank">הפודקאסט</a>
+      <a href="https://chat.whatsapp.com/LF4rfcplQtIEoWUukT5PDO" target="_blank">קבוצת וואטסאפ</a>
+    </div>
   </footer>
 
 </body>
