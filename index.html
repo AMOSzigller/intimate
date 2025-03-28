@@ -3,122 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>גבי ליבשיץ - שיעורי פוקר פרטיים</title>
-  <!-- אפשר לשלב כאן קישור לאייקון (favicon) אם רוצים -->
-  <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+  <title>גבי ליבשיץ | שיעורי פוקר פרטיים</title>
   <style>
-    body {
+    /* הגדרות בסיסיות */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      direction: rtl; /* חשוב לשפות RTL */
-      background-color: #f7f7f7;
-      color: #333;
-    }
-
-    header {
-      background-color: #2d2d2d;
+      direction: rtl;
+      background-color: #121212;
       color: #fff;
-      text-align: center;
-      padding: 2rem;
+      line-height: 1.6;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+    /* כותרת עליונה (הניווט) */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
     }
 
-    main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav ul li {
+      cursor: pointer;
+    }
+
+    nav ul li:hover {
+      text-decoration: underline;
+    }
+
+    /* אזור ראשי (Hero) */
     .hero {
+      height: 100vh;
+      background: url('https://via.placeholder.com/1600x900?text=%D7%A8%D7%A7%D7%A2+%D7%94%D7%99%D7%A8%D7%95') center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 0 2rem;
+    }
+
+    /* יוצרים שכבה כהה-שקופה מעל התמונה כדי להבליט את הטקסט */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
       margin-bottom: 2rem;
     }
 
-    .hero img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    .btn-primary {
+      display: inline-block;
+      background: #e51b23;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .section-title {
-      font-size: 1.8rem;
-      margin: 2rem 0 1rem;
+    .btn-primary:hover {
+      background: #bb171d;
+    }
+
+    /* אזור "מוצג ב" (Featured In) */
+    .featured {
+      background: #1c1c1c;
+      padding: 2rem;
       text-align: center;
     }
 
+    .featured h2 {
+      margin-bottom: 1rem;
+    }
+
+    .logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logos img {
+      height: 50px;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .logos img:hover {
+      opacity: 1;
+    }
+
+    /* אזור "אודות" */
     .about {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
       text-align: center;
+    }
+
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .about p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
       line-height: 1.8;
     }
 
-    .advantages {
+    .about .gaby-img {
+      max-width: 300px;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    /* אזור "למה ללמוד אצלי" */
+    .why-me {
+      background: #1c1c1c;
+      padding: 4rem 2rem;
+    }
+
+    .why-me h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-size: 2rem;
+    }
+
+    .cards {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
       justify-content: center;
-      margin-top: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .advantage-item {
-      background-color: #fff;
+    .card {
+      background: #2a2a2a;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      width: 300px;
+      padding: 2rem;
+      flex: 1 1 250px;
+      max-width: 300px;
       text-align: center;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
     }
 
-    .advantage-item h3 {
-      margin-top: 0;
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: #e51b23;
     }
 
-    .advantage-item p {
+    .card p {
+      font-size: 1rem;
       line-height: 1.6;
     }
 
+    /* אזור קריאה לפעולה נוספת */
     .call-to-action {
       text-align: center;
-      margin: 3rem 0;
+      padding: 4rem 2rem;
     }
 
-    .cta-btn {
-      background-color: #ff4500;
-      color: #fff;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+    .call-to-action h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
     }
 
-    .cta-btn:hover {
-      background-color: #e63e00;
+    .call-to-action p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
     }
 
+    /* טופס יצירת קשר */
     .contact-form {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      max-width: 500px;
+      background: #1c1c1c;
+      max-width: 600px;
       margin: 0 auto 4rem;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    .contact-form h3 {
+      margin-bottom: 1rem;
+      text-transform: uppercase;
     }
 
     .contact-form label {
       display: block;
-      margin: 1rem 0 0.5rem;
+      margin-bottom: 0.5rem;
       font-weight: bold;
     }
 
@@ -126,132 +258,172 @@
     .contact-form textarea {
       width: 100%;
       padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: none;
       border-radius: 4px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #bbb;
     }
 
     .contact-form button {
-      background-color: #28a745;
-      color: #fff;
+      background: #e51b23;
       border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      cursor: pointer;
+      padding: 0.8rem 2rem;
       border-radius: 4px;
-      margin-top: 1rem;
-      transition: background-color 0.3s ease;
+      color: #fff;
+      font-size: 1rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .contact-form button:hover {
-      background-color: #218838;
+      background: #bb171d;
     }
 
+    /* כותרת תחתונה (Footer) */
     footer {
-      background-color: #2d2d2d;
-      color: #fff;
+      background: #000;
       text-align: center;
       padding: 1rem;
     }
 
-    /* התאמה למסכים קטנים יותר */
-    @media screen and (max-width: 600px) {
-      .advantages {
+    footer p {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* התאמה למסכים קטנים */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .cards {
         flex-direction: column;
         align-items: center;
       }
-      .advantage-item {
-        width: 90%;
+      .card {
+        max-width: 90%;
+      }
+      header {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- כותרת עליונה (ניווט) -->
   <header>
-    <h1>גבי ליבשיץ</h1>
-    <p>שיעורי פוקר פרטיים - לשחק כמו המקצוענים</p>
+    <div class="logo">גבי ליבשיץ</div>
+    <nav>
+      <ul>
+        <li onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">אודות</li>
+        <li onclick="document.getElementById('why-me').scrollIntoView({behavior: 'smooth'})">למה ללמוד אצלי</li>
+        <li onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">צור קשר</li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <!-- אזור ראשי (Hero Section) -->
-    <section class="hero">
-      <!-- החלפנו את ה-placeholder ב- gaby.png -->
-      <img src="gaby.png" alt="גבי ליבשיץ בפעולה">
-    </section>
+  <!-- אזור Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>שיעורי פוקר פרטיים</h1>
+      <p>קחו את המשחק שלכם לרמה הבאה עם שחקן טורנירים מקצועי שחורש את העולם.</p>
+      <a href="#contact" class="btn-primary">אני רוצה להתחיל</a>
+    </div>
+  </section>
 
-    <!-- אודות גבי -->
-    <section class="about">
-      <h2 class="section-title">מי אני?</h2>
-      <p>
-        שמי גבי ליבשיץ, שחקן פוקר מקצועי עם ניסיון של שנים בזירות הבינלאומיות.
-        אני מטייל ברחבי העולם, מתחרה בטורנירים הגדולים ביותר, ומשלב בין אהבת המשחק
-        לתשוקה ללמד ולשתף את הידע שלי עם אחרים.
-      </p>
-      <p>
-        השיעורים שלי מותאמים לכל הרמות, ממתחילים שמחפשים ללמוד את הכללים הבסיסיים,
-        ועד מקצוענים המעוניינים להעמיק את האסטרטגיה ולחדד את הכישורים שלהם.
-      </p>
-    </section>
+  <!-- אזור "מוצג ב" (Featured In) - אופציונלי, אפשר להסיר או לערוך -->
+  <section class="featured">
+    <h2>הופעתי בין היתר ב:</h2>
+    <div class="logos">
+      <!-- ניתן להחליף בסמלים או תמונות אמיתיות של מותגים/אתרים שגבי הופיע בהם -->
+      <img src="https://via.placeholder.com/100x50?text=LOGO1" alt="Logo 1">
+      <img src="https://via.placeholder.com/100x50?text=LOGO2" alt="Logo 2">
+      <img src="https://via.placeholder.com/100x50?text=LOGO3" alt="Logo 3">
+      <img src="https://via.placeholder.com/100x50?text=LOGO4" alt="Logo 4">
+    </div>
+  </section>
 
-    <!-- יתרונות השיעורים -->
-    <section>
-      <h2 class="section-title">מה תקבלו בשיעורים שלי?</h2>
-      <div class="advantages">
-        <div class="advantage-item">
-          <h3>תוכן מותאם אישית</h3>
-          <p>
-            כל שיעור נבנה בהתאם לידע ולצרכים שלכם,
-            כך שתוכלו להתקדם בקצב הנכון לכם ובמסלול הלימוד המועדף עליכם.
-          </p>
-        </div>
-        <div class="advantage-item">
-          <h3>גישה מקצועית</h3>
-          <p>
-            אני מביא לשולחן ניסיון רב שנים בעולם הטורנירים הגלובלי,
-            וכן שיטות ואסטרטגיות שמתאימות לכל סוגי משחק הפוקר הפופולריים.
-          </p>
-        </div>
-        <div class="advantage-item">
-          <h3>ליווי ותמיכה</h3>
-          <p>
-            תוכלו לשמור על קשר ולשאול שאלות גם לאחר השיעורים,
-            ולהיות חלק מקהילה מתפתחת של שחקנים הלומדים ומשתפים מידע יחדיו.
-          </p>
-        </div>
+  <!-- אודות גבי -->
+  <section class="about" id="about">
+    <h2>מי אני?</h2>
+    <!-- החלף את הנתיב ל-gaby.png או לכל תמונה רלוונטית אחרת -->
+    <img class="gaby-img" src="gaby.png" alt="גבי ליבשיץ">
+    <p>
+      שמי גבי ליבשיץ, שחקן פוקר מקצועי עם ניסיון של שנים בטורנירים בינלאומיים.
+      אני מטייל ברחבי העולם, משתתף בטורנירים הגדולים והיוקרתיים ביותר, ומשתף את הידע שלי
+      עם כל מי שרוצה להעמיק את ההבנה במשחק.
+    </p>
+    <p>
+      השיעורים שלי מתאימים למגוון רחב של רמות משחק, ממתחילים ועד לכאלו שרוצים ללטש
+      את היכולות המתקדמות ביותר. אני מזמין אתכם לגלות את סודות הזכייה שלי, ולקבל כלים
+      פרקטיים כדי לממש את מלוא הפוטנציאל שלכם בשולחן.
+    </p>
+  </section>
+
+  <!-- למה ללמוד אצלי -->
+  <section class="why-me" id="why-me">
+    <h2>למה ללמוד אצלי?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>ניסיון מקיף</h3>
+        <p>שנים של משחק בטורנירים בכל רחבי העולם, הביאו אותי להבנה מעמיקה של מגוון סגנונות משחק.</p>
       </div>
-    </section>
+      <div class="card">
+        <h3>התאמה אישית</h3>
+        <p>התכנים נבנים בהתאם לרמה ולצרכים שלך, ומכוונים את התפתחותך בקצב הנכון לך.</p>
+      </div>
+      <div class="card">
+        <h3>קהילה תומכת</h3>
+        <p>גישה לקבוצות תמיכה והחלפת ידע, בהן אפשר להמשיך להתפתח גם מעבר לשיעורים.</p>
+      </div>
+      <div class="card">
+        <h3>שיטות מנצחות</h3>
+        <p>אסטרטגיות עדכניות שנוסו בהצלחה בטורנירים העולמיים המובילים.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- קריאה לפעולה -->
-    <section class="call-to-action">
-      <h2 class="section-title">רוצים להרים את הרמה שלכם?</h2>
-      <p>השאירו פרטים עכשיו ואצור קשר בהקדם האפשרי.</p>
-      <button class="cta-btn" onclick="document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' })">
-        אני רוצה להתחיל עכשיו
-      </button>
-    </section>
+  <!-- קריאה לפעולה נוספת -->
+  <section class="call-to-action">
+    <h2>רוצים לקחת צעד קדימה?</h2>
+    <p>השאירו פרטים ואחזור אליכם בהקדם כדי לבנות תוכנית אימון אישית.</p>
+    <a href="#contact" class="btn-primary">צור קשר עכשיו</a>
+  </section>
 
-    <!-- טופס יצירת קשר -->
-    <section id="contact-section" class="contact-form">
-      <h2>צור קשר</h2>
-      <form action="#" method="post">
-        <label for="name">שם מלא</label>
-        <input type="text" id="name" name="name" placeholder="שם פרטי ומשפחה" required>
+  <!-- טופס יצירת קשר -->
+  <section id="contact" class="contact-form">
+    <h3>טופס יצירת קשר</h3>
+    <form action="#" method="post">
+      <label for="name">שם מלא</label>
+      <input type="text" id="name" name="name" placeholder="לדוגמה: יוסי כהן" required>
 
-        <label for="email">אימייל</label>
-        <input type="email" id="email" name="email" placeholder="your@example.com" required>
+      <label for="email">אימייל</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required>
 
-        <label for="phone">טלפון</label>
-        <input type="tel" id="phone" name="phone" placeholder="מספר טלפון ליצירת קשר" required>
+      <label for="phone">טלפון</label>
+      <input type="tel" id="phone" name="phone" placeholder="לדוגמה: 050-0000000" required>
 
-        <label for="message">הודעה</label>
-        <textarea id="message" name="message" rows="5" placeholder="ספרו לי בקצרה על רמת המשחק שלכם ומה אתם רוצים לשפר" required></textarea>
+      <label for="message">מה תרצו לשפר במשחק שלכם?</label>
+      <textarea id="message" name="message" rows="5" placeholder="ספרו לי בקצרה על הרמה הנוכחית ועל הציפיות שלכם..." required></textarea>
 
-        <button type="submit">שליחה</button>
-      </form>
-    </section>
-  </main>
+      <button type="submit">שליחה</button>
+    </form>
+  </section>
 
+  <!-- כותרת תחתונה -->
   <footer>
     <p>© 2025 גבי ליבשיץ - כל הזכויות שמורות.</p>
   </footer>
