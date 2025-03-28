@@ -139,8 +139,9 @@
       align-items: center;
     }
 
+    /* שינוי חדש: הגדלנו את הלוגואים כברירת מחדל */
     .logos img {
-      height: 50px;
+      height: 80px; /* במקום 50px */
       opacity: 0.9;
       transition: opacity 0.3s, transform 0.3s;
     }
@@ -177,7 +178,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
-    /* אייקוני רשתות חברתיות (עכשיו עם קבצי תמונה) */
+    /* אייקוני רשתות חברתיות */
     .social-links {
       display: flex;
       justify-content: center;
@@ -190,10 +191,8 @@
       display: inline-block;
       width: 60px;
       height: 60px;
-      /* אפשר, אם רוצים, להפוך אותם לעיגולים ברקע. כרגע משאירים רקע שקוף */
-      /* background-color: #222; */
       border-radius: 50%;
-      overflow: hidden; /* חשוב אם רוצים עיגול קצוץ סביב האייקון */
+      overflow: hidden;
       cursor: pointer;
       transition: transform 0.3s ease;
     }
@@ -201,7 +200,7 @@
     .social-link img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* או contain, בהתאם לסוג האייקון */
+      object-fit: cover; /* או contain, בהתאם לסגנון האייקון */
     }
 
     .social-link:hover {
@@ -336,7 +335,18 @@
       margin-bottom: 0;
     }
 
-    /* התאמה למסכים קטנים */
+    /* שינוי חדש: מדיה קוורי נוסף למכשירים צרים (כמו אייפון) */
+    @media (max-width: 480px) {
+      .logos img {
+        height: 60px; /* מעט קטן יותר במסכים סופר-צרים */
+      }
+      .social-link {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    /* התאמה למסכים קטנים (טאבלטים) */
     @media (max-width: 768px) {
       .hero-content h1 {
         font-size: 2.2rem;
@@ -409,7 +419,7 @@
       פרקטיים כדי לממש את מלוא הפוטנציאל שלכם בשולחן.
     </p>
 
-    <!-- קישורים לרשתות חברתיות: כעת עם אייקונים לכל רשת -->
+    <!-- קישורים לרשתות חברתיות (עם אייקונים) -->
     <div class="social-links">
       <!-- אינסטגרם -->
       <a href="https://www.instagram.com/sosickstagram" class="social-link" target="_blank" aria-label="Instagram">
@@ -465,13 +475,13 @@
     <h3>טופס יצירת קשר</h3>
     <form action="#" method="post">
       <label for="name">שם מלא</label>
-      <input type="text" id="name" name="name" placeholder="לדוגמה: יוסי כהן" required>
+      <input type="text" id="name" name="name" placeholder="" required>
 
       <label for="email">אימייל</label>
-      <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+      <input type="email" id="email" name="email" placeholder="" required>
 
       <label for="phone">טלפון</label>
-      <input type="tel" id="phone" name="phone" placeholder="לדוגמה: 050-0000000" required>
+      <input type="tel" id="phone" name="phone" placeholder="" required>
 
       <label for="message">מה תרצו לשפר במשחק שלכם?</label>
       <textarea id="message" name="message" rows="5" placeholder="ספרו לי בקצרה על הרמה הנוכחית ועל הציפיות שלכם..." required></textarea>
