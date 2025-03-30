@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>גבי ליבשיץ | שיעורי פוקר פרטיים</title>
-
+  <title>חלאס אני רוצה ללמוד AI</title>
   <style>
-    /* הגדרות בסיסיות */
+    /* סגנון כללי - דארק מוד, מותאם למובייל */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -14,12 +13,12 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      direction: rtl;
       background-color: #121212;
-      color: #fff;
+      color: #ffffff;
+      font-family: "Helvetica Neue", Arial, sans-serif;
       line-height: 1.6;
-      overflow-x: hidden; /* למנוע גלילה לצדדים אם יש אלמנטים מחוץ למסך */
+      margin: 0;
+      padding: 0;
     }
 
     a {
@@ -27,473 +26,701 @@
       color: inherit;
     }
 
-    /* כותרת עליונה (הניווט) */
+    /* עטיפת תוכן מרכזית (עוזרת ליישר למרכז) */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    header, section, footer {
+      margin-bottom: 20px;
+    }
+
+    /* כותרת עליונה */
     header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(8px);
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
+      text-align: center;
     }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    header h1 {
+      font-size: 2.2em;
+      color: #ffcc00;
+      margin-bottom: 10px;
     }
 
+    header p {
+      font-size: 1.1em;
+      color: #bbbbbb;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* תפריט עליון */
+    nav {
+      margin-top: 20px;
+    }
     nav ul {
-      list-style: none;
+      list-style-type: none;
       display: flex;
-      gap: 1rem;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
-
-    nav ul li {
+    nav li {
       cursor: pointer;
     }
-
-    nav ul li:hover {
-      text-decoration: underline;
+    nav a {
+      color: #ffffff;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffcc00;
     }
 
     /* אזור Hero */
     .hero {
-      height: 100vh;
-      background: url('https://via.placeholder.com/1600x900?text=%D7%A8%D7%A7%D7%A2+%D7%94%D7%99%D7%A8%D7%95') center center / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 0 2rem;
-      position: relative;
+      padding: 40px 0;
     }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
+    .hero h2 {
+      font-size: 1.8em;
+      color: #ffcc00;
+      margin-bottom: 20px;
     }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-    }
-
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: #e51b23;
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 4px;
-      font-weight: bold;
-      transition: background 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .btn-primary:hover {
-      background: #bb171d;
-    }
-
-    /* אזור "מוצג ב" (Featured In) */
-    .featured {
-      background: #1c1c1c;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .featured h2 {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    .logos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* שינוי חדש: הגדלנו את הלוגואים כברירת מחדל */
-    .logos img {
-      height: 80px; /* במקום 50px */
-      opacity: 0.9;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .logos img:hover {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-
-    /* אזור "אודות" */
-    .about {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .about h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .about p {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .about .gaby-img {
-      max-width: 300px;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    /* אייקוני רשתות חברתיות */
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .social-link {
-      display: inline-block;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .social-link img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* או contain, בהתאם לסגנון האייקון */
-    }
-
-    .social-link:hover {
-      transform: translateY(-3px);
-    }
-
-    /* אזור "למה ללמוד אצלי" */
-    .why-me {
-      background: #1c1c1c;
-      padding: 4rem 2rem;
-    }
-
-    .why-me h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-      font-size: 2rem;
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .card {
-      background: #2a2a2a;
-      border-radius: 8px;
-      padding: 2rem;
-      flex: 1 1 250px;
-      max-width: 300px;
-      text-align: center;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
-    }
-
-    .card h3 {
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      color: #e51b23;
-    }
-
-    .card p {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    /* אזור קריאה לפעולה נוספת */
-    .call-to-action {
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-
-    .call-to-action h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-    }
-
-    .call-to-action p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    /* טופס יצירת קשר */
-    .contact-form {
-      background: #1c1c1c;
+    .hero p {
+      color: #cccccc;
+      font-size: 1.1em;
       max-width: 600px;
-      margin: 0 auto 4rem;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      margin: 0 auto 30px auto;
     }
 
-    .contact-form h3 {
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      font-size: 1.3rem;
-    }
-
-    .contact-form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 4px;
-      background: #2a2a2a;
-      color: #fff;
-      font-size: 1rem;
-    }
-
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: #bbb;
-    }
-
-    .contact-form button {
-      background: #e51b23;
-      border: none;
-      padding: 0.8rem 2rem;
-      border-radius: 4px;
-      color: #fff;
-      font-size: 1rem;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .contact-form button:hover {
-      background: #bb171d;
-    }
-
-    /* כותרת תחתונה (Footer) */
-    footer {
-      background: #000;
+    /* אודות (About) */
+    .about h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #ffcc00;
       text-align: center;
-      padding: 2rem 1rem;
+    }
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      color: #dddddd;
+    }
+    .about-content p {
+      margin-bottom: 15px;
+    }
+    .about-list {
+      margin-top: 20px;
+      text-align: right;
+      direction: rtl;
+      padding-right: 10px;
+    }
+    .about-list li {
+      margin-bottom: 8px;
     }
 
-    footer p {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 0;
+    /* כרטיסיות הקורס */
+    .tabs-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .tabs-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .tab-btn:hover,
+    .tab-btn.active {
+      background-color: #ffcc00;
+      color: #000000;
     }
 
-    /* שינוי חדש: מדיה קוורי נוסף למכשירים צרים (כמו אייפון) */
-    @media (max-width: 480px) {
-      .logos img {
-        height: 60px; /* מעט קטן יותר במסכים סופר-צרים */
-      }
-      .social-link {
-        width: 50px;
-        height: 50px;
-      }
+    .tab-content {
+      display: none;
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: right;
+    }
+    .tab-content.active {
+      display: block;
     }
 
-    /* התאמה למסכים קטנים (טאבלטים) */
+    /* רשימות בתוך כרטיסיות */
+    .tab-content ul {
+      list-style-type: disc;
+      margin-right: 40px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .tab-content li {
+      margin-bottom: 10px;
+    }
+
+    /* שאלות ותשובות (FAQ) */
+    .faq h2 {
+      color: #ffcc00;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .faq-item {
+      background-color: #1e1e1e;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto 10px auto; /* מרכז וסוגר כל FAQ */
+    }
+    .faq-question {
+      padding: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #ffffff;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 15px;
+    }
+    .faq-answer.open {
+      padding: 10px 15px 15px 15px;
+    }
+
+    /* המלצות (Testimonials Carousel) */
+    .testimonials {
+      margin-top: 50px;
+      text-align: center;
+    }
+    .testimonials h2 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-carousel {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+      height: 150px; /* גובה קבוע משוער בכדי למנוע קפיצות */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .testimonial-slide {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s;
+      width: 100%;
+      max-width: 600px;
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .testimonial-slide.active {
+      opacity: 1;
+    }
+    /* יישור טקסט ובמיוחד שם הממליץ לימין הכרטיס */
+    .testimonial-slide p {
+      text-align: right;
+      margin: 0;
+      font-size: 0.95em;
+      color: #cccccc;
+    }
+    .testimonial-slide strong {
+      color: #ffffff;
+    }
+
+    /* תמחור וקופון */
+    .pricing-section {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .pricing-box {
+      background-color: #1e1e1e;
+      display: inline-block;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      max-width: 300px;
+      width: 100%;
+    }
+    .pricing-box h2 {
+      color: #ff7777;
+      margin-bottom: 10px;
+      font-size: 1.4em;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: #999999;
+      margin-right: 10px;
+    }
+    .discounted-price {
+      color: #ffcc00;
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+    .coupon-box {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .coupon-box input[type="text"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+      text-align: center;
+    }
+    .coupon-box button {
+      background-color: #00c853;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .coupon-box button:hover {
+      background-color: #009624;
+    }
+    .final-price {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #dddddd;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: #00c853;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+    .cta-btn:hover {
+      background-color: #009624;
+    }
+
+    /* יצירת קשר בסוף הדף */
+    .contact {
+      text-align: center;
+      margin: 40px 0;
+    }
+    .contact h2 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    /* פוטר */
+    footer {
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      text-align: center;
+      color: #aaaaaa;
+      font-size: 0.9em;
+    }
+
+    /* התאמת רספונסיביות */
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2.2rem;
+      .hero h2 {
+        font-size: 1.6em;
       }
-      .hero-content p {
-        font-size: 1rem;
+      .hero p {
+        font-size: 1em;
       }
-      .cards {
-        flex-direction: column;
-        align-items: center;
+      .tab-content,
+      .faq-answer {
+        font-size: 0.95em;
       }
-      .card {
-        max-width: 90%;
+      .about-list {
+        padding-right: 0;
       }
-      header {
-        flex-direction: column;
-        gap: 1rem;
+      .testimonial-slide p {
+        text-align: right;
       }
     }
   </style>
+
+  <script>
+    /****************************
+     *    כרטיסיות (Tabs)
+     ****************************/
+    function openTab(evt, tabId) {
+      // מסתיר את כל התוכן של הטאבים
+      const tabContents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+
+      // מסיר את ה'אקטיב' מכל הכפתורים
+      const tabBtns = document.getElementsByClassName("tab-btn");
+      for (let i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].classList.remove("active");
+      }
+
+      // מציג את הטאב הנבחר
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+
+    /****************************
+     *    שאלות ותשובות (FAQ)
+     ****************************/
+    document.addEventListener("DOMContentLoaded", () => {
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      faqItems.forEach(item => {
+        const question = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
+
+        question.addEventListener("click", () => {
+          // אם כבר פתוח - סגור
+          if (answer.classList.contains("open")) {
+            answer.style.maxHeight = "0px";
+            answer.classList.remove("open");
+          } else {
+            // נסגור כל מה שפתוח (אם רוצים לפתוח רק אחד כל פעם)
+            faqItems.forEach(i => {
+              i.querySelector(".faq-answer").style.maxHeight = "0px";
+              i.querySelector(".faq-answer").classList.remove("open");
+            });
+            // פותח את התשובה הנבחרת
+            answer.classList.add("open");
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          }
+        });
+      });
+
+      /****************************
+       *    המלצות (Testimonials Carousel)
+       ****************************/
+      const slides = document.querySelectorAll(".testimonial-slide");
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove("active");
+          if (i === index) {
+            slide.classList.add("active");
+          }
+        });
+      }
+      // הגדרה התחלתית
+      showSlide(currentSlide);
+
+      // העברת שקופית כל 3 שניות
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }, 3000);
+    });
+
+    /****************************
+     *    פונקציונליות קופון
+     ****************************/
+    function applyCoupon() {
+      const basePrice = 2699; // מחיר המבצע הבסיסי
+      let finalPrice = basePrice;
+      const couponInput = document.getElementById("couponInput").value.trim();
+
+      // מיפוי קופונים ואחוזי הנחה
+      const coupons = {
+        "קמצן מניאק": 20,
+        "הנחה": 1,
+        "הנחה בבקשה": 20,
+        "חינם": 90
+      };
+
+      if (coupons[couponInput] !== undefined) {
+        const discountPercent = coupons[couponInput];
+        finalPrice = basePrice * (1 - discountPercent / 100);
+      }
+
+      document.getElementById("finalPrice").innerText = finalPrice.toFixed(2) + " ₪";
+    }
+  </script>
 </head>
+
 <body>
+  <div class="container">
+    <!-- אזור העליון -->
+    <header>
+      <h1>קורס AI למקצוענים (קורס דיגיטלי)</h1>
+      <p>נכתב על ידי בוגרי יחידות טכנולוגיות בצה"ל, עובדים בתאגידי הייטק ובסטארטאפים</p>
 
-  <!-- כותרת עליונה (ניווט) -->
-  <header>
-    <div class="logo">גבי ליבשיץ</div>
-    <nav>
-      <ul>
-        <li onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">אודות</li>
-        <li onclick="document.getElementById('why-me').scrollIntoView({behavior: 'smooth'})">למה ללמוד אצלי</li>
-        <li onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">צור קשר</li>
-      </ul>
-    </nav>
-  </header>
+      <nav>
+        <ul>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- אזור Hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>שיעורי פוקר פרטיים</h1>
-      <p>קחו את המשחק שלכם לרמה הבאה עם שחקן טורנירים מקצועי שחורש את העולם.</p>
-      <a href="#contact" class="btn-primary">אני רוצה להתחיל</a>
-    </div>
-  </section>
+    <!-- אזור ה-Hero -->
+    <section class="hero" id="hero">
+      <h2>להפוך לאשף בינה מלאכותית</h2>
+      <p>
+        בקורס תלמדו שלב אחר שלב איך למנף את הבינה המלאכותית המתקדמת בעולם – 
+        החל מכלי שיחה מבוססי GPT, יצירת תמונות באמצעות מודלים כמו Midjourney ו-DALL·E, 
+        ועד לניהול פרויקטים מורכבים עם כלי עזר כמו Auto-GPT ועוד. 
+        הקורס מתאים לכל הרמות, גם למתחילים וגם למתקדמים.
+        <br><br>
+      </p>
+    </section>
 
-  <!-- אזור "הופעתי בין היתר ב" -->
-  <section class="featured">
-    <h2>הופעתי בין היתר ב:</h2>
-    <div class="logos">
-      <!-- החלף בנתיבים המתאימים לקבצים logo1.png, logo2.png וכו' -->
-      <img src="logo1.png" alt="Logo 1">
-      <img src="logo2.png" alt="Logo 2">
-      <img src="logo3.png" alt="Logo 3">
-      <img src="logo4.png" alt="Logo 4">
-    </div>
-  </section>
-
-  <!-- אודות גבי -->
-  <section class="about" id="about">
-    <h2>מי אני?</h2>
-    <!-- החלף את הנתיב ל-gaby.png או לכל תמונה רלוונטית אחרת -->
-    <img class="gaby-img" src="gaby.png" alt="גבי ליבשיץ">
-    <p>
-      שמי גבי ליבשיץ, שחקן פוקר מקצועי עם ניסיון של שנים בטורנירים בינלאומיים.
-      אני מטייל ברחבי העולם, משתתף בטורנירים הגדולים והיוקרתיים ביותר, ומשתף את הידע שלי
-      עם כל מי שרוצה להעמיק את ההבנה במשחק.
-    </p>
-    <p>
-      השיעורים שלי מתאימים למגוון רחב של רמות משחק, ממתחילים ועד לכאלו שרוצים ללטש
-      את היכולות המתקדמות ביותר. אני מזמין אתכם לגלות את סודות הזכייה שלי, ולקבל כלים
-      פרקטיים כדי לממש את מלוא הפוטנציאל שלכם בשולחן.
-    </p>
-
-    <!-- קישורים לרשתות חברתיות (עם אייקונים) -->
-    <div class="social-links">
-      <!-- אינסטגרם -->
-      <a href="https://www.instagram.com/sosickstagram" class="social-link" target="_blank" aria-label="Instagram">
-        <img src="instagram.png" alt="Instagram">
-      </a>
-      <!-- פייסבוק -->
-      <a href="https://www.facebook.com/Gabylivs" class="social-link" target="_blank" aria-label="Facebook">
-        <img src="facebook.png" alt="Facebook">
-      </a>
-      <!-- ספוטיפיי (פודקאסט) -->
-      <a href="https://open.spotify.com/show/2Op6rxjHxGc01UWAiVKhRz?si=5b52795b555d45f3" class="social-link" target="_blank" aria-label="Spotify Podcast">
-        <img src="spotify.png" alt="Spotify Podcast">
-      </a>
-      <!-- וואטסאפ -->
-      <a href="https://chat.whatsapp.com/LF4rfcplQtIEoWUukT5PDO" class="social-link" target="_blank" aria-label="WhatsApp Group">
-        <img src="whatsapp.png" alt="WhatsApp">
-      </a>
-    </div>
-  </section>
-
-  <!-- למה ללמוד אצלי -->
-  <section class="why-me" id="why-me">
-    <h2>למה ללמוד אצלי?</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>ניסיון מקיף</h3>
-        <p>שנים של משחק בטורנירים בכל רחבי העולם, הביאו אותי להבנה מעמיקה של מגוון סגנונות משחק.</p>
+    <!-- אודות -->
+    <section class="about" id="about">
+      <h2>אודות הקורס</h2>
+      <div class="about-content">
+        <p>
+          הקורס נבנה על ידי צוות מנוסה של מומחים בתחומי הטכנולוגיה והבינה המלאכותית:
+          בוגרי יחידות טכנולוגיות בצה"ל, מהנדסים בתאגידי הייטק, ויזמים בתחום הסטארטאפים.
+          המטרה היא לתת לכם תכלס: כלים מעשיים, שיעורים פרקטיים, ודוגמאות מהחיים האמיתיים.
+        </p>
+        <p>
+          בעזרת הקורס תכירו את הכלים הכי חדישים בתחום ה-AI, תלמדו איך לשלב אותם בעבודה היומיומית או בעסק שלכם,
+          ותוכלו לחסוך לעצמכם (או לארגון שלכם) המון זמן ומשאבים. כל התכנים זמינים אונליין ותוכלו ללמוד בקצב שלכם.
+        </p>
+        <ul class="about-list">
+          <li><strong>בינה מלאכותית גנרטיבית (Generative AI)</strong>: בניית מודלים ליצירה אוטומטית של טקסטים ותמונות.</li>
+          <li><strong>למידת חיזוקים (Reinforcement Learning)</strong>: שימוש באלגוריתמים ללמידה מבוססת תגמולים.</li>
+          <li><strong>למידת מכונה מסורתית (Machine Learning)</strong>: מודלי חיזוי וניתוח נתונים בסיסיים ומתקדמים.</li>
+          <li><strong>כלים לניתוח נתונים (Data Analysis)</strong>: חיבור אל מערכות BI ודיוק התובנות העסקיות.</li>
+          <li><strong>טרנספורמציה דיגיטלית (Digital Transformation)</strong>: שילוב AI בארגונים וחיסכון תהליכי.</li>
+        </ul>
       </div>
-      <div class="card">
-        <h3>התאמה אישית</h3>
-        <p>התכנים נבנים בהתאם לרמה ולצרכים שלך, ומכוונים את התפתחותך בקצב הנכון לך.</p>
+    </section>
+
+    <!-- כרטיסיות (תוכן הקורס) -->
+    <section class="tabs-container" id="tabs">
+      <div class="tabs-header">
+        <button class="tab-btn active" onclick="openTab(event, 'tab1')">כלי שיחה ויצירת תוכן</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab2')">יצירת תמונות מתקדמת</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab3')">מודלים ותהליכי עבודה</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab4')">פיתוח בוטים וסוכנים</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab5')">פיתוח אפליקציות</button>
+        <button class="tab-btn" onclick="openTab(event, 'tab6')">קוד בסיסי</button>
       </div>
-      <div class="card">
-        <h3>קהילה תומכת</h3>
-        <p>גישה לקבוצות תמיכה והחלפת ידע, בהן אפשר להמשיך להתפתח גם מעבר לשיעורים.</p>
+
+      <!-- 1. כלי שיחה ויצירת תוכן -->
+      <div id="tab1" class="tab-content active">
+        <h3>כלי שיחה ויצירת תוכן</h3>
+        <ul>
+          <li>ChatGPT - שימוש יעיל ליצירת טקסטים, מיילים, תסריטים ועוד.</li>
+          <li>Bard - כלי השיחה והמחקר החדשני של Google.</li>
+          <li>כלים לניתוח שפה טבעית (NLP) לשיפור עבודות מחקר, הפקות תוכן ושירות לקוחות.</li>
+        </ul>
       </div>
-      <div class="card">
-        <h3>שיטות מנצחות</h3>
-        <p>אסטרטגיות עדכניות שנוסו בהצלחה בטורנירים העולמיים המובילים.</p>
+
+      <!-- 2. יצירת תמונות מתקדמת -->
+      <div id="tab2" class="tab-content">
+        <h3>יצירת תמונות מתקדמת</h3>
+        <ul>
+          <li>Midjourney - איך לייצר תמונות מרהיבות על בסיס טקסט.</li>
+          <li>DALL·E 2 - כלי עוצמתי מבית OpenAI ליצירת איורים ואומנות.</li>
+          <li>שימוש מתקדם בפרומפטים ליצירת סגנונות מותאמים אישית.</li>
+        </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- קריאה לפעולה נוספת -->
-  <section class="call-to-action">
-    <h2>רוצים לקחת צעד קדימה?</h2>
-    <p>השאירו פרטים ואחזור אליכם בהקדם כדי לבנות תוכנית אימון אישית.</p>
-    <a href="#contact" class="btn-primary">צור קשר עכשיו</a>
-  </section>
+      <!-- 3. מודלים ותהליכי עבודה -->
+      <div id="tab3" class="tab-content">
+        <h3>מודלים ותהליכי עבודה</h3>
+        <ul>
+          <li>Hugging Face - מאגר מודלי AI בקוד פתוח, מותאמים לכל סוג פרויקט.</li>
+          <li>Auto-GPT - אוטומציה של תהליכי עבודה מורכבים.</li>
+          <li>ניתוח ועיבוד מידע, טיפים לפריסה בקנה מידה גדול ועוד.</li>
+        </ul>
+      </div>
 
-  <!-- טופס יצירת קשר -->
-  <section id="contact" class="contact-form">
-    <h3>טופס יצירת קשר</h3>
-    <form action="#" method="post">
-      <label for="name">שם מלא</label>
-      <input type="text" id="name" name="name" placeholder="" required>
+      <!-- 4. פיתוח בוטים וסוכנים -->
+      <div id="tab4" class="tab-content">
+        <h3>פיתוח בוטים וסוכנים</h3>
+        <ul>
+          <li>איך להפוך כל רעיון לתקשורת אינטראקטיבית באמצעות כלי שיחה.</li>
+          <li>בניית סוכנים אינטליגנטיים עם יכולות תכנון וביצוע משימות.</li>
+          <li>אוטומציה של אינטראקציה עם משתמשים או מערכות פנימיות.</li>
+        </ul>
+      </div>
 
-      <label for="email">אימייל</label>
-      <input type="email" id="email" name="email" placeholder="" required>
+      <!-- 5. פיתוח אפליקציות -->
+      <div id="tab5" class="tab-content">
+        <h3>פיתוח אפליקציות</h3>
+        <ul>
+          <li>שילוב יכולות AI (כגון GPT או מודלי תמונה) ביישומי ווב ומובייל.</li>
+          <li>בניית כלי עזר וממשקים ויזואליים לאינטראקציות AI.</li>
+          <li>אינטגרציה בין מודלים, בסיסי נתונים ותהליכי API.</li>
+        </ul>
+      </div>
 
-      <label for="phone">טלפון</label>
-      <input type="tel" id="phone" name="phone" placeholder="" required>
+      <!-- 6. קוד בסיסי -->
+      <div id="tab6" class="tab-content">
+        <h3>קוד בסיסי</h3>
+        <ul>
+          <li>הבנת יסודות תכנות כדי לחבר בין AI לאפליקציות בקלות.</li>
+          <li>עבודה עם ספריות בסיסיות ו־APIs באופן פשוט.</li>
+          <li>גשר למי שאינו יודע קוד - לא כדי להפוך למתכנת, אלא כדי להבין את עקרונות השילוב.</li>
+        </ul>
+      </div>
+    </section>
 
-      <label for="message">מה תרצו לשפר במשחק שלכם?</label>
-      <textarea id="message" name="message" rows="5" placeholder="ספרו לי בקצרה על הרמה הנוכחית ועל הציפיות שלכם..." required></textarea>
+    <!-- שאלות ותשובות (FAQ) -->
+    <section class="faq" id="faq">
+      <h2>שאלות ותשובות נפוצות</h2>
 
-      <button type="submit">שליחה</button>
-    </form>
-  </section>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>למי מתאים הקורס?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          <p>הקורס מתאים לכולם - גם למי שאין רקע בטכנולוגיה וגם למי שעובד בתחום ורוצה להרחיב את הידע בכלי ה-AI החדשים.</p>
+        </div>
+      </div>
 
-  <!-- כותרת תחתונה -->
-  <footer>
-    <p>© 2025 גבי ליבשיץ - כל הזכויות שמורות.</p>
-  </footer>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>האם יש צורך בידע מקדים בתכנות?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          <p>ממש לא. הקורס בנוי בצורה הדרגתית ומלמד את כל הכלים השימושיים, כך שכל אחד יכול להפיק ממנו את המירב.</p>
+        </div>
+      </div>
 
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>איך מתקיימים השיעורים?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          <p>הקורס דיגיטלי לגמרי: כל השיעורים מוקלטים מראש. אתם יכולים לצפות בהם מתי שנוח לכם, מכל מקום ובכל זמן.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>האם יש תמיכה אחרי הקורס?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          <p>ישנן קבוצות ופורומים ייעודיים לשאלות ותשובות, כך שתוכלו להמשיך ללמוד ולהתפתח גם אחרי שסיימתם את השיעורים.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>האם אקבל החזר כספי אם לא אהיה מרוצה?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          <p>כן! אנחנו בטוחים באיכות הקורס. אם לא תהיו מרוצים, תקבלו החזר כספי מלא – ללא שאלות.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>לכמה זמן הקורס יהיה זמין?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          <p>הקורס זמין לכם לכל החיים. ברגע שרכשתם, תוכלו לצפות בכל התכנים כמה פעמים שתרצו, ללא הגבלה.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- המלצות (Carousel) -->
+    <section class="testimonials" id="testimonials">
+      <h2>המלצות משתתפים</h2>
+      <div class="testimonial-carousel">
+
+        <div class="testimonial-slide active">
+          <p><strong>דנה ל.</strong><br> "הקורס הזה ממש עזר לי להבין איך להפיק את המקסימום מכלי הבינה המלאכותית."</p>
+        </div>
+        <div class="testimonial-slide">
+          <p><strong>יוסי מ.</strong><br> "לא האמנתי שאפשר להשיג תוצאות כל כך מהר. התכנים ברורים ומעשיים מאוד."</p>
+        </div>
+        <div class="testimonial-slide">
+          <p><strong>רינת ש.</strong><br> "הקורס מקיף, ברור ומתאים גם למי שפחד להתקרב לעולם ה-AI. תודה על החוויה!"</p>
+        </div>
+        <div class="testimonial-slide">
+          <p><strong>אבי ג.</strong><br> "כמות הכלים והטכניקות שלמדתי שדרגו לי את העבודה והקריירה ברמה שלא צפיתי."</p>
+        </div>
+        <div class="testimonial-slide">
+          <p><strong>ליאור פ.</strong><br> "ההסברים והדוגמאות עזרו לי כבר מהשיעור הראשון. ממליץ בחום למי שרוצה להתקדם."</p>
+        </div>
+        <div class="testimonial-slide">
+          <p><strong>עדן צ.</strong><br> "כל שאלה שהייתה לי, מצאתי תשובה בסרטונים או בקבוצת התמיכה. מומלץ!"</p>
+        </div>
+        <div class="testimonial-slide">
+          <p><strong>ענבל ק.</strong><br> "אם אתם רוצים להיות בחזית הטכנולוגיה ולנצל את הבינה המלאכותית לטובתכם, זה המקום."</p>
+        </div>
+        <div class="testimonial-slide">
+          <p><strong>ברק א.</strong><br> "אחרי הקורס, קיבלתי ביטחון והתחלתי לשלב פתרונות AI בכל מיני פרויקטים אישיים."</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- תמחור וקופון -->
+    <section class="pricing-section" id="pricing">
+      <div class="pricing-box">
+        <h2>מחיר מבצע לזמן מוגבל!</h2>
+        <p>
+          <span class="original-price">6,999 ₪</span>
+          <span class="discounted-price" id="basePrice">2,699 ₪</span>
+        </p>
+        <div class="coupon-box">
+          <p>יש לכם קוד קופון?</p>
+          <input type="text" id="couponInput" placeholder="הקלידו קוד קופון">
+          <button onclick="applyCoupon()">החל קופון</button>
+          <div class="final-price">
+            מחיר סופי: <span id="finalPrice">2699.00 ₪</span>
+          </div>
+        </div>
+        <!-- כפתור הרשמה / יצירת קשר -->
+        <a class="cta-btn" href="https://wa.me/972523661999?text=אני+מעוניין%2Fת+לקבל+פרטים+נוספים+על+הקורס!">
+          הרשמה עכשיו
+        </a>
+      </div>
+    </section>
+
+    <!-- יצירת קשר -->
+    <section class="contact" id="contact">
+      <h2>רוצים לשמוע עוד?</h2>
+      <p>שלחו לי הודעה בוואטסאפ ונחזור אליכם בהקדם:</p>
+      <a class="cta-btn" href="https://wa.me/972523661999?text=אני+מעוניין%2Fת+לקבל+פרטים+נוספים+על+הקורס!">
+        לחצו ליצירת קשר
+      </a>
+    </section>
+
+    <footer>
+      <p>כל הזכויות שמורות &copy; 2025 | קורס AI למקצוענים (קורס דיגיטלי)</p>
+    </footer>
+  </div>
 </body>
 </html>
