@@ -30,6 +30,11 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 1em;
     }
+    section {
+      margin: 2em 0;
+      text-align: right;
+      direction: rtl;
+    }
     .price-box {
       background-color: #f1f3f5;
       padding: 1.5em;
@@ -39,10 +44,6 @@
     .price-box h2 {
       margin: 0.5em 0;
       font-size: 1.5em;
-    }
-    .coupon {
-      color: green;
-      font-weight: bold;
     }
     .cta {
       margin: 2em 0;
@@ -66,6 +67,23 @@
       background-color: #dee2e6;
       font-size: 0.9em;
     }
+    input[type="text"] {
+      padding: 0.5em;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 0.5em;
+      width: 70%;
+    }
+    button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      border: none;
+      border-radius: 0.5em;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      margin-top: 1em;
+    }
   </style>
 </head>
 <body>
@@ -75,19 +93,43 @@
   </header>
 
   <div class="container">
-    <h2>מה תקבלו בקורס?</h2>
-    <ul style="text-align: right; direction: rtl;">
-      <li>הבנה עמוקה של תחביר עברי ברמה אקדמית</li>
-      <li>תרגולים מעשיים והכוונה אישית</li>
-      <li>גישה מלאה לתכני הקורס לתמיד</li>
-      <li>הסמכה רשמית בסיום</li>
-    </ul>
+    <section>
+      <h2>אודות הקורס</h2>
+      <p>קורס זה נבנה בקפידה על ידי מומחים לשפה העברית, ונותן כלים פרקטיים להבנת תחביר עברי ברמה גבוהה.</p>
+    </section>
 
-    <div class="price-box">
-      <h2>מחיר הקורס: <s>80,000 ש"ח</s></h2>
-      <p>עם קוד קופון <span class="coupon">"אלוהים יברך את הידיים שלך"</span></p>
-      <h2>מחיר חדש: קילו אורז פרסי איכותי</h2>
-    </div>
+    <section>
+      <h2>מה תקבלו בקורס?</h2>
+      <ul>
+        <li>הבנה עמוקה של תחביר עברי ברמה אקדמית</li>
+        <li>תרגולים מעשיים והכוונה אישית</li>
+        <li>גישה מלאה לתכני הקורס לתמיד</li>
+        <li>הסמכה רשמית בסיום</li>
+      </ul>
+    </section>
+
+    <section class="price-box">
+      <h2 id="price">מחיר הקורס: 80,000 ש"ח</h2>
+      <input type="text" id="couponInput" placeholder="הכנס קוד קופון">
+      <br>
+      <button onclick="applyCoupon()">הפעל קופון</button>
+    </section>
+
+    <section>
+      <h2>המלצות בוגרים</h2>
+      <blockquote>״הקורס הזה שינה לי את החיים. אני מרגיש סוף סוף בטוח בעברית שלי.״ - אלעד מ.</blockquote>
+      <blockquote>״המרצים מדהימים, החומר ברור – פשוט חוויה!״ - תמר ל.</blockquote>
+    </section>
+
+    <section>
+      <h2>שאלות נפוצות</h2>
+      <h4>האם יש צורך בידע מוקדם?</h4>
+      <p>לא. הקורס מתאים לכולם, גם למתחילים.</p>
+      <h4>כמה זמן נמשך הקורס?</h4>
+      <p>כ-10 שבועות, בקצב שלך.</p>
+      <h4>האם יש החזר כספי?</h4>
+      <p>כן, עד 7 ימים מההרשמה במידה ולא התחלת את הקורס.</p>
+    </section>
 
     <div class="cta">
       <a href="https://wa.me/972523661999?text=%D7%90%D7%A0%D7%99%20%D7%9E%D7%90%D7%95%D7%94%D7%91%20%D7%91%D7%9A%20%D7%95%D7%90%D7%AA%D7%94%20%D7%94%D7%9B%D7%99%20%D7%98%D7%95%D7%91%20%D7%91%D7%A2%D7%95%D7%9C%D7%9D%20%D7%95%D7%94%D7%9C%D7%95%D7%95%D7%90%D7%99%20%D7%A9%D7%9B%D7%9C%20%D7%94%D7%97%D7%99%D7%99%D7%9D%20%D7%AA%D7%90%D7%94%D7%91%20%D7%90%D7%95%D7%AA%D7%99%20%D7%9B%D7%99%20%D7%96%D7%9B%D7%99%D7%AA%D7%99%20%D7%91%D7%9A%20%D7%95%D7%AA%D7%95%D7%93%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%9B%D7%9C" target="_blank">
@@ -99,5 +141,20 @@
   <footer>
     &copy; כל הזכויות שמורות. התחייבות לאורז באהבה ובכבוד ❤
   </footer>
+
+  <script>
+    function applyCoupon() {
+      const input = document.getElementById('couponInput').value.trim();
+      const priceEl = document.getElementById('price');
+
+      if (input === 'אלוהים יברך את הידיים שלך') {
+        priceEl.textContent = 'מחיר הקורס: קילו אורז פרסי איכותי';
+      } else if (input === 'לאלקנותכלום1992') {
+        alert('בואי נתמזמז דחוף');
+      } else {
+        alert('קוד קופון שגוי');
+      }
+    }
+  </script>
 </body>
 </html>
