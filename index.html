@@ -1,159 +1,191 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>קורס בתחביר בעברית</title>
+  <title>קודים למשימת כדורי ביליארד</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
-      color: #212529;
+      padding: 20px;
+      background: radial-gradient(circle at center, #35654d 0%, #1e3d2f 100%);
+      color: #fff;
+      min-height: 100vh;
+    }
+    h1 {
       text-align: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #f9d342;
+      text-shadow: 1px 1px 2px black;
     }
-    header {
-      background-color: #343a40;
+    .input-grid {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .ball {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .ball input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      text-align: center;
+      font-size: 24px;
       color: white;
-      padding: 2em 1em;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    .container {
-      max-width: 700px;
-      margin: 2em auto;
-      padding: 1em;
-      background-color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      border-radius: 1em;
-    }
-    section {
-      margin: 2em 0;
-      text-align: right;
-      direction: rtl;
-    }
-    .price-box {
-      background-color: #f1f3f5;
-      padding: 1.5em;
-      margin: 1em 0;
-      border-radius: 1em;
-    }
-    .price-box h2 {
-      margin: 0.5em 0;
-      font-size: 1.5em;
-    }
-    .cta {
-      margin: 2em 0;
-    }
-    .cta a {
-      display: inline-block;
-      background-color: #25d366;
-      color: white;
-      padding: 1em 2em;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 1.2em;
-      transition: background-color 0.3s ease;
-    }
-    .cta a:hover {
-      background-color: #1ebc59;
-    }
-    footer {
-      margin-top: 3em;
-      padding: 1em;
-      background-color: #dee2e6;
-      font-size: 0.9em;
-    }
-    input[type="text"] {
-      padding: 0.5em;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 0.5em;
-      width: 70%;
+      font-weight: bold;
+      outline: none;
     }
     button {
-      padding: 0.5em 1em;
-      font-size: 1em;
+      margin: 10px;
+      padding: 10px 16px;
+      font-size: 16px;
+      background-color: #f9d342;
       border: none;
-      border-radius: 0.5em;
-      background-color: #007bff;
-      color: white;
+      border-radius: 6px;
       cursor: pointer;
-      margin-top: 1em;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #e6be2d;
+    }
+    .results {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffffcc;
+      padding: 10px;
+      border-radius: 10px;
+      color: #000;
+    }
+    .code-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px 0;
+      padding: 6px;
+      border-bottom: 1px solid #ccc;
+    }
+    .code-option.checked {
+      background-color: #d4edda;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>קורס מקיף בתחביר עברי מודרני</h1>
-    <p>הדרך שלך לשלוט בעברית בצורה שלא הכרת</p>
-  </header>
+  <h1>קוד כספת - כדורי ביליארד</h1>
 
-  <div class="container">
-    <section>
-      <h2>אודות הקורס</h2>
-      <p>קורס זה נבנה בקפידה על ידי מומחים לשפה העברית, ונותן כלים פרקטיים להבנת תחביר עברי ברמה גבוהה.</p>
-    </section>
-
-    <section>
-      <h2>מה תקבלו בקורס?</h2>
-      <ul>
-        <li>הבנה עמוקה של תחביר עברי ברמה אקדמית</li>
-        <li>תרגולים מעשיים והכוונה אישית</li>
-        <li>גישה מלאה לתכני הקורס לתמיד</li>
-        <li>הסמכה רשמית בסיום</li>
-      </ul>
-    </section>
-
-    <section class="price-box">
-      <h2 id="price">מחיר הקורס: 80,000 ש"ח</h2>
-      <input type="text" id="couponInput" placeholder="הכנס קוד קופון">
-      <br>
-      <button onclick="applyCoupon()">הפעל קופון</button>
-    </section>
-
-    <section>
-      <h2>המלצות בוגרים</h2>
-      <blockquote>״הקורס הזה שינה לי את החיים. אני מרגיש סוף סוף בטוח בעברית שלי.״ - אלעד מ.</blockquote>
-      <blockquote>״המרצים מדהימים, החומר ברור – פשוט חוויה!״ - תמר ל.</blockquote>
-    </section>
-
-    <section>
-      <h2>שאלות נפוצות</h2>
-      <h4>האם יש צורך בידע מוקדם?</h4>
-      <p>לא. הקורס מתאים לכולם, גם למתחילים.</p>
-      <h4>כמה זמן נמשך הקורס?</h4>
-      <p>כ-10 שבועות, בקצב שלך.</p>
-      <h4>האם יש החזר כספי?</h4>
-      <p>כן, עד 7 ימים מההרשמה במידה ולא התחלת את הקורס.</p>
-    </section>
-
-    <div class="cta">
-      <a href="https://wa.me/972523661999?text=%D7%90%D7%A0%D7%99%20%D7%9E%D7%90%D7%95%D7%94%D7%91%20%D7%91%D7%9A%20%D7%95%D7%90%D7%AA%D7%94%20%D7%94%D7%9B%D7%99%20%D7%98%D7%95%D7%91%20%D7%91%D7%A2%D7%95%D7%9C%D7%9D%20%D7%95%D7%94%D7%9C%D7%95%D7%95%D7%90%D7%99%20%D7%A9%D7%9B%D7%9C%20%D7%94%D7%97%D7%99%D7%99%D7%9D%20%D7%AA%D7%90%D7%94%D7%91%20%D7%90%D7%95%D7%AA%D7%99%20%D7%9B%D7%99%20%D7%96%D7%9B%D7%99%D7%AA%D7%99%20%D7%91%D7%9A%20%D7%95%D7%AA%D7%95%D7%93%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%9B%D7%9C" target="_blank">
-        דברו איתנו בוואטסאפ עכשיו
-      </a>
-    </div>
+  <div class="input-grid">
+    <div class="ball" style="background-color: #ffffff" id="ball-0"><input inputmode="numeric" maxlength="1" oninput="handleInput(this, 0)"></div>
+    <div class="ball" id="ball-1"><input inputmode="numeric" maxlength="1" oninput="handleInput(this, 1)"></div>
+    <div class="ball" id="ball-2"><input inputmode="numeric" maxlength="1" oninput="handleInput(this, 2)"></div>
+    <div class="ball" id="ball-3"><input inputmode="numeric" maxlength="1" oninput="handleInput(this, 3)"></div>
+    <div class="ball" id="ball-4"><input inputmode="numeric" maxlength="1" oninput="handleInput(this, 4)"></div>
+    <div class="ball" id="ball-5"><input inputmode="numeric" maxlength="1" oninput="handleInput(this, 5)"></div>
   </div>
 
-  <footer>
-    &copy; כל הזכויות שמורות. התחייבות לאורז באהבה ובכבוד ❤
-  </footer>
+  <div style="text-align:center">
+    <button onclick="generateCombinations()">חשב קודים אפשריים</button>
+    <button onclick="resetInputs()">איפוס</button>
+  </div>
+
+  <div class="results" id="results"></div>
 
   <script>
-    function applyCoupon() {
-      const input = document.getElementById('couponInput').value.trim();
-      const priceEl = document.getElementById('price');
+    const billiardColors = {
+      1: '#fdd017', // צהוב
+      2: '#2a52be', // כחול
+      3: '#b22222', // אדום
+      4: '#800080', // סגול
+      5: '#ff8c00', // כתום
+      6: '#228b22', // ירוק
+      7: '#8b4513', // חום
+      8: '#000000', // שחור
+      9: '#ffffff'  // לבן
+    };
 
-      if (input === 'אלוהים יברך את הידיים שלך') {
-        priceEl.textContent = 'מחיר הקורס: קילו אורז פרסי איכותי';
-      } else if (input === 'לאלקנותכלום1992') {
-        alert('בואי נתמזמז דחוף');
+    function handleInput(elem, index) {
+      const val = elem.value;
+      const ball = document.getElementById(`ball-${index}`);
+      if (val.length === 1 && /^[1-9]$/.test(val)) {
+        elem.style.color = (val === '9') ? '#000' : '#fff';
+        ball.style.backgroundColor = billiardColors[parseInt(val)] || '#f9d342';
+        const nextInput = document.querySelectorAll(".ball input")[index + 1];
+        if (nextInput) nextInput.focus();
       } else {
-        alert('קוד קופון שגוי');
+        elem.value = "";
+        ball.style.backgroundColor = '#ffffff';
       }
+    }
+
+    function generateCombinations() {
+      const inputs = document.querySelectorAll(".ball input");
+      const known = [];
+      for (let i = 0; i < inputs.length; i++) {
+        const val = parseInt(inputs[i].value);
+        if (!isNaN(val)) {
+          known[i] = val;
+        } else {
+          known[i] = null;
+        }
+      }
+
+      const all = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      const used = known.filter(n => n !== null);
+      const remaining = all.filter(n => !used.includes(n));
+
+      const positionsToFill = known.map((val, idx) => val === null ? idx : -1).filter(idx => idx >= 0);
+
+      const results = [];
+
+      function helper(current, remainingNums) {
+        if (current.length === positionsToFill.length) {
+          const fullCode = [...known];
+          for (let i = 0; i < positionsToFill.length; i++) {
+            fullCode[positionsToFill[i]] = current[i];
+          }
+          results.push(fullCode);
+          return;
+        }
+
+        for (let i = 0; i < remainingNums.length; i++) {
+          helper([...current, remainingNums[i]], remainingNums.filter((_, j) => j !== i));
+        }
+      }
+
+      helper([], remaining);
+
+      const container = document.getElementById("results");
+      container.innerHTML = "<h3>תוצאות אפשריות:</h3>";
+
+      results.forEach(code => {
+        const div = document.createElement("div");
+        div.className = "code-option";
+        div.innerHTML = `
+          <span>${code.join(" - ")}</span>
+          <button onclick="this.parentElement.classList.toggle('checked')">✔️</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function resetInputs() {
+      document.querySelectorAll(".ball input").forEach((input, i) => {
+        input.value = "";
+        document.getElementById(`ball-${i}`).style.backgroundColor = '#ffffff';
+      });
+      document.getElementById("results").innerHTML = "";
     }
   </script>
 </body>
